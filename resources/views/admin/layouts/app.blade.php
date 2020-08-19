@@ -14,8 +14,37 @@
 </head>
 <body>
 <div id="app" >
-    @include('admin.header.header')
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class=" ml-auto navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            @if(Auth::user())
 
+                                <a class="nav-link waves-effect"
+                                   target="_blank" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form-auth').submit();"
+                                ><i class="fas fa-sign-out-alt "></i>
+                                    {{ __('Выйти') }}
+                                </a>
+                                <form id="logout-form-auth" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+
+                            @endif
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
     @yield('content')
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
