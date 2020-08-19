@@ -27,6 +27,9 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
     //CRUD for types
     Route::get('/type/datatable', 'TypeController@datatableData')->name('type.datatable.data');
     Route::resource('types', 'TypeController');
+    //CRUD for stages
+    Route::get('/stages/datatable', 'StageController@datatableData')->name('stages.datatable.data');
+    Route::resource('stages', 'StageController');
     });
 
 
