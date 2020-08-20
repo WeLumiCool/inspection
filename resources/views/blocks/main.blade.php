@@ -85,11 +85,8 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
-
 </main>
 <div class="modal fade" id="info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -101,10 +98,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <iframe src="" height="700" width="750"></iframe>
+                <iframe src="" ></iframe>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Закрыть</button>
             </div>
         </div>
     </div>
