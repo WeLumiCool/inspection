@@ -14,19 +14,19 @@
             </button>
         </div>
         <div class="row justify-content-around px-5 py-2 font-small text-caral">
-            <div class="col-3 font-weight-bold"><span>Ф.И.О</span></div>
-            <div class="col-3 font-weight-bold"><span>Адресс объекта</span></div>
-            <div class="col-3 d-md-block d-none font-weight-bold"><span>Вид объекта</span></div>
-            <div class="col-3 d-md-block d-none font-weight-bold"><span>Площадь</span></div>
+            <div class="col-6 col-md-3 font-weight-bold"><span>Ф.И.О</span></div>
+            <div class="col-6 col-md-3 font-weight-bold"><span>Адресс объекта</span></div>
+            <div class="col-md-3 d-md-block d-none font-weight-bold"><span>Вид объекта</span></div>
+            <div class="col-md-3 d-md-block d-none font-weight-bold"><span>Площадь</span></div>
         </div>
-        <div class="row justify-content-around font-small mb-0 px-3">
-            <div class="col-3"><span>Жусуев А.С.</span></div>
+        <div class="row justify-content-around font-small mb-0 px-5">
+            <div class="col-6 col-md-3"><span>Жусуев А.С.</span></div>
 
-            <div class="col-3"><span>Адресс объекта</span></div>
+            <div class="col-6 col-md-3"><span>Адресс объекта</span></div>
 
-            <div class="col-3 d-md-block d-none"><span>Вид объекта</span></div>
+            <div class="col-md-3 d-md-block d-none"><span>Вид объекта</span></div>
 
-            <div class="col-3 d-md-block d-none"><span>Площадь</span></div>
+            <div class="col-md-3 d-md-block d-none"><span>Площадь</span></div>
         </div>
 
     </div>
