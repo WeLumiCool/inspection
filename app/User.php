@@ -39,11 +39,11 @@ class User extends Authenticatable
 
     public function histories()
     {
-        $this->hasMany(History::class);
+        return $this->hasMany(History::class);
     }
 
     public function role()
     {
-        $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class);
     }
 }

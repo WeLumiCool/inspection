@@ -20,15 +20,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
-    ->group(function () {
-        Route::get('/', 'AdminController@index')->name('admin');
-        Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
+->group(function () {
+    Route::get('/', 'AdminController@index')->name('admin');
+    Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
 
     //CRUD for types
     Route::get('/type/datatable', 'TypeController@datatableData')->name('type.datatable.data');
     Route::resource('types', 'TypeController');
-    });
-
+    //CRUD for users
+    Route::get('/user/datatable', 'UserController@datatableData')->name('user.datatable.data');
+    Route::resource('users', 'UserController');
+});
 
 
 Route::get('/home', 'HomeController@index')->name('home');
