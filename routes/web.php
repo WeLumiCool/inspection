@@ -32,3 +32,11 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/create', function () {
+    return view('project_build.create');
+})->name('create');
+
+Route::get('/show', function () {
+    return view('project_build.show');
+})->name('show');

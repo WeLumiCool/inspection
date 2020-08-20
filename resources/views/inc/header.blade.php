@@ -8,12 +8,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <form class="form-inline my-2 my-lg-0 ml-auto">
-                    <input class="form-control" type="search" placeholder="Поиск" aria-label="Search">
-                    <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Поиск</button>
-                </form>
                 <li class="nav-item pt-2">
-                    <a class="" href="#">Войти</a>
+                    <button class="btn btn-outline-white btn-md my-0 ml-sm-2">Войти</button>
                 </li>
             </ul>
         </div>
