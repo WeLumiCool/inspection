@@ -1,17 +1,19 @@
 @extends('layouts.app')
 @section('content')
     <div class="container pt-3">
+        <div class="col-12">
+            <h2 class="text-center  py-3 font-weight-bold">Поэтапная приемка</h2>
+            <div class="text-right mb-2">
+                <button data-toggle="modal" data-target="#addStages" type="button" class="btn btn-dark-green  "
+                        style="padding: 11px 19px;margin-top: 15px;">Добавить этап
+                </button>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12 bg-form card-body-admin ">
                 <div class="row border-bottom ">
                     <div class="col-lg-2 col-12 pt-1 text-lg-left text-center">
                         <p class="font-weight-bold font-small " style="padding-top: 25px;">20.08.2020</p>
-                    </div>
-                    <div class="col-lg-8 col-12">
-                        <h2 class="text-center  py-3 font-weight-bold">Поэтапная приемка</h2>
-                    </div>
-                    <div class="col-lg-2 col-12 pt-1 text-lg-left text-center">
-                        <button  data-toggle="modal" data-target="#addStages" type="button" class="btn btn-dark-green" style="padding: 11px 19px;margin-top: 15px;">Добавить этап</button>
                     </div>
                 </div>
                 <div class="justify-content-between row pt-2">
@@ -19,12 +21,13 @@
                         <p class="h5 font-weight-bold ">Этап:</p>
                         <p class="text-muted">Котлован</p>
                     </div>
-                    <div class="col-lg-7 col-12 text-lg-left text-center">
+                    <div class="col-lg-6 col-12 text-lg-left text-center">
                         <p class="h5 font-weight-bold ">Описание:</p>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
+                            architecto
                             asperiores atque consectetur cum in iure numquam pariatur quibusdam, veritatis.</p>
                     </div>
-                    <div class="col-lg-2 col-12 text-lg-left text-center">
+                    <div class="col-lg-3 col-12 text-lg-left text-center">
                         <p class="h5 font-weight-bold">Документы:</p>
                         <p class="text-muted">доки</p>
                     </div>
@@ -40,8 +43,9 @@
 
                     </div>
                     <div class="col-lg-3 col-12 text-lg-left text-center">
-                        <p class="h5 font-weight-bold ">Примечание</p>
-                        <p class=" text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus illo nemo unde.</p>
+                        <p class="h5 font-weight-bold ">Примечание:</p>
+                        <p class=" text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus illo
+                            nemo unde.</p>
 
                     </div>
                 </div>
