@@ -35,10 +35,13 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
     //CRUD for users
     Route::get('/user/datatable', 'UserController@datatableData')->name('user.datatable.data');
     Route::resource('users', 'UserController');
-
+    //CRUD for stages
+    Route::get('/stage/datatable', 'StageController@datatableData')->name('stage.datatable.data');
+    Route::resource('stages', 'StageController');
     //CRUD for builds
     Route::get('/builds/datatable', 'BuildController@datatableData')->name('build.datatable.data');
     Route::resource('builds', 'BuildController');
+    Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
 });
 
 Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
