@@ -11,5 +11,9 @@
            class="list-group-item list-group-item-action waves-effect {{ request()->is('admin/user*') ? 'active' : '' }}">
             <i class="fa fa-user mr-3"></i>{{ __('Пользовтели') }}</a>
 
+        <a href="{{ route('admin.builds.index') }}"
+           class="list-group-item list-group-item-action waves-effect {{ request()->is('admin/builds*') ? 'active' : '' }}">
+            <i class="fa fa-user mr-3"></i>{{ __('Объекты') }}</a>
+
     </div>
 </div>
