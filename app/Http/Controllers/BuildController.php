@@ -6,6 +6,7 @@ use App\Build;
 use App\Services\PdfUploader;
 use App\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class BuildController extends Controller
@@ -18,6 +19,11 @@ class BuildController extends Controller
     public function index()
     {
         return view('admin.builds.index');
+    }
+
+    public function welcome()
+    {
+        return view('block.main');
     }
 
     /**
@@ -41,12 +47,13 @@ class BuildController extends Controller
 
 //        dd($request);
         $build = Build::create($request->all());
-        $build->statement = PdfUploader::upload(request('statement'), 'statements', 'statement');
-        $build->apu = PdfUploader::upload(request('apu'), 'apu', 'apu');
-        $build->act = PdfUploader::upload(request('act'), 'acts', 'act');
-        $build->project = PdfUploader::upload(request('project'), 'projects', 'project');
-        $build->solution = PdfUploader::upload(request('solution'), 'solutions', 'solution');
-
+      
+            $build->statement = PdfUploader::upload(request('statement'), 'statements', 'statement');
+            $build->apu = PdfUploader::upload(request('apu'), 'apu', 'apu');
+            $build->act = PdfUploader::upload(request('act'), 'acts', 'act');
+            $build->project = PdfUploader::upload(request('project'), 'projects', 'project');
+            $build->solution = PdfUploader::upload(request('solution'), 'solutions', 'solution');
+            $build->certificate = PdfUploader::upload(request('certificate'), 'certificates', 'certificate');
         $build->save();
 
         return redirect()->route('admin.builds.index');
@@ -83,7 +90,26 @@ class BuildController extends Controller
      */
     public function update(Request $request, Build $build)
     {
-        $build->update($request->all());
+        if ($request->hasFile('statement') || $request->hasFile('apu') ||
+            $request->hasFile('act') || $request->hasFile('project') || $request->hasFile('solution') || $request->hasFile('certificate'))
+            {
+                Storage::disk('public')->delete("/files/" . $build->statement);
+                Storage::disk('public')->delete("/files/" . $build->apu);
+                Storage::disk('public')->delete("/files/" . $build->act);
+                Storage::disk('public')->delete("/files/" . $build->project);
+                Storage::disk('public')->delete("/files/" . $build->solution);
+                Storage::disk('public')->delete("/files/" . $build->certificate);
+
+                $build->statement = PdfUploader::upload(request('statement'), 'statements', 'statement');
+                $build->apu = PdfUploader::upload(request('apu'), 'apu', 'apu');
+                $build->act = PdfUploader::upload(request('act'), 'acts', 'act');
+                $build->project = PdfUploader::upload(request('project'), 'projects', 'project');
+                $build->solution = PdfUploader::upload(request('solution'), 'solutions', 'solution');
+                $build->certificate = PdfUploader::upload(request('certificate'), 'certificates', 'certificate');
+            }
+
+        $build->update($request->except('statement', 'apu', 'act', 'project', 'solution', 'certificate'));
+        $build->save();
         return redirect()->route('admin.builds.index');
     }
 
@@ -104,6 +130,11 @@ class BuildController extends Controller
             ->addColumn('actions', function (Build $build) {
                 return view('admin.actions', ['type' => 'builds', 'model' => $build]);
             })
+            ->make(true);
+    }
+    public function datatableData2()
+    {
+        return DataTables::of(Build::query())
             ->make(true);
     }
 }

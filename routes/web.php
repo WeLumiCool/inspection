@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Auth::routes();
 //Auth::routes([
 //    'register' => false,
@@ -34,14 +32,13 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
     Route::resource('users', 'UserController');
     //CRUD for builds
     Route::get('/builds/datatable', 'BuildController@datatableData')->name('build.datatable.data');
+    Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
     Route::resource('builds', 'BuildController');
 });
-
-
 //Route::middleware('auth')->group(function (){
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('main');
 
 Route::get('/create', function () {
     return view('project_build.create');
@@ -51,5 +48,3 @@ Route::get('/show', function () {
     return view('project_build.show');
 })->name('show');
 //});
-
-
