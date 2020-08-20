@@ -21,11 +21,10 @@
 </nav>
 @push('scripts')
     <script>
-        let header = $('#header'),
-            window = $(window);
-        window.scroll(function() {
-            if(window.screenTop > 100) header.addClass('fixed-top');
-            if(window.screenTop == 0 && window.screenTop <= 100) header.removeClass('fixed-top');
+        let header = $('#header');
+        $(window).scroll(function() {
+            if(window.pageYOffset > 100) header.addClass('fixed-top');
+            if(window.pageYOffset == 0 && window.pageYOffset <= 100) header.removeClass('fixed-top');
         })
     </script>
 @endpush
