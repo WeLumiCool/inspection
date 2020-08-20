@@ -19,7 +19,8 @@ class Build extends Model
         'note',
         'longitude',
         'latitude',
-        'legality'
+        'legality',
+        'certificate'
     ];
 
     public function type()

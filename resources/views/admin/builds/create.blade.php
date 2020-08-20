@@ -59,6 +59,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="certificate_field">АКТ оценки соответсвия вводимого в эксплуатацию завершенного строительством объекта:<span class="text-danger">*</span></label>
+                        <input id="certificate_field" type="file" class="form-control" name="certificate" required>
+                    </div>
+
+                    <div class="form-group">
                         <label for="note_field">Примечание:<span class="text-danger">*</span></label>
                         <input id="note_field" type="text" class="form-control" name="note" required>
                     </div>

@@ -17,29 +17,29 @@
 
                     <div class="form-group">
                         <label for="statement_field">Заявление:<span class="text-danger">*</span></label>
-                        <input id="statement_field" type="file" class="form-control" name="statement" value="{{ $build->statement }}" required>
+                        <input id="statement_field" type="file" class="form-control" name="statement" value="{{ $build->statement }}">
                     </div>
 
                     <div class="form-group">
                         <label for="apu_field">АПУ/ИТУ:<span class="text-danger">*</span></label>
-                        <input id="apu_field" type="file" class="form-control" name="apu" value="{{ $build->apu }}" required>
+                        <input id="apu_field" type="file" class="form-control" name="apu" value="{{ $build->apu }}">
                     </div>
 
                     <div class="form-group">
                         <label for="act_field">Акт:<span class="text-danger">*</span></label>
-                        <input id="act_field" type="file" class="form-control" name="act" value="{{ $build->act }}" required>
+                        <input id="act_field" type="file" class="form-control" name="act" value="{{ $build->act }}">
                     </div>
 
                     <div class="form-group">
                         <label for="project_field">Проект:<span class="text-danger">*</span></label>
-                        <input id="project_field" type="file" class="form-control" name="project" value="{{ $build->project }}" required>
+                        <input id="project_field" type="file" class="form-control" name="project" value="{{ $build->project }}">
                     </div>
 
                     <div class="form-group">
                         <label for="type_of_object">Тип объекта:</label>
                         <select class="form-control" id="type_of_object" name="type_id">
                             @foreach($types as $type)
-                                <option value="{{ $type->id }} {{ $build->type_id == $type->id ? 'selected' : '' }}" >{{ $type->name }}</option>
+                                <option value="{{ $type->id }}" {{ $build->type_id == $type->id ? 'selected' : '' }} >{{ $type->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -56,7 +56,7 @@
 
                     <div class="form-group">
                         <label for="project_field">Разрешение на строительство:<span class="text-danger">*</span></label>
-                        <input id="project_field" type="file" class="form-control" name="solution" value="{{$build->solution}}" required>
+                        <input id="project_field" type="file" class="form-control" name="solution" value="{{$build->solution}}">
                     </div>
 
                     <div class="form-group">

@@ -30,12 +30,15 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
     //CRUD for users
     Route::get('/user/datatable', 'UserController@datatableData')->name('user.datatable.data');
     Route::resource('users', 'UserController');
-});
 
     //CRUD for builds
     Route::get('/builds/datatable', 'BuildController@datatableData')->name('build.datatable.data');
+    Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
     Route::resource('builds', 'BuildController');
-    });
+});
+
+
+
 
 
 
