@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('main');
 
 Auth::routes();
 
@@ -42,6 +42,8 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
 
 
 
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/create', function () {
@@ -51,3 +53,6 @@ Route::get('/create', function () {
 Route::get('/show', function () {
     return view('project_build.show');
 })->name('show');
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
