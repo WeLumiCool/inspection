@@ -32,5 +32,19 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
     Route::resource('users', 'UserController');
 });
 
+    //CRUD for builds
+    Route::get('/builds/datatable', 'BuildController@datatableData')->name('build.datatable.data');
+    Route::resource('builds', 'BuildController');
+    });
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/create', function () {
+    return view('project_build.create');
+})->name('create');
+
+Route::get('/show', function () {
+    return view('project_build.show');
+})->name('show');

@@ -18,7 +18,7 @@ class CreateStagesTable extends Migration
             $table->dateTime('date');
             $table->unsignedInteger('build_id')->nullable();
             $table->string('desc');
-            $table->string('stage');
+            $table->string('stages');
             $table->string('document');
             $table->string('document_scan');
             $table->longText('images');

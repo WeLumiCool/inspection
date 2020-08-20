@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Stage;
+use App\Type;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class StageController extends Controller
 {
@@ -14,7 +16,7 @@ class StageController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.stages.index');
     }
 
     /**
@@ -81,5 +83,14 @@ class StageController extends Controller
     public function destroy(Stage $stage)
     {
         //
+    }
+
+    public function datatableData()
+    {
+        return DataTables::of(Stage::query())
+            ->addColumn('actions', function (Stage $stage) {
+                return view('admin.actions', ['type' => 'stages', 'model' => $stage]);
+            })
+            ->make(true);
     }
 }

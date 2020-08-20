@@ -9,7 +9,7 @@ class Stage extends Model
     protected $fillable = ['date',
         'build_id',
         'desc',
-        'stage',
+        'stages',
         'document',
         'document_scan',
         'images',
