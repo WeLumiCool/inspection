@@ -23,7 +23,7 @@ class BuildController extends Controller
 
     public function welcome()
     {
-//        return view('admin.blocks.main');
+        return view('admin.blocks.main');
     }
 
     /**
@@ -140,6 +140,10 @@ class BuildController extends Controller
     public function datatableData2()
     {
         return DataTables::of(Build::query())
+            ->editColumn('type_id', function (Build $build) {
+                $type = Type::find($build->type_id);
+                return $type['name'];
+            })
             ->make(true);
     }
 

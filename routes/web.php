@@ -38,9 +38,11 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
 
     //CRUD for builds
     Route::get('/builds/datatable', 'BuildController@datatableData')->name('build.datatable.data');
-    Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
     Route::resource('builds', 'BuildController');
 });
+
+Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
+
 //Route::middleware('auth')->group(function (){
 Route::get('/', function () {
     return view('welcome');
