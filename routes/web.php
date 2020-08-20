@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('main');
 
 Auth::routes();
 
@@ -40,3 +40,5 @@ Route::get('/create', function () {
 Route::get('/show', function () {
     return view('project_build.show');
 })->name('show');
+
+
