@@ -10,9 +10,11 @@
                 <li class="nav-item pt-2">
                     <button class="btn btn-outline-white btn-md my-0 ml-sm-2">Админ панель</button>
                 </li>
+                 @if(Auth::user())
                 <li class="nav-item pt-2">
                     <a href="{{ route('login') }}" class="btn btn-outline-white btn-md my-0 ml-sm-2">Войти</a>
                 </li>
+                 @endif
             </ul>
         </div>
     </div>

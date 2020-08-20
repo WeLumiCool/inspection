@@ -67,14 +67,6 @@
                         <label for="note_field">Примечание:<span class="text-danger">*</span></label>
                         <input id="note_field" type="text" class="form-control" name="note" required>
                     </div>
-
-{{--                    <div class="form-check pb-2">--}}
-{{--                        <input type="checkbox" name="legality" class="form-check-input"--}}
-{{--                               id="is_active-checkbox">--}}
-{{--                        <label class="form-check-label" for="is_active-checkbox">Легальность</label>--}}
-{{--                    </div>--}}
-
-
                     <button type="submit" title="{{ __('Добавить') }}"
                             class="btn n btn-success">{{ __('Добавить') }}</button>
                 </form>
