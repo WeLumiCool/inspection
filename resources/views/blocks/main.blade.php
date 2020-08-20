@@ -4,11 +4,14 @@
             <p class="h3 font-weight-bold text-center text-caral">Список объектов</p>
         </div>
         <div class="row col-12 justify-content-around pr-0 mx-0">
-            <p class="font-small  text-left text-caral pt-3">в списке: <span class="font-weight-bold">120</span>  объектов</p>
+            <p class="font-small  text-left text-caral pt-3">в списке: <span class="font-weight-bold">120</span>
+                объектов</p>
             <form class="form-inline my-2 my-lg-0 ml-auto">
                 <input class="form-control" type="search" placeholder="Поиск" aria-label="Search">
             </form>
-            <button type="button" class="btn btn-outline-default  waves-effect text-right " style="padding: 8px 26px;">Добавить объект</button>
+            <button type="button" class="btn btn-outline-default  waves-effect text-right " style="padding: 8px 26px;">
+                Добавить объект
+            </button>
         </div>
         <div class="row justify-content-around px-5 py-2 font-small text-caral">
             <div class="col font-weight-bold"><span>Ф.И.О</span></div>
@@ -39,371 +42,70 @@
                 <div id="collapseUnfiled" class="collapse" role="tabpanel" aria-labelledby="headingUnfiled"
                      data-parent="#accordionEx78">
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row text-caral border-bottom">
                             <div class="col-12 col-lg-4">
-                                <h6>Заявление:</h6>
+                                <a href="" class="" data-toggle="modal" data-target="#info">
+                                    <h4 class="font-weight-bold"><span class="badge badge-primary">Заявление</span></h4>
+                                </a>
                             </div>
                             <div class="col-12 col-lg-4">
-                                <h6>АПУ/ИТУ:</h6>
+                                <a href="" data-toggle="modal" data-target="#info">
+                                    <h4 class="font-weight-bold"><span class="badge badge-primary">АПУ/ИТУ</span></h4>
+                                </a>
                             </div>
                             <div class="col-12 col-lg-4">
-                                <h6>Гос.акт:</h6>
+                                <a href="" data-toggle="modal" data-target="#info">
+                                    <h4 class="font-weight-bold"><span class="badge badge-primary">Гос.акт </span></h4>
+                                </a>
                             </div>
                             <div class="col-12 col-lg-4">
-                                <h6>Проект:</h6>
+                                <a href="" data-toggle="modal" data-target="#info">
+                                    <h4 class="font-weight-bold"><span class="badge badge-primary">Проект </span></h4>
+                                </a>
                             </div>
                             <div class="col-12 col-lg-4">
-                                <h6>Разрешение на строительство:</h6>
+                                <a href="" data-toggle="modal" data-target="#info">
+                                    <h4 class="font-weight-bold"><span class="badge badge-primary">Разрешение на строительство</span></h4>
+                                </a>
                             </div>
                             <div class="col-12 col-lg-4">
-                                <h6>АКТ оценки соотвествия: </h6>
+                                <a href="" data-toggle="modal" data-target="#info">
+                                    <h4 class="font-weight-bold"><span class="badge badge-primary">АКТ оценки соотвествия</span> </h4>
+                                </a>
                             </div>
+                            <div class="col-12 col-lg-4">
+                                <a href="" data-toggle="modal" data-target="#info">
+                                    <h4 class="font-weight-bold"><span class="badge badge-primary">Примечание</span> </h4>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 text-right">
+                            <button class="btn btn btn-outline-dark-green " style="padding: 5px 10px;">Поэтапная проверка</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card "  style="border-left: 10px solid #036bb2;">
-                <div class="card-header border-bottom" role="tab" id="headingUnfiled2">
-                    <a data-toggle="collapse" data-parent="#accordionEx78" href="#collapseUnfiled2" aria-expanded="true"
-                       aria-controls="collapseUnfiled2">
-                        <div class="font-small mb-0 row justify-content-around px-3">
-                            <div class="col"><span>Жусуев А.С.</span></div>
 
-                            <div class="col"><span>Адресс объекта</span></div>
 
-                            <div class="col"><span>Вид объекта</span></div>
-
-                            <div class="col"><span>Площадь</span></div>
-                        </div>
-                        <div class="mb-0 ">
-                            <i class="fas fa-angle-down rotate-icon"></i>
-                        </div>
-                    </a>
-                </div>
-                <div id="collapseUnfiled2" class="collapse" role="tabpanel" aria-labelledby="headingUnfiled2"
-                     data-parent="#accordionEx78">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-12 col-lg-4 text-center">
-                                <h6>Заявление:</h6>
-                            </div>
-                            <div class="col-12 col-lg-4 text-center">
-                                <h6>АПУ/ИТУ:</h6>
-                            </div>
-                            <div class="col-12 col-lg-4 text-center">
-                                <h6>Гос.акт:</h6>
-                            </div>
-                            <div class="col-12 col-lg-4 text-center">
-                                <h6>Проект:</h6>
-                            </div>
-                            <div class="col-12 col-lg-4 text-center">
-                                <h6>Разрешение на строительство:</h6>
-                            </div>
-                            <div class="col-12 col-lg-4 text-center">
-                                <h6>АКТ оценки соотвествия: </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-{{--            <div class="card">--}}
-{{--                <div class="card-header" role="tab" id="heading80">--}}
-{{--                    <div class="dropdown float-left">--}}
-{{--                        <button class="btn btn-info btn-sm m-0 mr-3 p-2 dropdown-toggle" type="button" data-toggle="dropdown"--}}
-{{--                                aria-haspopup="true" aria-expanded="false"><i class="fas fa-pencil-alt"></i>--}}
-{{--                        </button>--}}
-{{--                        <div class="dropdown-menu dropdown-info">--}}
-{{--                            <a class="dropdown-item" href="#">Add new condition</a>--}}
-{{--                            <a class="dropdown-item" href="#">Rename folder</a>--}}
-{{--                            <a class="dropdown-item" href="#">Delete folder</a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <a data-toggle="collapse" data-parent="#accordionEx78" href="#collapse80" aria-expanded="true"--}}
-{{--                       aria-controls="collapse80">--}}
-{{--                        <h5 class="mt-1 mb-0">--}}
-{{--                            <span>Folder 2</span>--}}
-{{--                            <i class="fas fa-angle-down rotate-icon"></i>--}}
-{{--                        </h5>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--                <div id="collapse80" class="collapse" role="tabpanel" aria-labelledby="heading80"--}}
-{{--                     data-parent="#accordionEx78">--}}
-{{--                    <div class="card-body">--}}
-{{--                        <div class="table-ui p-2 mb-3 mx-3 mb-4">--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-xl-4 col-lg-6 col-md-12">--}}
-{{--                                    <select class="mdb-select colorful-select dropdown-info mx-2">--}}
-{{--                                        <option value="" disabled selected>Bulk actions</option>--}}
-{{--                                        <option value="1">Delete</option>--}}
-{{--                                        <option value="2">Change folder</option>--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-xl-4 col-lg-6 col-md-6">--}}
-{{--                                    <select class="mdb-select colorful-select dropdown-info mx-2">--}}
-{{--                                        <option value="" disabled>Show only</option>--}}
-{{--                                        <option value="1" selected>All <span> (2000)</span></option>--}}
-{{--                                        <option value="2">Clicks <span> (200)</span></option>--}}
-{{--                                        <option value="3">Page <span> (1800)</span></option>--}}
-{{--                                        <option value="4">Scroll <span> (200)</span></option>--}}
-{{--                                        <option value="5">Forms <span> (50)</span></option>--}}
-{{--                                        <option value="6">Time <span> (50)</span></option>--}}
-{{--                                        <option value="7">UTM <span> (50)</span></option>--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-xl-4 col-lg-6 col-md-6">--}}
-{{--                                    <select class="mdb-select colorful-select dropdown-info mx-2">--}}
-{{--                                        <option value="" disabled selected>Filter</option>--}}
-{{--                                        <option value="1">All <span> (100)</span></option>--}}
-{{--                                        <option value="1">Active <span> (2000)</span></option>--}}
-{{--                                        <option value="2">Inactive <span> (1000)</span></option>--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="table-responsive mx-3">--}}
-{{--                            <!--Table-->--}}
-{{--                            <table class="table table-hover mb-0">--}}
-
-{{--                                <!--Table head-->--}}
-{{--                                <thead>--}}
-{{--                                <tr>--}}
-{{--                                    <th>--}}
-{{--                                        <input class="form-check-input" type="checkbox" id="checkbox7">--}}
-{{--                                        <label for="checkbox7" class="mr-2 label-table"></label>--}}
-{{--                                    </th>--}}
-{{--                                    <th class="th-lg"><a>Name <i class="fas fa-sort ml-1"></i></a></th>--}}
-{{--                                    <th class="th-lg"><a>Condition<i class="fas fa-sort ml-1"></i></a></th>--}}
-{{--                                    <th class="th-lg"><a>Last edited<i class="fas fa-sort ml-1"></i></a></th>--}}
-{{--                                    <th></th>--}}
-{{--                                </tr>--}}
-{{--                                </thead>--}}
-{{--                                <!--Table head-->--}}
-
-{{--                                <!--Table body-->--}}
-{{--                                <tbody>--}}
-{{--                                <tr>--}}
-{{--                                    <th scope="row">--}}
-{{--                                        <input class="form-check-input" type="checkbox" id="checkbox8">--}}
-{{--                                        <label for="checkbox8" class="label-table"></label>--}}
-{{--                                    </th>--}}
-{{--                                    <td>Test subscription</td>--}}
-{{--                                    <td>Scroll % is equal or greater than <strong>80</strong></td>--}}
-{{--                                    <td>12.06.2017</td>--}}
-{{--                                    <td>--}}
-{{--                                        <a><i class="fas fa-info mx-1" data-toggle="tooltip" data-placement="top"--}}
-{{--                                              title="Tooltip on top"></i></a>--}}
-{{--                                        <a><i class="fas fa-pen-square mx-1"></i></a>--}}
-{{--                                        <a><i class="fas fa-times mx-1"></i></a>--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                                <tr>--}}
-{{--                                    <th scope="row">--}}
-{{--                                        <input class="form-check-input" type="checkbox" id="checkbox9">--}}
-{{--                                        <label for="checkbox9" class="label-table"></label>--}}
-{{--                                    </th>--}}
-{{--                                    <td>Product Hunt Visitor</td>--}}
-{{--                                    <td>Scroll % is equal or greater than <strong>80</strong></td>--}}
-{{--                                    <td>13.06.2017</td>--}}
-{{--                                    <td>--}}
-{{--                                        <a><i class="fas fa-info mx-1" data-toggle="tooltip" data-placement="top"--}}
-{{--                                              title="Tooltip on top"></i></a>--}}
-{{--                                        <a><i class="fas fa-pen-square mx-1"></i></a>--}}
-{{--                                        <a><i class="fas fa-times mx-1"></i></a>--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                                <tr>--}}
-{{--                                    <th scope="row">--}}
-{{--                                        <input class="form-check-input" type="checkbox" id="checkbox10">--}}
-{{--                                        <label for="checkbox10" class="label-table"></label>--}}
-{{--                                    </th>--}}
-{{--                                    <td>Test subscription</td>--}}
-{{--                                    <td>Scroll % is equal or greater than <strong>80</strong></td>--}}
-{{--                                    <td>12.06.2017</td>--}}
-{{--                                    <td>--}}
-{{--                                        <a><i class="fas fa-info mx-1" data-toggle="tooltip" data-placement="top"--}}
-{{--                                              title="Tooltip on top"></i></a>--}}
-{{--                                        <a><i class="fas fa-pen-square mx-1"></i></a>--}}
-{{--                                        <a><i class="fas fa-times mx-1"></i></a>--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                                </tbody>--}}
-{{--                                <!--Table body-->--}}
-{{--                            </table>--}}
-{{--                            <!--Table-->--}}
-{{--                        </div>--}}
-{{--                        <!-- Table responsive wrapper -->--}}
-
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="card">--}}
-
-{{--                <!-- Card header -->--}}
-{{--                <div class="card-header" role="tab" id="heading">--}}
-{{--                    <!--Options-->--}}
-{{--                    <div class="dropdown float-left">--}}
-{{--                        <button class="btn btn-info btn-sm m-0 mr-3 p-2 dropdown-toggle" type="button" data-toggle="dropdown"--}}
-{{--                                aria-haspopup="true" aria-expanded="false"><i class="fas fa-pencil-alt"></i>--}}
-{{--                        </button>--}}
-{{--                        <div class="dropdown-menu dropdown-info">--}}
-{{--                            <a class="dropdown-item" href="#">Add new condition</a>--}}
-{{--                            <a class="dropdown-item" href="#">Rename folder</a>--}}
-{{--                            <a class="dropdown-item" href="#">Delete folder</a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-{{--                    <!-- Heading -->--}}
-{{--                    <a data-toggle="collapse" data-parent="#accordionEx78" href="#collapse81" aria-expanded="true"--}}
-{{--                       aria-controls="collapse81">--}}
-{{--                        <h5 class="mt-1 mb-0">--}}
-{{--                            <span>Folder 3</span>--}}
-{{--                            <i class="fas fa-angle-down rotate-icon"></i>--}}
-{{--                        </h5>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-
-{{--                <!-- Card body -->--}}
-{{--                <div id="collapse81" class="collapse" role="tabpanel" aria-labelledby="heading"--}}
-{{--                     data-parent="#accordionEx78">--}}
-{{--                    <div class="card-body">--}}
-
-{{--                        <!--Top Table UI-->--}}
-{{--                        <div class="table-ui p-2 mb-3 mx-3 mb-4">--}}
-
-{{--                            <!--Grid row-->--}}
-{{--                            <div class="row">--}}
-
-{{--                                <!--Grid column-->--}}
-{{--                                <div class="col-xl-4 col-lg-6 col-md-12">--}}
-
-{{--                                    <!--Name-->--}}
-{{--                                    <select class="mdb-select colorful-select dropdown-info mx-2">--}}
-{{--                                        <option value="" disabled selected>Bulk actions</option>--}}
-{{--                                        <option value="1">Delete</option>--}}
-{{--                                        <option value="2">Change folder</option>--}}
-{{--                                    </select>--}}
-
-{{--                                </div>--}}
-{{--                                <!--Grid column-->--}}
-
-{{--                                <!--Grid column-->--}}
-{{--                                <div class="col-xl-4 col-lg-6 col-md-6">--}}
-
-{{--                                    <!--Blue select-->--}}
-{{--                                    <select class="mdb-select colorful-select dropdown-info mx-2">--}}
-{{--                                        <option value="" disabled>Show only</option>--}}
-{{--                                        <option value="1" selected>All <span> (2000)</span></option>--}}
-{{--                                        <option value="2">Clicks <span> (200)</span></option>--}}
-{{--                                        <option value="3">Page <span> (1800)</span></option>--}}
-{{--                                        <option value="4">Scroll <span> (200)</span></option>--}}
-{{--                                        <option value="5">Forms <span> (50)</span></option>--}}
-{{--                                        <option value="6">Time <span> (50)</span></option>--}}
-{{--                                        <option value="7">UTM <span> (50)</span></option>--}}
-{{--                                    </select>--}}
-{{--                                    <!--/Blue select-->--}}
-
-{{--                                </div>--}}
-{{--                                <!--Grid column-->--}}
-
-{{--                                <!--Grid column-->--}}
-{{--                                <div class="col-xl-4 col-lg-6 col-md-6">--}}
-
-{{--                                    <!--Blue select-->--}}
-{{--                                    <select class="mdb-select colorful-select dropdown-info mx-2">--}}
-{{--                                        <option value="" disabled selected>Filter</option>--}}
-{{--                                        <option value="1">All <span> (100)</span></option>--}}
-{{--                                        <option value="1">Active <span> (2000)</span></option>--}}
-{{--                                        <option value="2">Inactive <span> (1000)</span></option>--}}
-{{--                                    </select>--}}
-{{--                                    <!--/Blue select-->--}}
-
-{{--                                </div>--}}
-{{--                                <!--Grid column-->--}}
-
-{{--                            </div>--}}
-{{--                            <!--Grid row-->--}}
-
-{{--                        </div>--}}
-{{--                        <!--Top Table UI-->--}}
-
-{{--                        <!-- Table responsive wrapper -->--}}
-{{--                        <div class="table-responsive mx-3">--}}
-{{--                            <!--Table-->--}}
-{{--                            <table class="table table-hover mb-0">--}}
-
-{{--                                <!--Table head-->--}}
-{{--                                <thead>--}}
-{{--                                <tr>--}}
-{{--                                    <th>--}}
-{{--                                        <input class="form-check-input" type="checkbox" id="checkbox15">--}}
-{{--                                        <label for="checkbox15" class="mr-2 label-table"></label>--}}
-{{--                                    </th>--}}
-{{--                                    <th class="th-lg"><a>Name <i class="fas fa-sort ml-1"></i></a></th>--}}
-{{--                                    <th class="th-lg"><a>Condition<i class="fas fa-sort ml-1"></i></a></th>--}}
-{{--                                    <th class="th-lg"><a>Last edited<i class="fas fa-sort ml-1"></i></a></th>--}}
-{{--                                    <th></th>--}}
-{{--                                </tr>--}}
-{{--                                </thead>--}}
-{{--                                <!--Table head-->--}}
-
-{{--                                <!--Table body-->--}}
-{{--                                <tbody>--}}
-{{--                                <tr>--}}
-{{--                                    <th scope="row">--}}
-{{--                                        <input class="form-check-input" type="checkbox" id="checkbox11">--}}
-{{--                                        <label for="checkbox11" class="label-table"></label>--}}
-{{--                                    </th>--}}
-{{--                                    <td>Test subscription</td>--}}
-{{--                                    <td>Scroll % is equal or greater than <strong>80</strong></td>--}}
-{{--                                    <td>12.06.2017</td>--}}
-{{--                                    <td>--}}
-{{--                                        <a><i class="fas fa-info mx-1" data-toggle="tooltip" data-placement="top"--}}
-{{--                                              title="Tooltip on top"></i></a>--}}
-{{--                                        <a><i class="fas fa-pen-square mx-1"></i></a>--}}
-{{--                                        <a><i class="fas fa-times mx-1"></i></a>--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                                <tr>--}}
-{{--                                    <th scope="row">--}}
-{{--                                        <input class="form-check-input" type="checkbox" id="checkbox12">--}}
-{{--                                        <label for="checkbox12" class="label-table"></label>--}}
-{{--                                    </th>--}}
-{{--                                    <td>Product Hunt Visitor</td>--}}
-{{--                                    <td>Scroll % is equal or greater than <strong>80</strong></td>--}}
-{{--                                    <td>13.06.2017</td>--}}
-{{--                                    <td>--}}
-{{--                                        <a><i class="fas fa-info mx-1" data-toggle="tooltip" data-placement="top"--}}
-{{--                                              title="Tooltip on top"></i></a>--}}
-{{--                                        <a><i class="fas fa-pen-square mx-1"></i></a>--}}
-{{--                                        <a><i class="fas fa-times mx-1"></i></a>--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                                <tr>--}}
-{{--                                    <th scope="row">--}}
-{{--                                        <input class="form-check-input" type="checkbox" id="checkbox13">--}}
-{{--                                        <label for="checkbox13" class="label-table"></label>--}}
-{{--                                    </th>--}}
-{{--                                    <td>Test subscription</td>--}}
-{{--                                    <td>Scroll % is equal or greater than <strong>80</strong></td>--}}
-{{--                                    <td>12.06.2017</td>--}}
-{{--                                    <td>--}}
-{{--                                        <a><i class="fas fa-info mx-1" data-toggle="tooltip" data-placement="top"--}}
-{{--                                              title="Tooltip on top"></i></a>--}}
-{{--                                        <a><i class="fas fa-pen-square mx-1"></i></a>--}}
-{{--                                        <a><i class="fas fa-times mx-1"></i></a>--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                                </tbody>--}}
-{{--                                <!--Table body-->--}}
-{{--                            </table>--}}
-{{--                            <!--Table-->--}}
-{{--                        </div>--}}
-{{--                        <!-- Table responsive wrapper -->--}}
-
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
         </div>
     </div>
 
 </main>
+<div class="modal fade" id="info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Название файла</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <iframe src="" height="700" width="750"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
