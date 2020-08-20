@@ -20,6 +20,11 @@ class BuildController extends Controller
         return view('admin.builds.index');
     }
 
+    public function welcome()
+    {
+//        return view('admin.blocks.main');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -111,4 +116,11 @@ class BuildController extends Controller
             })
             ->make(true);
     }
+
+    public function datatableData2()
+    {
+        return DataTables::of(Build::query())
+            ->make(true);
+    }
+
 }

@@ -36,6 +36,6 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
     Route::resource('builds', 'BuildController');
     });
 
-
+    Route::get('/builds/welcome_table', 'BuildController@datatableData2')->name('welcome.datatable.data');
 
 Route::get('/home', 'HomeController@index')->name('home');
