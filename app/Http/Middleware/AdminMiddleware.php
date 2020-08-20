@@ -18,7 +18,7 @@ class AdminMiddleware
         if (auth()->check() && auth()->user()->role->is_admin) {
             return $next($request);
         }
-
+    w
         return redirect()->route('login', ['next' => $next($request)]);
     }
 }
