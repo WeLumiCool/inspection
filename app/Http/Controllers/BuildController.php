@@ -33,25 +33,20 @@ class BuildController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
 
 //        dd($request);
-
         $build = Build::create($request->all());
+        $build->statement = PdfUploader::upload(request('statement'), 'statements', 'statement');
+        $build->apu = PdfUploader::upload(request('apu'), 'apu', 'apu');
+        $build->act = PdfUploader::upload(request('act'), 'acts', 'act');
+        $build->project = PdfUploader::upload(request('project'), 'projects', 'project');
+        $build->solution = PdfUploader::upload(request('solution'), 'solutions', 'solution');
 
-        if ($request->hasFile('statement') || $request->hasFile('apu') || $request->hasFile('act')
-         || $request->hasFile('project') || $request->hasFile('solution')
-        ) {
-            $build->statement = PdfUploader::upload(request('statement'), 'statements', 'statement');
-            $build->apu = PdfUploader::upload(request('apu'), 'apu', 'apu');
-            $build->act = PdfUploader::upload(request('act'), 'acts', 'act');
-            $build->project = PdfUploader::upload(request('project'), 'projects', 'project');
-            $build->solution = PdfUploader::upload(request('solution'), 'solutions', 'solution');
-        }
         $build->save();
 
         return redirect()->route('admin.builds.index');
@@ -60,18 +55,18 @@ class BuildController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Build  $build
+     * @param  \App\Build $build
      * @return \Illuminate\Http\Response
      */
     public function show(Build $build)
     {
-        //
+        return view('admin.builds.show', ['build' => $build]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Build  $build
+     * @param  \App\Build $build
      * @return \Illuminate\Http\Response
      */
     public function edit(Build $build)
@@ -82,8 +77,8 @@ class BuildController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Build  $build
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Build $build
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Build $build)
@@ -95,7 +90,7 @@ class BuildController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Build  $build
+     * @param  \App\Build $build
      * @return \Illuminate\Http\Response
      */
     public function destroy(Build $build)
