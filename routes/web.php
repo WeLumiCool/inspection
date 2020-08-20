@@ -30,12 +30,12 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
     //CRUD for users
     Route::get('/user/datatable', 'UserController@datatableData')->name('user.datatable.data');
     Route::resource('users', 'UserController');
-});
-
     //CRUD for builds
     Route::get('/builds/datatable', 'BuildController@datatableData')->name('build.datatable.data');
     Route::resource('builds', 'BuildController');
-    });
+});
+
+
 
 
 
@@ -48,3 +48,6 @@ Route::get('/create', function () {
 Route::get('/show', function () {
     return view('project_build.show');
 })->name('show');
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');

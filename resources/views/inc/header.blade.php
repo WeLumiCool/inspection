@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar bg-light ">
+<nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar bg-light" id="header">
     <div class="container">
 
         <a class="navbar-brand" href="#"><img src="{{ asset('image/logo.svg') }}" alt=""></a>
@@ -9,10 +9,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item pt-2">
-                    <button class="btn btn-outline-white btn-md my-0 ml-sm-2">Войти</button>
+                    <a href="{{ route('login') }}" class="btn btn-outline-white btn-md my-0 ml-sm-2">Войти</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
+@push('scripts')
+    <script>
+        let header = $('#header'),
+            window = $(window);
+        window.scroll(function() {
+            if(window.screenTop > 100) header.addClass('fixed-top');
+            if(window.screenTop == 0 && window.screenTop <= 100) header.removeClass('fixed-top');
+        })
+    </script>
+@endpush
