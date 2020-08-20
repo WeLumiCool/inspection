@@ -23,11 +23,8 @@
     <script>
         let header = $('#header');
         $(window).scroll(function() {
-            if(window.pageYOffset > 80){
-                header.addClass('fixed-top');
-            }else if(window.pageYOffset == 0 && window.pageYOffset <= 80) {
-                header.removeClass('fixed-top');
-            }
+            if(window.pageYOffset > 100) header.addClass('fixed-top');
+            if(window.pageYOffset == 0 && window.pageYOffset <= 100) header.removeClass('fixed-top');
         })
     </script>
 @endpush
