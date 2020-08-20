@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Build;
+use App\Services\PdfUploader;
+use App\Type;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class BuildController extends Controller
 {
@@ -14,7 +17,7 @@ class BuildController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.builds.index');
     }
 
     /**
@@ -24,7 +27,7 @@ class BuildController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.builds.create', ['types' => Type::all()]);
     }
 
     /**
@@ -35,7 +38,23 @@ class BuildController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+//        dd($request);
+
+        $build = Build::create($request->all());
+
+        if ($request->hasFile('statement') || $request->hasFile('apu') || $request->hasFile('act')
+         || $request->hasFile('project') || $request->hasFile('solution')
+        ) {
+            $build->statement = PdfUploader::upload(request('statement'), 'statements', 'statement');
+            $build->apu = PdfUploader::upload(request('apu'), 'apu', 'apu');
+            $build->act = PdfUploader::upload(request('act'), 'acts', 'act');
+            $build->project = PdfUploader::upload(request('project'), 'projects', 'project');
+            $build->solution = PdfUploader::upload(request('solution'), 'solutions', 'solution');
+        }
+        $build->save();
+
+        return redirect()->route('admin.builds.index');
     }
 
     /**
@@ -57,7 +76,7 @@ class BuildController extends Controller
      */
     public function edit(Build $build)
     {
-        //
+        return view('admin.builds.edit', ['build' => $build, 'types' => Type::all()]);
     }
 
     /**
@@ -69,7 +88,8 @@ class BuildController extends Controller
      */
     public function update(Request $request, Build $build)
     {
-        //
+        $build->update($request->all());
+        return redirect()->route('admin.builds.index');
     }
 
     /**
@@ -81,5 +101,14 @@ class BuildController extends Controller
     public function destroy(Build $build)
     {
         //
+    }
+
+    public function datatableData()
+    {
+        return DataTables::of(Build::query())
+            ->addColumn('actions', function (Build $build) {
+                return view('admin.actions', ['type' => 'builds', 'model' => $build]);
+            })
+            ->make(true);
     }
 }

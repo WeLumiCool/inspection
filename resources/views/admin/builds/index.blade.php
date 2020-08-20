@@ -4,16 +4,16 @@
     <div class="p-3 bg-form card-body-admin">
         <div class="row justify-content-end mb-4">
             <div class="col-auto">
-                <a href="{{ route('admin.stages.create') }}" class="btn btn-success">{{ __('Создать') }}</a>
+                <a href="{{ route('admin.builds.create') }}" class="btn btn-success">{{ __('Создать') }}</a>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12 table-responsive">
-                <table class="table table-striped  table-hover" id="stages-table">
+                <table class="table table-striped  table-hover" id="builds-table">
                     <thead>
                     <tr>
                         <th scope="col">id</th>
-                        <th scope="col">Описание</th>
+                        <th scope="col">ФИО</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -32,13 +32,13 @@
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <script>
         $(function () {
-            $('#stages-table').DataTable({
+            $('#builds-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('admin.stage.datatable.data') !!}',
+                ajax: '{!! route('admin.build.datatable.data') !!}',
                 columns: [
                     {data: 'id', name: 'id'},
-                    {data: 'desc', name: 'desc'},
+                    {data: 'name', name: 'name'},
                     {data: 'actions', name: 'actions', searchable:false, orderable: false },
                 ]
             });

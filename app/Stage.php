@@ -23,7 +23,7 @@ class Stage extends Model
 
     public function histories()
     {
-        $this->hasMany(History::class);
+        return $this->hasMany(History::class);
     }
 }
 

@@ -28,8 +28,12 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
     Route::get('/type/datatable', 'TypeController@datatableData')->name('type.datatable.data');
     Route::resource('types', 'TypeController');
     //CRUD for stages
-    Route::get('/stages/datatable', 'StageController@datatableData')->name('stages.datatable.data');
+    Route::get('/stages/datatable', 'StageController@datatableData')->name('stage.datatable.data');
     Route::resource('stages', 'StageController');
+
+    //CRUD for builds
+    Route::get('/builds/datatable', 'BuildController@datatableData')->name('build.datatable.data');
+    Route::resource('builds', 'BuildController');
     });
 
 
