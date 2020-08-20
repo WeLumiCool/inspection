@@ -45,7 +45,7 @@ Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2
 
 //Route::middleware('auth')->group(function (){
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['types' => \App\Type::all()]);
 })->name('main');
 
 Route::get('/create', function () {
