@@ -23,7 +23,7 @@ class BuildController extends Controller
 
     public function welcome()
     {
-        return view('block.main');
+        return view('admin.blocks.main');
     }
 
     /**
@@ -46,14 +46,18 @@ class BuildController extends Controller
     {
 
 //        dd($request);
+
         $build = Build::create($request->all());
-      
+
+        if ($request->hasFile('statement') || $request->hasFile('apu') || $request->hasFile('act')
+         || $request->hasFile('project') || $request->hasFile('solution')
+        ) {
             $build->statement = PdfUploader::upload(request('statement'), 'statements', 'statement');
             $build->apu = PdfUploader::upload(request('apu'), 'apu', 'apu');
             $build->act = PdfUploader::upload(request('act'), 'acts', 'act');
             $build->project = PdfUploader::upload(request('project'), 'projects', 'project');
             $build->solution = PdfUploader::upload(request('solution'), 'solutions', 'solution');
-            $build->certificate = PdfUploader::upload(request('certificate'), 'certificates', 'certificate');
+        }
         $build->save();
 
         return redirect()->route('admin.builds.index');
@@ -132,9 +136,15 @@ class BuildController extends Controller
             })
             ->make(true);
     }
+
     public function datatableData2()
     {
         return DataTables::of(Build::query())
+            ->editColumn('type_id', function (Build $build) {
+                $type = Type::find($build->type_id);
+                return $type['name'];
+            })
             ->make(true);
     }
+
 }
