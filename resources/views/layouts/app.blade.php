@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
-    @stack('style')
+    @stack('styles')
 
 </head>
 <body>
