@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar bg-light" id="header">
+<nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar bg-light fixed-top" id="header">
     <div class="container">
         <a class="navbar-brand" href="{{ route('main') }}"><img src="{{ asset('image/logo.svg') }}" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -7,7 +7,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-
+                <li class="nav-item pt-2 ">
+                    <p class="h6 text-white font-weight-bold text-center" style="line-height: 1.6rem"> Межрегональное
+                        управление Государственной инспекции по экологической
+                        и технической безопаности по г. Бишкек </p>
+                </li>
+                <li class="nav-item pt-2 text-center">
+                    <a href="{{ route('maps') }}" class="btn btn-outline-white btn-md my-0 ml-sm-2">Карта объекта
+                    </a>
+                </li>
                 @if(Auth::user())
                     @if(Auth::user()->role->is_admin)
                         <li class="nav-item pt-2">
@@ -29,12 +37,3 @@
         </div>
     </div>
 </nav>
-@push('scripts')
-    <script>
-        let header = $('#header');
-        $(window).scroll(function () {
-            if (window.pageYOffset > 100) header.addClass('fixed-top');
-            if (window.pageYOffset == 0 && window.pageYOffset <= 100) header.removeClass('fixed-top');
-        })
-    </script>
-@endpush

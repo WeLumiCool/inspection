@@ -58,6 +58,12 @@ Route::get('/create', function () {
 Route::get('/show', function () {
     return view('project_build.show');
 })->name('show');
+
+Route::get('/maps', function () {
+    return view('project_build.maps');
+})->name('maps');
+
+
 //});
     Route::get('/builds/welcome_table', 'BuildController@datatableData2')->name('welcome.datatable.data');
 

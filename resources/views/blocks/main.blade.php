@@ -1,35 +1,30 @@
-<main class="my-5">
-    <div class="container">
+<main class="pt-5 my-5">
+    <div class="container pt-5">
         <div class="col-12 ">
             <p class="h3 font-weight-bold text-center text-caral">Список объектов</p>
-        </div>
-        <div class="row col-12 justify-content-around pr-0 mx-0">
-            <p class="font-small  text-left text-caral pt-3">в списке: <span class="font-weight-bold">120</span>
-                объектов</p>
-            <form class="form-inline my-2 my-lg-0 ml-auto">
-                <input class="form-control" type="search" placeholder="Поиск" aria-label="Search">
-            </form>
-            <button type="button" class="btn btn-outline-default  waves-effect text-right " style="padding: 8px 26px;">
-                Добавить объект
-            </button>
         </div>
         <div class="p-3 bg-form card-body-admin">
 
             <div class="row">
                 <div class="col-sm-12 table-responsive">
-                    <table class="table table-striped  table-hover" id="builds-table">
-                        <div class="row">
-                            <div class="col-lg-12 col-sm-12 d-flex align-items-center">
-                                <label for="type">Выберите тип объекта:</label>
-                                <select id="type" data-column="2" class="form-control filter-select mb-2 w-50 mr-4" >
-                                    @foreach($types as $type)
-                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                    <div class="row">
+                        <div class="col-lg-9 col-sm-12 d-flex align-items-center">
+                            <label for="type">Выберите тип объекта:</label>
+                            <select id="type" data-column="2" class="form-control filter-select mb-2 w-25 mr-4" >
+                                <option value="">Все</option>
+                                @foreach($types as $type)
+                                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
-
-                        <thead>
+                        <div class="d-flex col-lg-3 justify-content-lg-end my-2 pr-lg-2 col-12 d-flex justify-content-center  ">
+                            <a href="{{ route('create') }}" type="button" class="btn btn-outline-default  waves-effect text-right " style="padding: 8px 26px;">
+                                Добавить объект
+                            </a>
+                        </div>
+                    </div>
+                    <table class="table table-bordered" id="builds-table">
+                        <thead class="bg-primary text-light">
                         <tr>
                             <th scope="col">ФИО</th>
                             <th scope="col">Адрес</th>
@@ -42,14 +37,17 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-
 </main>
+
+@push('styles')
+{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">--}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+@endpush
 
 @push('scripts')
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function () {
                 console.log(window.innerWidth);
