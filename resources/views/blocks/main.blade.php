@@ -7,17 +7,17 @@
 
             <div class="row">
                 <div class="col-sm-12 table-responsive">
-                    <div class="row justify-content-between">
+                    <div class="row">
                         <div class="col-lg-9 col-sm-12 d-flex align-items-center">
                             <label for="type">Выберите тип объекта:</label>
-                            <select id="type" data-column="2" class="form-control filter-select mb-2 w-50 mr-4" >
+                            <select id="type" data-column="2" class="form-control filter-select mb-2 w-25 mr-4" >
                                 <option value="">Все</option>
                                 @foreach($types as $type)
                                     <option value="{{ $type->id }}">{{ $type->name }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="d-flex col-lg-3 justify-content-lg-end my-2 pr-lg-2 col-12 d-flex justify-content-center  ">
                             <button type="button" class="btn btn-outline-default  waves-effect text-right " style="padding: 8px 26px;">
                                 Добавить объект
                             </button>
