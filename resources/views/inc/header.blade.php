@@ -8,20 +8,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item pt-2 ">
-                    <p class="h6 text-white font-weight-bold text-center" style="line-height: 1.6rem"> Межрегональное управление Государственной инспекции по экологической
-                         и технической безопаности по г. Бишкек  </p>
+                    <p class="h6 text-white font-weight-bold text-center" style="line-height: 1.6rem"> Межрегональное
+                        управление Государственной инспекции по экологической
+                        и технической безопаности по г. Бишкек </p>
                 </li>
                 <li class="nav-item pt-2 text-center">
-                    <button class="btn btn-outline-white btn-md my-0 ml-sm-2">Карта объекта</button>
+                    <a href="{{ route('maps') }}" class="btn btn-outline-white btn-md my-0 ml-sm-2">Карта объекта
+                    </a>
                 </li>
                 <li class="nav-item pt-2 text-center">
-                    <button class="btn btn-outline-white btn-md my-0 ml-sm-2">Админ панель</button>
+                    <a class="btn btn-outline-white btn-md my-0 ml-sm-2">Админ панель</a>
                 </li>
-                 @if(Auth::user())
-                <li class="nav-item pt-2 text-center">
-                    <a href="{{ route('login') }}" class="btn btn-outline-white btn-md my-0 ml-sm-2">Войти</a>
-                </li>
-                 @endif
+                @if(Auth::user())
+                    <li class="nav-item pt-2 text-center">
+                        <a href="{{ route('login') }}" class="btn btn-outline-white btn-md my-0 ml-sm-2">Войти</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>
