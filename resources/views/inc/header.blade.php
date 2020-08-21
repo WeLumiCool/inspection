@@ -7,14 +7,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item pt-2">
-                    <button class="btn btn-outline-white btn-md my-0 ml-sm-2">Админ панель</button>
-                </li>
-                 @if(Auth::user())
-                <li class="nav-item pt-2">
-                    <a href="{{ route('login') }}" class="btn btn-outline-white btn-md my-0 ml-sm-2">Войти</a>
-                </li>
-                 @endif
+
+                @if(Auth::user())
+                    @if(Auth::user()->role->is_admin)
+                        <li class="nav-item pt-2">
+                            <a href="{{ route('admin.admin') }}" class="btn btn-outline-white btn-md my-0 ml-sm-2">Админ панель</a>
+                        </li>
+                    @endif
+                @endif
+                @if(Auth::user())
+                    <li class="nav-item pt-2">
+                        <button onclick="document.getElementById('logout-form-auth').submit();"
+                                class="btn btn-outline-white btn-md my-0 ml-sm-2">Выйти
+                        </button>
+                        <form id="logout-form-auth" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>
@@ -22,9 +32,9 @@
 @push('scripts')
     <script>
         let header = $('#header');
-        $(window).scroll(function() {
-            if(window.pageYOffset > 100) header.addClass('fixed-top');
-            if(window.pageYOffset == 0 && window.pageYOffset <= 100) header.removeClass('fixed-top');
+        $(window).scroll(function () {
+            if (window.pageYOffset > 100) header.addClass('fixed-top');
+            if (window.pageYOffset == 0 && window.pageYOffset <= 100) header.removeClass('fixed-top');
         })
     </script>
 @endpush

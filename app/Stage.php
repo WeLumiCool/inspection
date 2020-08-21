@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stage extends Model
 {
-    protected $fillable = ['date',
+    protected $fillable =
+        [
+        'date',
         'build_id',
         'desc',
-        'stages',
+        'stage',
         'document',
         'document_scan',
         'images',
