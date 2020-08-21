@@ -23,7 +23,7 @@ class BuildController extends Controller
 
     public function welcome()
     {
-        return view('admin.blocks.main');
+        return view('admin.blocks.main', ['types' => Type::all()]);
     }
 
     /**
