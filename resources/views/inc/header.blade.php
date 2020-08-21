@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar bg-light point" id="header">
+<nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar bg-light fixed-top" id="header">
     <div class="container">
         <a class="navbar-brand" href="{{ route('main') }}"><img src="{{ asset('image/logo.svg') }}" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -19,19 +19,4 @@
         </div>
     </div>
 </nav>
-@push('scripts')
-    <script>
-        let header = $('#header');
-        $(window).scroll(function() {
-            if(window.pageYOffset > 100) header.addClass('fixed-top');
-            if(window.pageYOffset == 0 && window.pageYOffset <= 100) header.removeClass('fixed-top');
-        })
-    </script>
-@endpush
-@push('styles')
-    <style>
-        .point{
-            transition: 0.8s;
-        }
-    </style>
-@endpush
+
