@@ -1,6 +1,6 @@
 <div class="sidebar-fixed position-fixed">
     <div class="list-group list-group-flush">
-        <a class="navbar-brand pt-3 " href="{{ route('main') }}"><img src="{{ asset('image/logo.svg') }}" alt=""></a>
+        <a class="list-group-item list-group-item-action waves-effect pt-3 " href="{{ route('main') }}"><img src="{{ asset('image/logo.svg') }}" alt=""></a>
 
         <a href="{{ route('admin.dashboard') }}"
            class="list-group-item list-group-item-action waves-effect {{ request()->is('admin/dashboard*') ? 'active' : '' }}">
