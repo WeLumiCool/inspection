@@ -22,6 +22,7 @@
                             <div class="col-lg-12 col-sm-12 d-flex align-items-center">
                                 <label for="type">Выберите тип объекта:</label>
                                 <select id="type" data-column="2" class="form-control filter-select mb-2 w-50 mr-4" >
+                                    <option value="">Все</option>
                                     @foreach($types as $type)
                                         <option value="{{ $type->id }}">{{ $type->name }}</option>
                                     @endforeach
