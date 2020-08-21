@@ -57,3 +57,6 @@
     color: #fff;
     background-color: white;
 }
+table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
+     background-image: none;
+}
