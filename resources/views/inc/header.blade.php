@@ -16,16 +16,24 @@
                     <a href="{{ route('maps') }}" class="btn btn-outline-white btn-md my-0 ml-sm-2">Карта объекта
                     </a>
                 </li>
-                <li class="nav-item pt-2 text-center">
-                    <a class="btn btn-outline-white btn-md my-0 ml-sm-2">Админ панель</a>
-                </li>
                 @if(Auth::user())
-                    <li class="nav-item pt-2 text-center">
-                        <a href="{{ route('login') }}" class="btn btn-outline-white btn-md my-0 ml-sm-2">Войти</a>
+                    @if(Auth::user()->role->is_admin)
+                        <li class="nav-item pt-2">
+                            <a href="{{ route('admin.admin') }}" class="btn btn-outline-white btn-md my-0 ml-sm-2">Админ панель</a>
+                        </li>
+                    @endif
+                @endif
+                @if(Auth::user())
+                    <li class="nav-item pt-2">
+                        <button onclick="document.getElementById('logout-form-auth').submit();"
+                                class="btn btn-outline-white btn-md my-0 ml-sm-2">Выйти
+                        </button>
+                        <form id="logout-form-auth" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </li>
                 @endif
             </ul>
         </div>
     </div>
 </nav>
-

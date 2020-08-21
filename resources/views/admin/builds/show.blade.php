@@ -45,11 +45,11 @@
                 <div class="col-10">отсутствует</div>
             @endif
             <div class="col-12 border text-center"><b>Этапы:</b></div>
-                <div class="col-2 border"><b>Наименование:</b></div>
-                <div class="col-4 border d-flex align-items-center"><b>Описание:</b></div>
-                <div class="col-2 border"><b>Дата:</b></div>
-                <div class="col-2 border"><b>Примечание:</b></div>
-                <div class="col-2 border"><b>Действия:</b></div>
+            <div class="col-2 border"><b>Наименование:</b></div>
+            <div class="col-4 border d-flex align-items-center"><b>Описание:</b></div>
+            <div class="col-2 border"><b>Дата:</b></div>
+            <div class="col-2 border"><b>Примечание:</b></div>
+            <div class="col-2 border"><b>Действия:</b></div>
             @foreach($build->stages as $stage)
                 <div class="col-2 border">{{ $stage->stage }}</div>
                 <div class="col-4 border" style="overflow-y:scroll; max-height:200px;">{{ $stage->desc }}</div>
@@ -66,6 +66,26 @@
                             <i class="fas fa-trash"></i>
                         </button>
                     </form>
+                </div>
+                <div class="col-12 border">
+                    <div class="row">
+                        {{--@dd($stage->images)--}}
+                        @foreach(json_decode($stage->images) as $media)
+                            <div class="col-1">
+                                <a href="{{ asset('storage/files/'.$media) }}" class="">
+                                    <img src="{{ asset('storage/files/'.$media) }}"
+                                         class="mediafile img-fluid m-2 position-relative" alt=""></a>
+
+                                <i class="far fa-times-circle img position-absolute ml-5 delete" data-name="media" id="delete_media"
+                                   data-media="{{ $loop->index }}"></i>
+
+                                <a  href="{{ asset('storage/files/'.$media) }}" download>
+                                    <i class="fas fa-arrow-alt-circle-down img position-absolute"></i>
+                                </a>
+                            </div>
+                        @endforeach
+                <div class="col-12 border">
+
                 </div>
             @endforeach
         </div>
@@ -84,33 +104,45 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="stage_field"> Этап:<span class="text-danger">*</span></label>
-                            <input id="stage_field" type="text" class="form-control" name="stage" required>
+                    {{--form create stage--}}
+                    <form action="{{ route('admin.stages.store') }}" method="post" id="save_form"  enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="stage_field"> Этап:<span class="text-danger">*</span></label>
+                                <input id="stage_field" type="text" class="form-control" name="stage" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="stage_field">Описание:<span class="text-danger">*</span></label>
+                                <textarea id="stage_field" class="form-control" name="desc" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="stage_field">Дата проверки:<span class="text-danger">*</span></label>
+                                <input id="stage_field" type="date" class="form-control" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="stage_field">Наименование докуметов:<span class="text-danger">*</span></label>
+                                <input id="stage_field" type="text" class="form-control" name="document" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="stage_field">Докуметы:<span class="text-danger">*</span></label>
+                                <input id="stage_field" type="file" class="form-control" name="document_scan[]" required multiple>
+                            </div>
+                            <div class="form-group">
+                                <label for="stage_field">Изображения:<span class="text-danger">*</span></label>
+                                <input id="stage_field" type="file" class="form-control" name="images[]" required
+                                       multiple>
+                            </div>
+                            <div class="form-group">
+                                <label for="stage_field">Примечание:<span class="text-danger">*</span></label>
+                                <input id="stage_field" type="text" class="form-control" name="note" required>
+                            </div>
+                            <input id="build_id" type="hidden" name="build_id" value="{{ $build->id }}">
                         </div>
-                        <div class="form-group">
-                            <label for="stage_field">Описание:<span class="text-danger">*</span></label>
-                            <textarea id="stage_field" class="form-control" name="desc" required>
-                            </textarea>
+                        <div class="modal-footer">
+                            <button id="save_button" type="submit" class="btn btn-primary">Сохранить</button>
                         </div>
-                        <div class="form-group">
-                            <label for="stage_field">Дата проверки:<span class="text-danger">*</span></label>
-                            <input id="stage_field" type="date" class="form-control" name="date" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="stage_field">Изображения:<span class="text-danger">*</span></label>
-                            <input id="stage_field" type="file" class="form-control" name="images" required multiple>
-                        </div>
-                        <div class="form-group">
-                            <label for="stage_field">Примечание:<span class="text-danger">*</span></label>
-                            <input id="stage_field" type="text" class="form-control" name="note" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                        <button type="button" class="btn btn-primary">Сохранить</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -148,6 +180,23 @@
                     $('form#form-' + model_id).submit();
                 }
             }
+        </script>
+        <script>
+            $('#save_button').click(function () {
+                $.ajax({
+                    url:     url, //url страницы (action_ajax_form.php)
+                    type:     "POST", //метод отправки
+                    dataType: "html", //формат данных
+                    data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект
+                    success: function(response) { //Данные отправлены успешно
+                        result = $.parseJSON(response);
+                        $('#result_form').html('Имя: '+result.name+'<br>Телефон: '+result.phonenumber);
+                    },
+                    error: function(response) { // Данные не отправлены
+                        $('#result_form').html('Ошибка. Данные не отправлены.');
+                    }
+                });
+            })
         </script>
     @endpush
 @endsection
