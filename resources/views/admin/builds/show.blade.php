@@ -71,23 +71,26 @@
                     <div class="row">
                         {{--@dd($stage->images)--}}
                         @foreach(json_decode($stage->images) as $media)
-                            <div class="col-1">
-                                <a href="{{ asset('storage/files/'.$media) }}" class="">
+                            <div class="col-2 position-relative">
+                                <a href="{{ asset('storage/files/'.$media) }}" class="img-fluid">
                                     <img src="{{ asset('storage/files/'.$media) }}"
-                                         class="mediafile img-fluid m-2 position-relative" alt=""></a>
+                                         class="mediafile img-fluid m-2" alt=""></a>
 
-                                <i class="far fa-times-circle img position-absolute ml-5 delete" data-name="media" id="delete_media"
+                                <i class="far fa-times-circle img position-absolute ml-5 delete" data-name="media"
+                                   id="delete_media"
                                    data-media="{{ $loop->index }}"></i>
 
-                                <a  href="{{ asset('storage/files/'.$media) }}" download>
+                                <a href="{{ asset('storage/files/'.$media) }}" download>
                                     <i class="fas fa-arrow-alt-circle-down img position-absolute"></i>
                                 </a>
                             </div>
                         @endforeach
-                <div class="col-12 border">
+                    </div>
+                    <div class="col-12 border">
 
+                    </div>
+                    @endforeach
                 </div>
-            @endforeach
         </div>
         <button type="button" class="btn btn-success mt-3" data-toggle="modal" data-target="#exampleModalCenter">
             Добавить этап
@@ -105,7 +108,8 @@
                         </button>
                     </div>
                     {{--form create stage--}}
-                    <form action="{{ route('admin.stages.store') }}" method="post" id="save_form"  enctype="multipart/form-data">
+                    <form action="{{ route('admin.stages.store') }}" method="post" id="save_form"
+                          enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="form-group">
@@ -121,12 +125,14 @@
                                 <input id="stage_field" type="date" class="form-control" name="date" required>
                             </div>
                             <div class="form-group">
-                                <label for="stage_field">Наименование докуметов:<span class="text-danger">*</span></label>
+                                <label for="stage_field">Наименование докуметов:<span
+                                        class="text-danger">*</span></label>
                                 <input id="stage_field" type="text" class="form-control" name="document" required>
                             </div>
                             <div class="form-group">
                                 <label for="stage_field">Докуметы:<span class="text-danger">*</span></label>
-                                <input id="stage_field" type="file" class="form-control" name="document_scan[]" required multiple>
+                                <input id="stage_field" type="file" class="form-control" name="document_scan[]" required
+                                       multiple>
                             </div>
                             <div class="form-group">
                                 <label for="stage_field">Изображения:<span class="text-danger">*</span></label>
@@ -165,41 +171,25 @@
             </div>
         </div>
     </div>
-    @push('scripts')
-        <script>
-            $('.show_doc').click(function (e) {
-                part_scr = e.currentTarget.dataset.path;
-                $('#frame').attr("src", window.location.origin + "/storage/files/" + part_scr);
-                $('#info').modal('show');
-            })
-        </script>
-        <script>
-            function deleteConfirm(me) {
-                if (confirm('Вы дествительно хотите удалить ?')) {
-                    let model_id = me.dataset.id;
-                    $('form#form-' + model_id).submit();
-                }
-            }
-        </script>
-        <script>
-            $('#save_button').click(function () {
-                $.ajax({
-                    url:     url, //url страницы (action_ajax_form.php)
-                    type:     "POST", //метод отправки
-                    dataType: "html", //формат данных
-                    data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект
-                    success: function(response) { //Данные отправлены успешно
-                        result = $.parseJSON(response);
-                        $('#result_form').html('Имя: '+result.name+'<br>Телефон: '+result.phonenumber);
-                    },
-                    error: function(response) { // Данные не отправлены
-                        $('#result_form').html('Ошибка. Данные не отправлены.');
-                    }
-                });
-            })
-        </script>
-    @endpush
 @endsection
+@push('scripts')
+    <script>
+        $('.show_doc').click(function (e) {
+            part_scr = e.currentTarget.dataset.path;
+            $('#frame').attr("src", window.location.origin + "/storage/files/" + part_scr);
+            $('#info').modal('show');
+        })
+    </script>
+    <script>
+        function deleteConfirm(me) {
+            if (confirm('Вы дествительно хотите удалить ?')) {
+                let model_id = me.dataset.id;
+                $('form#form-' + model_id).submit();
+            }
+        }
+    </script>
+@endpush
+
 @push('styles')
     <style>
         #show_articles div {
@@ -207,5 +197,7 @@
             padding-bottom: 2rem;
             border: 1px solid #dcdcdd;
         }
+
+
     </style>
 @endpush
