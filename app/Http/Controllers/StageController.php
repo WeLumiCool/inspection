@@ -38,7 +38,6 @@ class StageController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->exists('images'));
         $stage = Stage::create($request->except(['document_scan', 'images']));
         if ($request->exists('images')) {
             $images = [];
@@ -103,7 +102,7 @@ class StageController extends Controller
      */
     public function destroy(Stage $stage)
     {
-        //
+        $stage->delete();
     }
 
     public function datatableData()
