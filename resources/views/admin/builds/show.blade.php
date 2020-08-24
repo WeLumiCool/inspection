@@ -1,7 +1,15 @@
 @extends('admin.layouts.dashboard')
 @section('dashboard_content')
     <div class="container bg-form card-body-admin py-4">
-        <div class="row" id="show_articles">
+        <div class="row">
+            <div class="col-12 text-right">
+                <button type="button" class="btn btn-success mt-3 mb-5" data-toggle="modal"
+                        data-target="#exampleModalCenter">
+                    Добавить этап
+                </button>
+            </div>
+        </div>
+        <div class="row p-4" id="show_articles">
             <div class="col-2">id</div>
             <div class="col-10">{{ $build->id }}</div>
             <div class="col-2">Заголовок:</div>
@@ -45,8 +53,8 @@
                 <div class="col-10">отсутствует</div>
             @endif
         </div>
-        <div class="row mt-4 border">
-            <div class="col-12 text-center">
+        <div class="row mt-4 ">
+            <div class="col-12 text-center ">
                 <div class="accordion md-accordion accordion-blocks border-0" id="accordionStages" role="tablist"
                      aria-multiselectable="true">
                     @foreach($build->stages as $stage)
@@ -148,10 +156,7 @@
         </div>
     </div>
 
-    <button type="button" class="btn btn-success mt-3" data-toggle="modal"
-            data-target="#exampleModalCenter">
-        Добавить этап
-    </button>
+
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -205,7 +210,7 @@
                         </div>
                         <input id="build_id" type="hidden" name="build_id" value="{{ $build->id }}">
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer ">
                         <button id="save_button" type="submit" class="btn btn-primary">Сохранить</button>
                     </div>
                 </form>

@@ -2,11 +2,12 @@
 
 @section('dashboard_content')
     <div class="row">
-        <div class="col-12 col-sm-10 col-lg-10 col-md-10 card-body-admin py-4">
+        <div class="col-12 col-sm-10 col-lg-12 col-md-12 card-body-admin py-4 px-5">
             <form action="{{ route('admin.users.update', $user) }}" method="POST"
                   enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+                <h3 class="text-center font-weight-bold">Редактирование пользователя</h3>
                 <ul>
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>

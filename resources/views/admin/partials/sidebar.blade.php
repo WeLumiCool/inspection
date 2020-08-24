@@ -1,6 +1,6 @@
 <div class="sidebar-fixed position-fixed">
-    <div class="list-group list-group-flush">
-        <a href="{{ route('main') }}" class="logo-wrapper waves-effect" style="text-align: center;padding-top: 10px;">
+    <div class="list-group list-group-flush ">
+        <a href="{{ route('main') }}" class="logo-wrapper waves-effect mb-3" style="text-align: center;padding-top: 10px;">
             <img src="{{ asset('image/admin_logo.svg') }}" class="img-fluid" alt="logo" >
         </a>
 

@@ -1,7 +1,7 @@
 @extends('admin.layouts.dashboard')
 @section('dashboard_content')
     <div class="container bg-form card-body-admin py-4">
-        <div class="row" id="show_articles">
+        <div class="row p-5" id="show_articles">
             <div class="col-2">id</div>
             <div class="col-10">{{ $user->id }}</div>
             <div class="col-2">ФИО:</div>
