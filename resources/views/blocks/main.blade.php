@@ -23,7 +23,7 @@
                             </a>
                         </div>
                     </div>
-                    <table class="table table-bordered" id="builds-table">
+                    <table class="table table-bordered w-100" id="builds-table">
                         <thead class="bg-primary text-light">
                         <tr>
                             <th scope="col">ФИО</th>

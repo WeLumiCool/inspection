@@ -193,3 +193,12 @@ a.waves-effect, a.waves-light {
     white-space: nowrap;
 }
 
+.fa-times-circle.img {
+    top: 0;
+    right: 0;
+}
+
+.fa-arrow-alt-circle-down.img {
+    top: 0;
+    right: 15%;
+}
