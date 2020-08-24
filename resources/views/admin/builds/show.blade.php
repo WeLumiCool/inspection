@@ -50,26 +50,30 @@
                 <div class="accordion md-accordion accordion-blocks border-0" id="accordionStages" role="tablist"
                      aria-multiselectable="true">
                     @foreach($build->stages as $stage)
-                        <div class="card border-0 py-4">
-                            <div class="card-header d-flex justify-content-between border-0" style="background: white" role="tab" id="Stage-{{ $stage->id }}">
+                        <div class="card border-bottom py-4">
+                            <div class="card-header d-flex justify-content-between border-0" style="background: white"
+                                 role="tab" id="Stage-{{ $stage->id }}">
                                 <a class="text-left" data-toggle="collapse" data-parent="#accordionStages"
-                                       href="#build-{{ $stage->build_id }}Stage-{{ $stage->id }}"
-                                       aria-expanded="true"
-                                       aria-controls="build-{{ $stage->build_id }}Stage-{{ $stage->id }}">
+                                   href="#build-{{ $stage->build_id }}Stage-{{ $stage->id }}"
+                                   aria-expanded="true"
+                                   aria-controls="build-{{ $stage->build_id }}Stage-{{ $stage->id }}">
                                     <h6 class="mt-1 mb-0">
                                         <span>Этап: <span>{{ $stage->stage }}</span></span>
                                         <i class="fas fa-angle-down rotate-icon" style="margin-top: 2px;"></i>
                                     </h6>
                                 </a>
                                 <div class="d-flex">
-                                    <form id="form-1" name="delete-form" method="POST" action="http://inspection/admin/builds/1">
-                                        <input type="hidden" name="_token" value="6Now7byxLQsYpyg2gnbEr1DZZHCuImnDb54C1N8R">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="button" onclick="/*твоя функция deleteStage(this)*/" data-id="1" title="Удалить" class="btn n btn-danger">
+                                    <form id="form-{{ $stage->id }}" name="delete-form" method="POST"
+                                          action="{{ route('admin.stages.destroy', $stage) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" onclick="deleteConfirm(this)" data-id="{{ $stage->id }}"
+                                                title="{{ __('Удалить') }}"
+                                                class="btn n btn-danger">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
-                                    <a class="btn btn-primary ml-1" href="http://inspection/admin/builds/1/edit">
+                                    <a class="btn btn-primary ml-1" href="{{ route('admin.stages.edit', $stage) }}">
                                         <i class="fas fa-pen"></i>
                                     </a>
                                 </div>
@@ -78,7 +82,7 @@
                             <div id="build-{{ $stage->build_id }}Stage-{{ $stage->id }}" class="collapse"
                                  role="tabpanel" aria-labelledby="Stage-{{ $stage->id }}"
                                  data-parent="#accordionStages">
-                                <div class="card-body p-0 border">
+                                <div class="card-body p-0 border border-bottom-0">
                                     <div class="table-ui  mb-3  mb-4">
                                         <div class="row col-lg-12 col-12 pt-0 justify-content-lg-end text-lg-right pt-3 text-center">
                                             <p class="font-weight-bold font-small ">{{ $stage->date }}</p>
@@ -93,33 +97,36 @@
                                                 <p class="text-muted">{{ $stage->desc }}</p>
                                             </div>
                                             <div class="col-lg-3 col-12 text-lg-left py-2 text-center border-right">
-                                                <p class="h6 font-weight-bold">Документы:</p>
-                                                <a href="" class="mx-auto" download>
-                                                    <i class="fas pt-3 fa-file-pdf fa-4x"
-                                                       style="color: red;"></i>
-                                                </a>
+                                                <p class="h6 font-weight-bold">Документы: {{ $stage->document }}</p>
+                                                @if(!is_null($stage->document_scan))
+                                                    @foreach(json_decode($stage->document_scan) as $doc_path)
+                                                        <a href="{{ asset('storage/files/' . $doc_path) }}"
+                                                           class="mx-auto" download>
+                                                            <i class="fas pt-3 fa-file-pdf fa-4x"
+                                                               style="color: red;"></i>
+                                                        </a>
+                                                    @endforeach
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="row border border-top-0 pl-3 ">
                                             <div class="col-lg-6 border-right pt-3 col-12 text-lg-left text-center">
                                                 <p class="h6 font-weight-bold ">Фото объекта:</p>
                                                 <div class="row">
-                                                    @foreach(json_decode($stage->images) as $media)
-                                                        <div class="col-3 position-relative">
-                                                            <a href="{{ asset('storage/files/'.$media) }}" data-fancybox="media{{$stage->build_id}}" class="img-fluid">
-                                                                <img src="{{ asset('storage/files/'.$media) }}"
-                                                                     class="mediafile img-fluid m-2" alt=""></a>
-
-                                                            <i class="far fa-times-circle img position-absolute ml-5 delete"
-                                                               data-name="media"
-                                                               id="delete_media"
-                                                               data-media="{{ $loop->index }}"></i>
-
-                                                            <a href="{{ asset('storage/files/'.$media) }}" download>
-                                                                <i class="fas fa-arrow-alt-circle-down img position-absolute"></i>
-                                                            </a>
-                                                        </div>
-                                                    @endforeach
+                                                    @if(!is_null($stage->images))
+                                                        @foreach(json_decode($stage->images) as $media)
+                                                            <div class="col-3 position-relative">
+                                                                <a href="{{ asset('storage/files/'.$media) }}"
+                                                                   data-fancybox="media{{$stage->build_id}}"
+                                                                   class="img-fluid">
+                                                                    <img src="{{ asset('storage/files/'.$media) }}"
+                                                                         class="mediafile img-fluid m-2" alt=""></a>
+                                                                <a href="{{ asset('storage/files/'.$media) }}" download>
+                                                                    <i class="fas fa-arrow-alt-circle-down stage position-absolute"></i>
+                                                                </a>
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12 pt-3 text-lg-left text-center">
@@ -172,12 +179,12 @@
                         </div>
                         <div class="form-group">
                             <label for="stage_field">Дата проверки:<span
-                                    class="text-danger">*</span></label>
+                                        class="text-danger">*</span></label>
                             <input id="stage_field" type="date" class="form-control" name="date" required>
                         </div>
                         <div class="form-group">
                             <label for="stage_field">Наименование докуметов:<span
-                                    class="text-danger">*</span></label>
+                                        class="text-danger">*</span></label>
                             <input id="stage_field" type="text" class="form-control" name="document"
                                    required>
                         </div>

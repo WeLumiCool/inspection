@@ -75,7 +75,6 @@
             url: "{{ route('admin.change.permission') }}",
             method: 'get',
             success: function () {
-                console.log(me.textContent);
                 if (me.textContent.includes("Дать доступ")) {
                     me.textContent = 'Убрать доступ';
                 } else {

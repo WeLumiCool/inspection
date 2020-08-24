@@ -19,7 +19,6 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        $zam = Role::where('role', 'Заместитель')->first();
-        return view('admin.main', compact('zam'));
+        return view('admin.main');
     }
 }

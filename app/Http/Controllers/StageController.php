@@ -46,7 +46,7 @@ class StageController extends Controller
                 $filename = PdfUploader::upload($file, 'stage', 'image');
                 $images[] = $filename;
             }
-        $stage->images = json_encode($images);
+            $stage->images = json_encode($images);
         }
 
         if ($request->exists('document_scan')) {
@@ -55,10 +55,10 @@ class StageController extends Controller
                 $filename = PdfUploader::upload($file, 'stage', 'document');
                 $document[] = $filename;
             }
-        $stage->document_scan = json_encode($document);
+            $stage->document_scan = json_encode($document);
         }
         $stage->save();
-        return redirect()->route('admin.builds.index');
+        return redirect()->route('admin.builds.show', $stage->build);
     }
 
     /**
@@ -94,11 +94,13 @@ class StageController extends Controller
     public function update(Request $request, Stage $stage)
     {
         if ($request->exists('images')) {
-            $images = [];
             $old_images = json_decode($stage->images);
-            foreach ($old_images as $image_path) {
-                Storage::disk('public')->delete("/files/" . $image_path);
+            if (!is_null($old_images)) {
+                foreach ($old_images as $image_path) {
+                    Storage::disk('public')->delete("/files/" . $image_path);
+                }
             }
+            $images = [];
             foreach ($request->file('images') as $file) {
                 $filename = PdfUploader::upload($file, 'stage', 'image');
                 $images[] = $filename;
@@ -107,11 +109,13 @@ class StageController extends Controller
         }
 
         if ($request->exists('document_scan')) {
-            $documents = [];
             $old_documents = json_decode($stage->document_scan);
-            foreach ($old_documents as $doc_path) {
-                Storage::disk('public')->delete("/files/" . $doc_path);
+            if (!is_null($old_documents)) {
+                foreach ($old_documents as $doc_path) {
+                    Storage::disk('public')->delete("/files/" . $doc_path);
+                }
             }
+            $documents = [];
             foreach ($request->file('document_scan') as $file) {
                 $filename = PdfUploader::upload($file, 'stage', 'document');
                 $documents[] = $filename;
@@ -120,7 +124,7 @@ class StageController extends Controller
         }
         $stage->update($request->except(['document_scan', 'images']));
         $stage->save();
-        return redirect()->route('admin.builds.index');
+        return redirect()->route('admin.builds.show', $stage->build);
     }
 
     /**
@@ -131,7 +135,18 @@ class StageController extends Controller
      */
     public function destroy(Stage $stage)
     {
+        if (!is_null($stage->images)) {
+            foreach (json_decode($stage->images) as $img_path) {
+                Storage::disk('public')->delete("/files/" . $img_path);
+            }
+        }
+        if (!is_null($stage->document_scan)) {
+            foreach (json_decode($stage->document_scan) as $doc_path) {
+                Storage::disk('public')->delete("/files/" . $doc_path);
+            }
+        }
         $stage->delete();
+        return redirect()->route('admin.builds.show', $stage->build);
     }
 
     public function datatableData()
