@@ -51,16 +51,28 @@
                      aria-multiselectable="true">
                     @foreach($build->stages as $stage)
                         <div class="card border-0 py-4">
-                            <div class="card-header border-0" style="background: white" role="tab" id="Stage-{{ $stage->id }}">
-                                <a data-toggle="collapse" data-parent="#accordionStages"
-                                   href="#build-{{ $stage->build_id }}Stage-{{ $stage->id }}"
-                                   aria-expanded="true"
-                                   aria-controls="build-{{ $stage->build_id }}Stage-{{ $stage->id }}">
-                                    <h6 class="mt-1 mb-0  ">
+                            <div class="card-header d-flex justify-content-between border-0" style="background: white" role="tab" id="Stage-{{ $stage->id }}">
+                                <a class="text-left" data-toggle="collapse" data-parent="#accordionStages"
+                                       href="#build-{{ $stage->build_id }}Stage-{{ $stage->id }}"
+                                       aria-expanded="true"
+                                       aria-controls="build-{{ $stage->build_id }}Stage-{{ $stage->id }}">
+                                    <h6 class="mt-1 mb-0">
                                         <span>Этап: <span>{{ $stage->stage }}</span></span>
                                         <i class="fas fa-angle-down rotate-icon" style="margin-top: 2px;"></i>
                                     </h6>
                                 </a>
+                                <div class="d-flex">
+                                    <form id="form-1" name="delete-form" method="POST" action="http://inspection/admin/builds/1">
+                                        <input type="hidden" name="_token" value="6Now7byxLQsYpyg2gnbEr1DZZHCuImnDb54C1N8R">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="button" onclick="/*твоя функция deleteStage(this)*/" data-id="1" title="Удалить" class="btn n btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                    <a class="btn btn-primary ml-1" href="http://inspection/admin/builds/1/edit">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                </div>
                             </div>
 
                             <div id="build-{{ $stage->build_id }}Stage-{{ $stage->id }}" class="collapse"
@@ -123,31 +135,6 @@
 
                         </div>
                     @endforeach
-                    {{--                        <div class="col-2 border">{{ $stage->stage }}</div>--}}
-                    {{--                        <div class="col-4 border" style="overflow-y:scroll; max-height:200px;">{{ $stage->desc }}</div>--}}
-                    {{--                        <div class="col-2 border">{{ date('d-m-Y', strtotime($stage->date)) }}</div>--}}
-                    {{--                        <div class="col-2 border" style="overflow-y:scroll; max-height:200px;">{{ $stage->note }}</div>--}}
-                    {{--                        <div class="col-2 border">--}}
-                    {{--                            <form id="form-{{ $stage->id }}" name="delete-form" method="POST"--}}
-                    {{--                                  action="{{ route('admin.stages.destroy', $stage) }}">--}}
-                    {{--                                @csrf--}}
-                    {{--                                @method('DELETE')--}}
-                    {{--                                <button type="button" onclick="deleteConfirm(this)" data-id="{{ $stage->id }}"--}}
-                    {{--                                        title="{{ __('Удалить') }}"--}}
-                    {{--                                        class="btn n btn-danger">--}}
-                    {{--                                    <i class="fas fa-trash"></i>--}}
-                    {{--                                </button>--}}
-                    {{--                            </form>--}}
-                    {{--                        </div>--}}
-                    {{--                        <div class="col-12 border">--}}
-                    {{--                            <div class="row">--}}
-                    {{--                                --}}{{--@dd($stage->images)--}}
-
-                    {{--                            </div>--}}
-
-                    {{--                            @endforeach--}}
-
-                    {{--                        </div>--}}
                 </div>
             </div>
 
