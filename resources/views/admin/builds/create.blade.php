@@ -44,8 +44,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="name_field">Адрес:<span class="text-danger">*</span></label>
-                        <input id="name_field" type="text" class="form-control" name="address" required>
+                        <label for="address_field">Адрес:<span class="text-danger">*</span></label>
+                        <input id="address_field" type="text" class="form-control" name="address" required>
                     </div>
 
                     <div class="form-group">
@@ -63,19 +63,17 @@
                         <input id="certificate_field" type="file" class="form-control" name="certificate" required>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" >
                         <label for="note_field">Примечание:<span class="text-danger">*</span></label>
                         <input id="note_field" type="text" class="form-control" name="note" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="latitude">Широта</label>
-                        <input type="text" class="form-control" id="latitude" name="latitude">
+                        <input type="text" class="form-control d-none" id="latitude" name="latitude" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="longitude">Долгота</label>
-                        <input type="text" class="form-control" id="longitude" name="longitude">
+                        <input type="text"  class="form-control d-none" id="longitude" name="longitude" required>
                     </div>
 
                     <div class="form-group">
@@ -94,7 +92,9 @@
 @endsection
 
 @push('scripts')
-    <script>
+    <script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
         ymaps.ready(init);
         function init() {
             var myPlacemark,
@@ -139,6 +139,7 @@
                 ymaps.geocode(coords).then(function (res) {
                     var firstGeoObject = res.geoObjects.get(0);
                     console.log(firstGeoObject.getAddressLine());
+                    document.getElementById('address_field').value = firstGeoObject.getAddressLine();
                     myPlacemark.properties
                         .set({
                             // Формируем строку с данными об объекте.
