@@ -44,53 +44,114 @@
             @else
                 <div class="col-10">отсутствует</div>
             @endif
-            <div class="col-12 border text-center"><b>Этапы:</b></div>
-            <div class="col-2 border"><b>Наименование:</b></div>
-            <div class="col-4 border d-flex align-items-center"><b>Описание:</b></div>
-            <div class="col-2 border"><b>Дата:</b></div>
-            <div class="col-2 border"><b>Примечание:</b></div>
-            <div class="col-2 border"><b>Действия:</b></div>
-            @foreach($build->stages as $stage)
-                <div class="col-2 border">{{ $stage->stage }}</div>
-                <div class="col-4 border" style="overflow-y:scroll; max-height:200px;">{{ $stage->desc }}</div>
-                <div class="col-2 border">{{ date('d-m-Y', strtotime($stage->date)) }}</div>
-                <div class="col-2 border" style="overflow-y:scroll; max-height:200px;">{{ $stage->note }}</div>
-                <div class="col-2 border">
-                    <form id="form-{{ $stage->id }}" name="delete-form" method="POST"
-                          action="{{ route('admin.stages.destroy', $stage) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="button" onclick="deleteConfirm(this)" data-id="{{ $stage->id }}"
-                                title="{{ __('Удалить') }}"
-                                class="btn n btn-danger">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </form>
-                </div>
-                <div class="col-12 border">
-                    <div class="row">
-                        {{--@dd($stage->images)--}}
-                        @foreach(json_decode($stage->images) as $media)
-                            <div class="col-2 position-relative">
-                                <a href="{{ asset('storage/files/'.$media) }}" class="img-fluid">
-                                    <img src="{{ asset('storage/files/'.$media) }}"
-                                         class="mediafile img-fluid m-2" alt=""></a>
+        </div>
+        <div class="row mt-4 border">
+            <div class="col-12 text-center">
+                <div class="accordion md-accordion accordion-blocks border-0" id="accordionStages" role="tablist"
+                     aria-multiselectable="true">
+                    @foreach($build->stages as $stage)
+                        <div class="card border-0 py-4">
+                            <div class="card-header border-0" style="background: white" role="tab" id="Stage-{{ $stage->id }}">
+                                <a data-toggle="collapse" data-parent="#accordionStages"
+                                   href="#build-{{ $stage->build_id }}Stage-{{ $stage->id }}"
+                                   aria-expanded="true"
+                                   aria-controls="build-{{ $stage->build_id }}Stage-{{ $stage->id }}">
+                                    <h6 class="mt-1 mb-0  ">
+                                        <span>Этап: <span>{{ $stage->stage }}</span></span>
+                                        <i class="fas fa-angle-down rotate-icon" style="margin-top: 2px;"></i>
+                                    </h6>
 
-                                <i class="far fa-times-circle img position-absolute ml-5 delete" data-name="media"
-                                   id="delete_media"
-                                   data-media="{{ $loop->index }}"></i>
-
-                                <a href="{{ asset('storage/files/'.$media) }}" download>
-                                    <i class="fas fa-arrow-alt-circle-down img position-absolute"></i>
                                 </a>
                             </div>
-                        @endforeach
-                    </div>
-                    <div class="col-12 border">
 
-                    </div>
+                            <div id="build-{{ $stage->build_id }}Stage-{{ $stage->id }}" class="collapse"
+                                 role="tabpanel" aria-labelledby="Stage-{{ $stage->id }}"
+                                 data-parent="#accordionStages">
+                                <div class="card-body p-0 border">
+                                    <div class="table-ui  mb-3  mb-4">
+                                        <div class="row col-lg-12 col-12 pt-0 justify-content-lg-end text-lg-right pt-3 text-center">
+                                            <p class="font-weight-bold font-small ">{{ $stage->date }}</p>
+                                        </div>
+                                        <div class="row border pl-3">
+                                            <div class="col-lg-3 col-12 text-lg-left py-2 text-center border-right">
+                                                <p class="h6 font-weight-bold ">Этап:</p>
+                                                <p class="text-muted">{{ $stage->stage }}</p>
+                                            </div>
+                                            <div class="col-lg-6 col-12 text-lg-left py-2 text-center border-right">
+                                                <p class="h6 font-weight-bold ">Описание:</p>
+                                                <p class="text-muted">{{ $stage->desc }}</p>
+                                            </div>
+                                            <div class="col-lg-3 col-12 text-lg-left py-2 text-center border-right">
+                                                <p class="h6 font-weight-bold">Документы:</p>
+                                                <a href="" class="mx-auto" download>
+                                                    <i class="fas pt-3 fa-file-pdf fa-4x"
+                                                       style="color: red;"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row border border-top-0 pl-3 ">
+                                            <div class="col-lg-6 border-right pt-3 col-12 text-lg-left text-center">
+                                                <p class="h6 font-weight-bold ">Фото объекта:</p>
+                                                <div class="row">
+                                                    @foreach(json_decode($stage->images) as $media)
+                                                        <div class="col-3 position-relative">
+                                                            <a href="{{ asset('storage/files/'.$media) }}" data-fancybox="media{{$stage->build_id}}" class="img-fluid">
+                                                                <img src="{{ asset('storage/files/'.$media) }}"
+                                                                     class="mediafile img-fluid m-2" alt=""></a>
+
+                                                            <i class="far fa-times-circle img position-absolute ml-5 delete"
+                                                               data-name="media"
+                                                               id="delete_media"
+                                                               data-media="{{ $loop->index }}"></i>
+
+                                                            <a href="{{ asset('storage/files/'.$media) }}" download>
+                                                                <i class="fas fa-arrow-alt-circle-down img position-absolute"></i>
+                                                            </a>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-12 pt-3 text-lg-left text-center">
+                                                <p class="h6 font-weight-bold ">Примечание:</p>
+                                                <p class=" text-muted">
+                                                    {{ $stage->note }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     @endforeach
+                    {{--                        <div class="col-2 border">{{ $stage->stage }}</div>--}}
+                    {{--                        <div class="col-4 border" style="overflow-y:scroll; max-height:200px;">{{ $stage->desc }}</div>--}}
+                    {{--                        <div class="col-2 border">{{ date('d-m-Y', strtotime($stage->date)) }}</div>--}}
+                    {{--                        <div class="col-2 border" style="overflow-y:scroll; max-height:200px;">{{ $stage->note }}</div>--}}
+                    {{--                        <div class="col-2 border">--}}
+                    {{--                            <form id="form-{{ $stage->id }}" name="delete-form" method="POST"--}}
+                    {{--                                  action="{{ route('admin.stages.destroy', $stage) }}">--}}
+                    {{--                                @csrf--}}
+                    {{--                                @method('DELETE')--}}
+                    {{--                                <button type="button" onclick="deleteConfirm(this)" data-id="{{ $stage->id }}"--}}
+                    {{--                                        title="{{ __('Удалить') }}"--}}
+                    {{--                                        class="btn n btn-danger">--}}
+                    {{--                                    <i class="fas fa-trash"></i>--}}
+                    {{--                                </button>--}}
+                    {{--                            </form>--}}
+                    {{--                        </div>--}}
+                    {{--                        <div class="col-12 border">--}}
+                    {{--                            <div class="row">--}}
+                    {{--                                --}}{{--@dd($stage->images)--}}
+
+                    {{--                            </div>--}}
+
+                    {{--                            @endforeach--}}
+
+                    {{--                        </div>--}}
                 </div>
+            </div>
+
         </div>
     </div>
 
@@ -125,12 +186,12 @@
                         </div>
                         <div class="form-group">
                             <label for="stage_field">Дата проверки:<span
-                                        class="text-danger">*</span></label>
+                                    class="text-danger">*</span></label>
                             <input id="stage_field" type="date" class="form-control" name="date" required>
                         </div>
                         <div class="form-group">
                             <label for="stage_field">Наименование докуметов:<span
-                                        class="text-danger">*</span></label>
+                                    class="text-danger">*</span></label>
                             <input id="stage_field" type="text" class="form-control" name="document"
                                    required>
                         </div>
