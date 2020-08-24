@@ -198,7 +198,10 @@ a.waves-effect, a.waves-light {
     right: 0;
 }
 
-.fa-arrow-alt-circle-down.img {
+.fa-arrow-alt-circle-down.stage {
     top: 0;
-    right: 15%;
+    right: 0;
+}
+.fa-arrow-alt-circle-down.stage:hover {
+    color: rgb(4, 190, 8);
 }

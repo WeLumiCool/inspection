@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label for="stage_field">Докуметы:<span class="text-danger">*</span></label>
                             <input id="stage_field" type="file" class="form-control" name="document_scan[]"
-                                   required multiple>
+                                   multiple>
                         </div>
                         <div class="form-group">
                             <label for="stage_field">Изображения:<span class="text-danger">*</span></label>
