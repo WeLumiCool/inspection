@@ -29,9 +29,9 @@
                     <ul class=" ml-auto navbar-nav nav-flex-icons">
                         @if(Auth::user()->role->role=='Начальник')
                             <li class="nav-item">
-                                <button onclick="share_permission(this);" data-status="off"
+                                <button onclick="share_permission(this);"
                                         class="nav-link btn btn-primary text-light">
-                                    Дать доступ
+                                    {{ $zam->is_admin?'Убрать доступ':'Дать доступ' }}
                                 </button>
                             </li>
                         @endif
@@ -48,8 +48,6 @@
                                       style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
-
-
                             </li>
                         @endif
                     </ul>
@@ -73,12 +71,13 @@
     function share_permission(me) {
         $.ajax({
             url: "{{ route('admin.change.permission') }}",
-            method:'get',
-            success: function(){
-                if (me.text === 'Дать доступ') {
-                    me.text = 'Убрать доступ';
+            method: 'get',
+            success: function () {
+                console.log(me.textContent);
+                if (me.textContent.includes("Дать доступ")) {
+                    me.textContent = 'Убрать доступ';
                 } else {
-                    me.text = 'Дать доступ';
+                    me.textContent = 'Дать доступ';
                 }
             }
         })

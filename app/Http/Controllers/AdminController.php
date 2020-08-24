@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Role;
+
 class AdminController extends Controller
 {
     public function __construct()
@@ -17,6 +19,7 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.main');
+        $zam = Role::where('role', 'Заместитель')->first();
+        return view('admin.main', compact('zam'));
     }
 }
