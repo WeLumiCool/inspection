@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     @stack('styles')
-    <script src="https://api-maps.yandex.ru/2.1/?apikey={{ env('YANDEX_MAPS_API_KEY') }}&lang=ru_RU" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey={{ env('YANDEX_MAPS_API_KEY') }}&lang=ru_RU"
+            type="text/javascript"></script>
 </head>
 <body>
-<div id="app" >
+<div id="app">
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
             <div class="container-fluid">
@@ -26,15 +27,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class=" ml-auto navbar-nav nav-flex-icons">
-                        @if(Auth::user())
+                        @if(Auth::user()->role->role=='Начальник')
                             <li class="nav-item">
-                                <button class="nav-link btn btn-primary text-light">
+                                <button onclick="share_permission(this);" data-status="off"
+                                        class="nav-link btn btn-primary text-light">
                                     Дать доступ
                                 </button>
                             </li>
+                        @endif
+                        @if(Auth::user())
                             <li class="nav-item">
-
-
                                 <a class="nav-link waves-effect"
                                    target="_blank" href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form-auth').submit();"
@@ -42,7 +44,8 @@
                                     {{ __('Выйти') }}
                                 </a>
 
-                                <form id="logout-form-auth" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form-auth" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
 
@@ -66,6 +69,21 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+<script>
+    function share_permission(me) {
+        $.ajax({
+            url: "{{ route('admin.change.permission') }}",
+            method:'get',
+            success: function(){
+                if (me.text === 'Дать доступ') {
+                    me.text = 'Убрать доступ';
+                } else {
+                    me.text = 'Дать доступ';
+                }
+            }
+        })
+    }
+</script>
 @stack('scripts')
 </body>
 </html>

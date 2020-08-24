@@ -66,6 +66,7 @@
                             <i class="fas fa-trash"></i>
                         </button>
                     </form>
+                    <a class="btn btn-primary ml-1" href="{{ route('admin.stages.edit', $stage) }}" ><i class="fas fa-pen"></i></a>
                 </div>
                 <div class="col-12 border">
                     <div class="row">
@@ -171,7 +172,7 @@
                     <iframe id="frame" src="" height="500" width="750"></iframe>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Закрыть</button>
                 </div>
             </div>
         </div>

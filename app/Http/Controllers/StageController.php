@@ -6,6 +6,7 @@ use App\Services\PdfUploader;
 use App\Stage;
 use App\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class StageController extends Controller
@@ -79,7 +80,8 @@ class StageController extends Controller
      */
     public function edit(Stage $stage)
     {
-        //
+
+        return view('admin.stages.edit', compact('stage'));
     }
 
     /**
@@ -91,7 +93,34 @@ class StageController extends Controller
      */
     public function update(Request $request, Stage $stage)
     {
-        //
+        if ($request->exists('images')) {
+            $images = [];
+            $old_images = json_decode($stage->images);
+            foreach ($old_images as $image_path) {
+                Storage::disk('public')->delete("/files/" . $image_path);
+            }
+            foreach ($request->file('images') as $file) {
+                $filename = PdfUploader::upload($file, 'stage', 'image');
+                $images[] = $filename;
+            }
+            $stage->images = json_encode($images);
+        }
+
+        if ($request->exists('document_scan')) {
+            $documents = [];
+            $old_documents = json_decode($stage->document_scan);
+            foreach ($old_documents as $doc_path) {
+                Storage::disk('public')->delete("/files/" . $doc_path);
+            }
+            foreach ($request->file('document_scan') as $file) {
+                $filename = PdfUploader::upload($file, 'stage', 'document');
+                $documents[] = $filename;
+            }
+            $stage->document_scan = json_encode($documents);
+        }
+        $stage->update($request->except(['document_scan', 'images']));
+        $stage->save();
+        return redirect()->route('admin.builds.index');
     }
 
     /**
