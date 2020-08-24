@@ -102,7 +102,7 @@ class StageController extends Controller
      */
     public function destroy(Stage $stage)
     {
-        //
+        $stage->delete();
     }
 
     public function datatableData()

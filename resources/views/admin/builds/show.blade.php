@@ -92,64 +92,69 @@
                     @endforeach
                 </div>
         </div>
-        <button type="button" class="btn btn-success mt-3" data-toggle="modal" data-target="#exampleModalCenter">
-            Добавить этап
-        </button>
+    </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    {{--form create stage--}}
-                    <form action="{{ route('admin.stages.store') }}" method="post" id="save_form"
-                          enctype="multipart/form-data">
-                        @csrf
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="stage_field"> Этап:<span class="text-danger">*</span></label>
-                                <input id="stage_field" type="text" class="form-control" name="stage" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="stage_field">Описание:<span class="text-danger">*</span></label>
-                                <textarea id="stage_field" class="form-control" name="desc" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="stage_field">Дата проверки:<span class="text-danger">*</span></label>
-                                <input id="stage_field" type="date" class="form-control" name="date" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="stage_field">Наименование докуметов:<span
-                                        class="text-danger">*</span></label>
-                                <input id="stage_field" type="text" class="form-control" name="document" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="stage_field">Докуметы:<span class="text-danger">*</span></label>
-                                <input id="stage_field" type="file" class="form-control" name="document_scan[]" required
-                                       multiple>
-                            </div>
-                            <div class="form-group">
-                                <label for="stage_field">Изображения:<span class="text-danger">*</span></label>
-                                <input id="stage_field" type="file" class="form-control" name="images[]" required
-                                       multiple>
-                            </div>
-                            <div class="form-group">
-                                <label for="stage_field">Примечание:<span class="text-danger">*</span></label>
-                                <input id="stage_field" type="text" class="form-control" name="note" required>
-                            </div>
-                            <input id="build_id" type="hidden" name="build_id" value="{{ $build->id }}">
-                        </div>
-                        <div class="modal-footer">
-                            <button id="save_button" type="submit" class="btn btn-primary">Сохранить</button>
-                        </div>
-                    </form>
+    <button type="button" class="btn btn-success mt-3" data-toggle="modal"
+            data-target="#exampleModalCenter">
+        Добавить этап
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                {{--form create stage--}}
+                <form action="{{ route('admin.stages.store') }}" method="post" id="save_form"
+                      enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="stage_field"> Этап:<span class="text-danger">*</span></label>
+                            <input id="stage_field" type="text" class="form-control" name="stage" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="stage_field">Описание:<span class="text-danger">*</span></label>
+                            <textarea id="stage_field" class="form-control" name="desc" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="stage_field">Дата проверки:<span
+                                        class="text-danger">*</span></label>
+                            <input id="stage_field" type="date" class="form-control" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="stage_field">Наименование докуметов:<span
+                                        class="text-danger">*</span></label>
+                            <input id="stage_field" type="text" class="form-control" name="document"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="stage_field">Докуметы:<span class="text-danger">*</span></label>
+                            <input id="stage_field" type="file" class="form-control" name="document_scan[]"
+                                   required multiple>
+                        </div>
+                        <div class="form-group">
+                            <label for="stage_field">Изображения:<span class="text-danger">*</span></label>
+                            <input id="stage_field" type="file" class="form-control" name="images[]"
+                                   required
+                                   multiple>
+                        </div>
+                        <div class="form-group">
+                            <label for="stage_field">Примечание:<span class="text-danger">*</span></label>
+                            <input id="stage_field" type="text" class="form-control" name="note" required>
+                        </div>
+                        <input id="build_id" type="hidden" name="build_id" value="{{ $build->id }}">
+                    </div>
+                    <div class="modal-footer">
+                        <button id="save_button" type="submit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -171,25 +176,24 @@
             </div>
         </div>
     </div>
-@endsection
-@push('scripts')
-    <script>
-        $('.show_doc').click(function (e) {
-            part_scr = e.currentTarget.dataset.path;
-            $('#frame').attr("src", window.location.origin + "/storage/files/" + part_scr);
-            $('#info').modal('show');
-        })
-    </script>
-    <script>
-        function deleteConfirm(me) {
-            if (confirm('Вы дествительно хотите удалить ?')) {
-                let model_id = me.dataset.id;
-                $('form#form-' + model_id).submit();
+    @push('scripts')
+        <script>
+            $('.show_doc').click(function (e) {
+                part_scr = e.currentTarget.dataset.path;
+                $('#frame').attr("src", window.location.origin + "/storage/files/" + part_scr);
+                $('#info').modal('show');
+            })
+        </script>
+        <script>
+            function deleteConfirm(me) {
+                if (confirm('Вы дествительно хотите удалить ?')) {
+                    let model_id = me.dataset.id;
+                    $('form#form-' + model_id).submit();
+                }
             }
-        }
-    </script>
-@endpush
-
+        </script>
+    @endpush
+@endsection
 @push('styles')
     <style>
         #show_articles div {
@@ -197,7 +201,5 @@
             padding-bottom: 2rem;
             border: 1px solid #dcdcdd;
         }
-
-
     </style>
 @endpush
