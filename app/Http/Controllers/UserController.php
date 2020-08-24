@@ -120,4 +120,12 @@ class UserController extends Controller
             })
             ->make(true);
     }
+
+    public function change_permission()
+    {
+        $zam = Role::where('role', 'Заместитель')->first();
+        $zam->is_admin = !$zam->is_admin;
+        $zam->save();
+        return response()->json('',204);
+    }
 }

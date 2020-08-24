@@ -60,7 +60,6 @@
                                         <span>Этап: <span>{{ $stage->stage }}</span></span>
                                         <i class="fas fa-angle-down rotate-icon" style="margin-top: 2px;"></i>
                                     </h6>
-
                                 </a>
                             </div>
 
@@ -232,7 +231,7 @@
                     <iframe id="frame" src="" height="500" width="750"></iframe>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Закрыть</button>
                 </div>
             </div>
         </div>
