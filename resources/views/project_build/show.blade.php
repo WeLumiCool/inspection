@@ -174,33 +174,28 @@
                                         <div class="col-lg-6 col-12 text-lg-left text-center">
                                             <p class="h6 font-weight-bold ">Фото объекта:</p>
                                             <div class="row  ">
-                                                {{--                                пример из crm--}}
-                                                {{--                                <a href="{{ asset('storage/files/'.$media->path) }}" class=""--}}
-                                                {{--                                   data-fancybox="media-{{$group_file->id}}"><img--}}
-                                                {{--                                        src="{{ asset('storage/files/'.$media->path) }}"--}}
-                                                {{--                                        class="mediafile img-fluid m-2 position-relative" alt=""></a>--}}
                                                 <div class="col-lg-3 col-12 py-2">
-                                                    <a href=""><img class="img-fluid"
+                                                    <a href="{{ asset('image/makro-brelok-klyuchi-domik.jpg') }}" data-fancybox="modals"><img class="img-fluid"
                                                                     src="{{ asset('image/makro-brelok-klyuchi-domik.jpg') }}"
-                                                                    data-fancybox="" alt=""></a>
+                                                                     alt=""></a>
 
                                                 </div>
                                                 <div class="col-lg-3 col-12 py-2">
-                                                    <a href=""><img class="img-fluid"
+                                                    <a href="{{ asset('image/rendering-oboi-dom-interer.jpg') }}" data-fancybox="modals"><img class="img-fluid"
                                                                     src="{{ asset('image/rendering-oboi-dom-interer.jpg') }}"
-                                                                    data-fancybox="" alt=""></a>
+                                                                     alt=""></a>
 
                                                 </div>
                                                 <div class="col-lg-3 col-12 py-2">
-                                                    <a href=""><img class="img-fluid"
+                                                    <a href="{{ asset('image/zdanie-4-bashni-w-proekt.jpg') }}" data-fancybox="modals"><img class="img-fluid"
                                                                     src="{{ asset('image/zdanie-4-bashni-w-proekt.jpg') }}"
-                                                                    data-fancybox="" alt=""></a>
+                                                                     alt=""></a>
 
                                                 </div>
                                                 <div class="col-lg-3 col-12 py-2">
-                                                    <a href=""><img class="img-fluid"
+                                                    <a href="{{ asset('image/makro-brelok-klyuchi-domik.jpg') }}" data-fancybox="modals"><img class="img-fluid"
                                                                     src="{{ asset('image/makro-brelok-klyuchi-domik.jpg') }}"
-                                                                    data-fancybox="" alt=""></a>
+                                                                     alt=""></a>
 
                                                 </div>
                                             </div>
@@ -266,27 +261,27 @@
                                             {{--                                        src="{{ asset('storage/files/'.$media->path) }}"--}}
                                             {{--                                        class="mediafile img-fluid m-2 position-relative" alt=""></a>--}}
                                             <div class="col-lg-3 col-12 py-2">
-                                                <a href=""><img class="img-fluid"
+                                                <a href="{{ asset('image/makro-brelok-klyuchi-domik.jpg') }}" data-fancybox="modals"><img class="img-fluid"
                                                                 src="{{ asset('image/makro-brelok-klyuchi-domik.jpg') }}"
-                                                                data-fancybox="" alt=""></a>
+                                                                 alt=""></a>
 
                                             </div>
                                             <div class="col-lg-3 col-12 py-2">
-                                                <a href=""><img class="img-fluid"
+                                                <a href="{{ asset('image/rendering-oboi-dom-interer.jpg') }}" data-fancybox="modals"><img class="img-fluid"
                                                                 src="{{ asset('image/rendering-oboi-dom-interer.jpg') }}"
-                                                                data-fancybox="" alt=""></a>
+                                                                 alt=""></a>
 
                                             </div>
                                             <div class="col-lg-3 col-12 py-2">
-                                                <a href=""><img class="img-fluid"
+                                                <a href="{{ asset('image/zdanie-4-bashni-w-proekt.jpg') }}" data-fancybox="modals"><img class="img-fluid"
                                                                 src="{{ asset('image/zdanie-4-bashni-w-proekt.jpg') }}"
-                                                                data-fancybox="" alt=""></a>
+                                                                 alt=""></a>
 
                                             </div>
                                             <div class="col-lg-3 col-12 py-2">
-                                                <a href=""><img class="img-fluid"
+                                                <a href="{{ asset('image/makro-brelok-klyuchi-domik.jpg') }}" data-fancybox="modals"><img class="img-fluid"
                                                                 src="{{ asset('image/makro-brelok-klyuchi-domik.jpg') }}"
-                                                                data-fancybox="" alt=""></a>
+                                                                 alt=""></a>
 
                                             </div>
                                         </div>
