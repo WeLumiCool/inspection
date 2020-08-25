@@ -28,17 +28,8 @@
                                 </a>
                             </div>
                         </div>
-<<<<<<< HEAD
-                        <table class="table table-bordered w-100 hover" id="builds-table">
-                            <thead class="bg-primary text-light">
-                            <tr>
-                                <th scope="col">ФИО</th>
-                                <th scope="col">Адрес</th>
-                                <th scope="col">Тип объекта</th>
-                                <th scope="col">Площадь</th>
-                            </tr>
-=======
                     </div>
+
                     <table class="table table-bordered w-100 hover" id="builds-table">
                         <thead class="bg-primary text-light">
                         <tr>
@@ -47,8 +38,6 @@
                             <th scope="col">Тип объекта</th>
                             <th scope="col">Площадь</th>
                         </tr>
->>>>>>> parent of 9aeb305... done maps object and in create page
-
                         </thead>
                     </table>
                 </div>
