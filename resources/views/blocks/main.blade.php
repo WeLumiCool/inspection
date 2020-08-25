@@ -18,7 +18,7 @@
                             </select>
                         </div>
                         <div
-                            class="d-flex col-lg-3 justify-content-lg-end my-2 pr-lg-2 col-12 d-flex justify-content-center  ">
+                                class="d-flex col-lg-3 justify-content-lg-end my-2 pr-lg-2 col-12 d-flex justify-content-center  ">
                             <a href="{{ route('create') }}" type="button"
                                class="btn btn-outline-default  waves-effect text-right " style="padding: 8px 26px;">
                                 Добавить объект
@@ -45,6 +45,11 @@
 @push('styles')
     {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">--}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <style>
+        #builds-table tr:hover {
+            cursor: pointer;
+        }
+    </style>
 @endpush
 
 @push('scripts')
@@ -52,7 +57,6 @@
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function () {
-            console.log(window.innerWidth);
 
             if (window.innerWidth < 768) {
                 let table = $('#builds-table').DataTable({
@@ -100,13 +104,12 @@
                         .draw();
                 })
             }
-            $('#builds-table tbody').on('click', '.odd', function () {
+            $('#builds-table tbody').on('click', 'tr', function () {
 
-                var data = table.row(this).data();
-                window.location.href = '{{ route('show') }}';
+                let data = table.row(this).data();
+                window.location.href = window.location.origin + '/show/' + data.id;
             });
 
         });
-
     </script>
 @endpush

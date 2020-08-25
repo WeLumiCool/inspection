@@ -60,3 +60,15 @@
 table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
      background-image: none;
 }
+.fa-times-circle.img {
+    top: 0;
+    right: 0;
+}
+
+.fa-arrow-alt-circle-down.stage {
+    top: 5%;
+    right: 5%;
+}
+.fa-arrow-alt-circle-down.stage:hover {
+    color: rgb(4, 190, 8);
+}

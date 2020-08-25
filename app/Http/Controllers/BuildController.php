@@ -50,7 +50,7 @@ class BuildController extends Controller
         $build = Build::create($request->all());
 
         if ($request->hasFile('statement') || $request->hasFile('apu') || $request->hasFile('act')
-         || $request->hasFile('project') || $request->hasFile('solution')
+            || $request->hasFile('project') || $request->hasFile('solution')
         ) {
             $build->statement = PdfUploader::upload(request('statement'), 'statements', 'statement');
             $build->apu = PdfUploader::upload(request('apu'), 'apu', 'apu');
@@ -95,22 +95,21 @@ class BuildController extends Controller
     public function update(Request $request, Build $build)
     {
         if ($request->hasFile('statement') || $request->hasFile('apu') ||
-            $request->hasFile('act') || $request->hasFile('project') || $request->hasFile('solution') || $request->hasFile('certificate'))
-            {
-                Storage::disk('public')->delete("/files/" . $build->statement);
-                Storage::disk('public')->delete("/files/" . $build->apu);
-                Storage::disk('public')->delete("/files/" . $build->act);
-                Storage::disk('public')->delete("/files/" . $build->project);
-                Storage::disk('public')->delete("/files/" . $build->solution);
-                Storage::disk('public')->delete("/files/" . $build->certificate);
+            $request->hasFile('act') || $request->hasFile('project') || $request->hasFile('solution') || $request->hasFile('certificate')) {
+            Storage::disk('public')->delete("/files/" . $build->statement);
+            Storage::disk('public')->delete("/files/" . $build->apu);
+            Storage::disk('public')->delete("/files/" . $build->act);
+            Storage::disk('public')->delete("/files/" . $build->project);
+            Storage::disk('public')->delete("/files/" . $build->solution);
+            Storage::disk('public')->delete("/files/" . $build->certificate);
 
-                $build->statement = PdfUploader::upload(request('statement'), 'statements', 'statement');
-                $build->apu = PdfUploader::upload(request('apu'), 'apu', 'apu');
-                $build->act = PdfUploader::upload(request('act'), 'acts', 'act');
-                $build->project = PdfUploader::upload(request('project'), 'projects', 'project');
-                $build->solution = PdfUploader::upload(request('solution'), 'solutions', 'solution');
-                $build->certificate = PdfUploader::upload(request('certificate'), 'certificates', 'certificate');
-            }
+            $build->statement = PdfUploader::upload(request('statement'), 'statements', 'statement');
+            $build->apu = PdfUploader::upload(request('apu'), 'apu', 'apu');
+            $build->act = PdfUploader::upload(request('act'), 'acts', 'act');
+            $build->project = PdfUploader::upload(request('project'), 'projects', 'project');
+            $build->solution = PdfUploader::upload(request('solution'), 'solutions', 'solution');
+            $build->certificate = PdfUploader::upload(request('certificate'), 'certificates', 'certificate');
+        }
 
         $build->update($request->except('statement', 'apu', 'act', 'project', 'solution', 'certificate'));
         $build->save();
@@ -126,6 +125,12 @@ class BuildController extends Controller
     public function destroy(Build $build)
     {
         //
+    }
+
+    public function inspector_show($id)
+    {
+        $build = Build::find($id);
+        return view('project_build.show', compact('build'));
     }
 
     public function datatableData()

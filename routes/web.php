@@ -45,12 +45,10 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
     Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
 
 
-
     //AJAX
     Route::get('change_permission', 'UserController@change_permission')->name('change.permission');
 });
 
-Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
 
 //Route::middleware('auth')->group(function (){
 Route::get('/', function () {
@@ -61,16 +59,14 @@ Route::get('/create', function () {
     return view('project_build.create');
 })->name('create');
 
-Route::get('/show', function () {
-    return view('project_build.show');
-})->name('show');
+Route::get('/show/{id}', 'BuildController@inspector_show')->name('show');
 
 Route::get('/maps', function () {
     return view('project_build.maps');
 })->name('maps');
-
-
+Route::post('isp_store', 'StageController@isp_store')->name('isp_store');
 //});
-    Route::get('/builds/welcome_table', 'BuildController@datatableData2')->name('welcome.datatable.data');
+Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
+Route::get('/builds/welcome_table', 'BuildController@datatableData2')->name('welcome.datatable.data');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

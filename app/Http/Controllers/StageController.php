@@ -61,6 +61,31 @@ class StageController extends Controller
         return redirect()->route('admin.builds.show', $stage->build);
     }
 
+
+
+    public function isp_store(Request $request)
+    {
+        $stage = Stage::create($request->except(['document_scan', 'images']));
+        if ($request->exists('images')) {
+            $images = [];
+            foreach ($request->file('images') as $file) {
+                $filename = PdfUploader::upload($file, 'stage', 'image');
+                $images[] = $filename;
+            }
+            $stage->images = json_encode($images);
+        }
+
+        if ($request->exists('document_scan')) {
+            $document = [];
+            foreach ($request->file('document_scan') as $file) {
+                $filename = PdfUploader::upload($file, 'stage', 'document');
+                $document[] = $filename;
+            }
+            $stage->document_scan = json_encode($document);
+        }
+        $stage->save();
+        return redirect()->route('show', $request->build_id);
+    }
     /**
      * Display the specified resource.
      *
