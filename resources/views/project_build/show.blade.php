@@ -165,7 +165,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="{{ route('isp_store') }}" method="post" id="save_form"
+                    <form action="{{ route('isp.store.stage') }}" method="post" id="save_form"
                           enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">

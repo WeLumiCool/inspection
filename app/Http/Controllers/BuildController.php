@@ -36,6 +36,11 @@ class BuildController extends Controller
         return view('admin.builds.create', ['types' => Type::all()]);
     }
 
+    public function isp_create()
+    {
+        return view('project_build.create', ['types' => Type::all()]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -61,7 +66,24 @@ class BuildController extends Controller
 
         return redirect()->route('admin.builds.index');
     }
+    public function isp_store(Request $request)
+    {
 
+
+        $build = Build::create($request->all());
+
+
+        $build->statement = PdfUploader::upload(request('statement'), 'statements', 'statement');
+        $build->apu = PdfUploader::upload(request('apu'), 'apu', 'apu');
+        $build->act = PdfUploader::upload(request('act'), 'acts', 'act');
+        $build->project = PdfUploader::upload(request('project'), 'projects', 'project');
+        $build->solution = PdfUploader::upload(request('solution'), 'solutions', 'solution');
+        $build->certificate = PdfUploader::upload(request('certificate'), 'certificates', 'certificate');
+
+        $build->save();
+
+        return redirect()->route('main');
+    }
     /**
      * Display the specified resource.
      *
