@@ -85,7 +85,7 @@
                                 <div class="card-body p-0 border border-bottom-0">
                                     <div class="table-ui  mb-3  mb-4">
                                         <div class="row col-lg-12 col-12 pt-0 justify-content-lg-end text-lg-right pt-3 text-center">
-                                            <p class="font-weight-bold font-small ">{{ $stage->date }}</p>
+                                            <p class="font-weight-bold font-small ">{{ date('d.m.Y',strtotime($stage->date)) }}</p>
                                         </div>
                                         <div class="row border pl-3">
                                             <div class="col-lg-3 col-12 text-lg-left py-2 text-center border-right">
@@ -216,7 +216,6 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="docModalLabel">Техническое задание</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
