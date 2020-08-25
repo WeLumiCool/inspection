@@ -1,50 +1,48 @@
 <main class="pt-5 my-5">
     <div class="container pt-5">
         <div class="p-3 bg-show">
+
             <div class="col-12 ">
-                <p class="h2 font-weight-bold text-center text-caral">Список объектов</p>
+                <p class="h3 font-weight-bold text-center text-caral">Список объектов</p>
             </div>
-        <div class="col-12 ">
-            <p class="h3 font-weight-bold text-center text-caral">Список объектов</p>
-        </div>
-        <div class="p-3 bg-form card-body-admin">
-            <div class="row">
-                <div class="col-sm-12 table-responsive">
-                    <div class="row">
-                        <div class="col-lg-9 col-sm-12 d-flex align-items-center">
-                            <div class="form-group">
-                                <label for="type">Выберите тип объекта:</label>
-                                <select id="type" data-column="2" class="form-control filter-select mb-2    ">
-                                    <option value="">Все</option>
-                                    @foreach($types as $type)
-                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
-                                    @endforeach
-                                </select>
+            <div class="p-3 ">
+                <div class="row">
+                    <div class="col-sm-12 table-responsive">
+                        <div class="row">
+                            <div class="col-lg-9 col-sm-12 d-flex align-items-center">
+                                <div class="form-group">
+                                    <label for="type">Выберите тип объекта:</label>
+                                    <select id="type" data-column="2" class="form-control filter-select mb-2    ">
+                                        <option value="">Все</option>
+                                        @foreach($types as $type)
+                                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div
+                                class="d-flex col-lg-3 justify-content-lg-end my-2  col-12 d-flex justify-content-center align-items-center">
+                                <a href="{{ route('create') }}" type="button"
+                                   class="btn-add  waves-effect text-right " style="padding: 8px 26px;">
+                                    Добавить объект
+                                </a>
                             </div>
                         </div>
-                        <div
-                            class="d-flex col-lg-3 justify-content-lg-end my-2  col-12 d-flex justify-content-center align-items-center">
-                            <a href="{{ route('create') }}" type="button"
-                               class="btn-add  waves-effect text-right " style="padding: 8px 26px;">
-                                Добавить объект
-                            </a>
-                        </div>
-                    </div>
-                    <table class="table table-bordered w-100 hover" id="builds-table">
-                        <thead class="bg-primary text-light">
-                        <tr>
-                            <th scope="col">ФИО</th>
-                            <th scope="col">Адрес</th>
-                            <th scope="col">Тип объекта</th>
-                            <th scope="col">Площадь</th>
-                        </tr>
+                        <table class="table table-bordered w-100 hover" id="builds-table">
+                            <thead class="bg-primary text-light">
+                            <tr>
+                                <th scope="col">ФИО</th>
+                                <th scope="col">Адрес</th>
+                                <th scope="col">Тип объекта</th>
+                                <th scope="col">Площадь</th>
+                            </tr>
 
-                        </thead>
-                    </table>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </main>
 
 @push('styles')
