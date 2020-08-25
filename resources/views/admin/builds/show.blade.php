@@ -95,7 +95,7 @@
                                             <div class="col-lg-3 col-12 text-lg-left py-2 text-center border-right">
                                                 <p class="h6 font-weight-bold">Документы:</p>
                                                 <a href="" class="mx-auto" download>
-                                                    <i class="fas pt-3 fa-file-pdf fa-4x"
+                                                    <i class="fas pt-3 fa-file-pdf fa-3x"
                                                        style="color: red;"></i>
                                                 </a>
                                             </div>

@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-sm-12 table-responsive">
                 <table class="table table-striped  table-hover" id="stages-table">
-                    <thead>
+                    <thead class="bg-primary text-light">
                     <tr>
                         <th scope="col">id</th>
                         <th scope="col">Описание</th>
