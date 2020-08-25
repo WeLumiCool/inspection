@@ -1,5 +1,6 @@
 <main class="pt-5 my-5">
     <div class="container pt-5">
+<<<<<<< HEAD
 
         <div class="p-3 bg-show">
 
@@ -29,6 +30,8 @@
                                 </a>
                             </div>
 
+=======
+>>>>>>> parent of 22bb49c... Merge branch 'Xusan' into dev
         <div class="col-12 ">
             <p class="h3 font-weight-bold text-center text-caral">Список объектов</p>
         </div>
