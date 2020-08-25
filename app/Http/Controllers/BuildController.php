@@ -192,9 +192,4 @@ class BuildController extends Controller
             ->make(true);
     }
 
-    public function map() {
-
-        return view('project_build.maps', ['builds' => Build::all()]);
-    }
-
 }

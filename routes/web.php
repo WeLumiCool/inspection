@@ -59,11 +59,19 @@ Route::get('/create', 'BuildController@isp_create')->name('isp.create.build');
 
 Route::get('/show/{id}', 'BuildController@inspector_show')->name('show');
 
+<<<<<<< HEAD
 Route::get('/maps', 'BuildController@map')->name('maps');
     Route::post('isp_store/stage', 'StageController@isp_store')->name('isp.store.stage');
     Route::post('isp_store/build', 'BuildController@isp_store')->name('isp.store.build');
 });
+=======
+Route::get('/maps', function () {
+    return view('project_build.maps');
+})->name('maps');
+Route::post('isp_store', 'StageController@isp_store')->name('isp_store');
+//});
+>>>>>>> parent of 9aeb305... done maps object and in create page
 Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
-//Route::get('/builds/welcome_table', 'BuildController@datatableData2')->name('welcome.datatable.data');
+Route::get('/builds/welcome_table', 'BuildController@datatableData2')->name('welcome.datatable.data');
 
 //Route::get('/home', 'HomeController@index')->name('home');
