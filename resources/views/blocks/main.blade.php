@@ -4,6 +4,10 @@
             <div class="col-12 ">
                 <p class="h2 font-weight-bold text-center text-caral">Список объектов</p>
             </div>
+        <div class="col-12 ">
+            <p class="h3 font-weight-bold text-center text-caral">Список объектов</p>
+        </div>
+        <div class="p-3 bg-form card-body-admin">
             <div class="row">
                 <div class="col-sm-12 table-responsive">
                     <div class="row">
