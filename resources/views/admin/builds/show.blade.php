@@ -52,14 +52,13 @@
                 <div class="accordion md-accordion accordion-blocks border-0" id="accordionStages" role="tablist"
                      aria-multiselectable="true">
                     @foreach($build->stages as $stage)
-                        <div class="card border" style="margin-bottom: 0.4rem;
+                        <div class="card  " style="margin-bottom: 0.4rem;
     -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
     border-bottom: 1px solid #dee2e6!important;
     border-bottom: 0;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;">
-                        <div class="card border-bottom py-4">
                             <div class="card-header d-flex justify-content-between border-0" style="background: white"
                                  role="tab" id="Stage-{{ $stage->id }}">
                                 <a class="text-left" data-toggle="collapse" data-parent="#accordionStages"
