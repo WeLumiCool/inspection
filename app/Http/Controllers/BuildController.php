@@ -93,22 +93,41 @@ class BuildController extends Controller
      */
     public function update(Request $request, Build $build)
     {
-        if ($request->hasFile('statement') || $request->hasFile('apu') ||
-            $request->hasFile('act') || $request->hasFile('project') || $request->hasFile('solution') || $request->hasFile('certificate')) {
+        if ($request->hasFile('statement'))
+        {
             Storage::disk('public')->delete("/files/" . $build->statement);
-            Storage::disk('public')->delete("/files/" . $build->apu);
-            Storage::disk('public')->delete("/files/" . $build->act);
-            Storage::disk('public')->delete("/files/" . $build->project);
-            Storage::disk('public')->delete("/files/" . $build->solution);
-            Storage::disk('public')->delete("/files/" . $build->certificate);
-
             $build->statement = PdfUploader::upload(request('statement'), 'statements', 'statement');
+        }
+
+        if ($request->hasFile('apu'))
+        {
+            Storage::disk('public')->delete("/files/" . $build->apu);
             $build->apu = PdfUploader::upload(request('apu'), 'apu', 'apu');
+        }
+
+        if ($request->hasFile('act'))
+        {
+            Storage::disk('public')->delete("/files/" . $build->act);
             $build->act = PdfUploader::upload(request('act'), 'acts', 'act');
+        }
+
+        if ($request->hasFile('project'))
+        {
+            Storage::disk('public')->delete("/files/" . $build->project);
             $build->project = PdfUploader::upload(request('project'), 'projects', 'project');
+        }
+
+        if ($request->hasFile('solution'))
+        {
+            Storage::disk('public')->delete("/files/" . $build->solution);
             $build->solution = PdfUploader::upload(request('solution'), 'solutions', 'solution');
+        }
+
+        if ($request->hasFile('certificate')) {
+            Storage::disk('public')->delete("/files/" . $build->certificate);
             $build->certificate = PdfUploader::upload(request('certificate'), 'certificates', 'certificate');
         }
+
 
         $build->update($request->except('statement', 'apu', 'act', 'project', 'solution', 'certificate'));
         $build->save();
