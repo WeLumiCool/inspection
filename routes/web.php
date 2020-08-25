@@ -14,14 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Auth::routes();
-//Auth::routes([
-//    'register' => false,
-//    'reset' => false,
-//    'verify' => false,
-//]);
+//Auth::routes();
+Auth::routes([
+    'register' => false,
+    'reset' => false,
+    'verify' => false,
+]);
 
-Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
+Route::prefix('admin')->name('admin.')->middleware('admin')
 ->group(function () {
     Route::get('/', 'AdminController@index')->name('admin');
     Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
@@ -42,7 +42,7 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
     Route::get('/builds/datatable', 'BuildController@datatableData')->name('build.datatable.data');
     Route::resource('builds', 'BuildController');
 
-    Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
+//    Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
 
 
     //AJAX
@@ -50,22 +50,23 @@ Route::prefix('admin')->name('admin.')/*->middleware('admin')*/
 });
 
 
-//Route::middleware('auth')->group(function (){
+Route::middleware('auth')->group(function (){
 Route::get('/', function () {
     return view('welcome', ['types' => \App\Type::all()]);
 })->name('main');
 
-Route::get('/create', function () {
-    return view('project_build.create');
-})->name('create');
+Route::get('/create', 'BuildController@isp_create')->name('isp.create.build');
 
 Route::get('/show/{id}', 'BuildController@inspector_show')->name('show');
 
 Route::get('/maps', function () {
     return view('project_build.maps');
 })->name('maps');
-Route::post('isp_store', 'StageController@isp_store')->name('isp_store');
-//});
+
+
+Route::post('isp_store/stage', 'StageController@isp_store')->name('isp.store.stage');
+Route::post('isp_store/build', 'BuildController@isp_store')->name('isp.store.build');
+});
 Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
 Route::get('/builds/welcome_table', 'BuildController@datatableData2')->name('welcome.datatable.data');
 
