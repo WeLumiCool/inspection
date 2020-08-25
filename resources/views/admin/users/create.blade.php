@@ -2,7 +2,7 @@
 
 @section('dashboard_content')
     <div class="row ">
-        <div class="col-12 col-sm-10 col-lg-11 col-md-10 bg-form card-body-admin py-4">
+        <div class="col-12 col-sm-10 col-lg-12 col-md-10 bg-form card-body-admin py-4 px-5">
             <form action="{{ route('admin.users.store') }}" method="POST">
                 @csrf
                 <ul>

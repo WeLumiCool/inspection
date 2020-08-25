@@ -2,8 +2,8 @@
 
 @section('dashboard_content')
     <div class="p-3 bg-form card-body-admin">
-        <div class="row">
-            <div class="col-12 col-sm-10 col-lg-10 col-md-10">
+        <div class="row p-3">
+            <div class="col-12 col-sm-12 col-lg-12 col-md-10">
                 <form action="{{ route('admin.builds.update', $build) }}" method="POST">
                     @csrf
                     @method('PUT')
