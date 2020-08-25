@@ -22,7 +22,7 @@
                             </div>
                             <div
                                 class="d-flex col-lg-3 justify-content-lg-end my-2  col-12 d-flex justify-content-center align-items-center">
-                                <a href="{{ route('create') }}" type="button"
+                                <a href="{{ route('isp.create.build') }}" type="button"
                                    class="btn-add  waves-effect text-right " style="padding: 8px 26px;">
                                     Добавить объект
                                 </a>
