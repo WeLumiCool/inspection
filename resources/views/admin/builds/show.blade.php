@@ -1,63 +1,64 @@
 @extends('admin.layouts.dashboard')
 @section('dashboard_content')
     <div class="container bg-form card-body-admin py-4">
-        <div class="row">
-            <div class="col-12 text-right">
-                <button type="button" class="btn btn-success mt-3 mb-5" data-toggle="modal"
-                        data-target="#exampleModalCenter">
-                    Добавить этап
-                </button>
-            </div>
-        </div>
+
         <div class="row p-4" id="show_articles">
-            <div class="col-2">id</div>
-            <div class="col-10">{{ $build->id }}</div>
-            <div class="col-2">Заголовок:</div>
-            <div class="col-10">{{ $build->name }}</div>
-            <div class="col-2">Адрес:</div>
-            <div class="col-10">{{ $build->address }}</div>
-            <div class="col-2">Площадь:</div>
-            <div class="col-10">{{ $build->area }}</div>
-            <div class="col-2">Заявлениие:</div>
-            <div class="col-10">
-                <button class="show_doc btn btn-info" data-path="{{ $build->statement }}">Посмотреть</button>
+            <div class="col-2 py-3"><span class="font-weight-bold">id</span></div>
+            <div class="col-10 py-3">{{ $build->id }}</div>
+            <div class="col-2 py-3"><span class="font-weight-bold">Заголовок:</span></div>
+            <div class="col-10 py-3">{{ $build->name }}</div>
+            <div class="col-2  py-3"><span class="font-weight-bold">Адрес:</span></div>
+            <div class="col-10 py-3">{{ $build->address }}</div>
+            <div class="col-2 py-3 "><span class="font-weight-bold">Площадь:</span></div>
+            <div class="col-10 py-3">{{ $build->area }}</div>
+            <div class="col-2 py-3"><span class="font-weight-bold">Заявлениие:</span></div>
+            <div class="col-10 py-3">
+                <button class="show_doc btn btn-primary" data-path="{{ $build->statement }}">Посмотреть</button>
             </div>
-            <div class="col-2">АПУ/ИТУ:</div>
-            <div class="col-10">
-                <button class="show_doc btn btn-info" data-path="{{ $build->apu }}">Посмотреть</button>
+            <div class="col-2 py-3" ><span class="font-weight-bold">АПУ/ИТУ:</span></div>
+            <div class="col-10 py-3">
+                <button class="show_doc btn btn-primary" data-path="{{ $build->apu }}">Посмотреть</button>
             </div>
-            <div class="col-2">Акт:</div>
-            <div class="col-10">
-                <button class="show_doc btn btn-info" data-path="{{ $build->act }}">Посмотреть</button>
+            <div class="col-2 py-3"><span class="font-weight-bold">Акт:</span></div>
+            <div class="col-10 py-3">
+                <button class="show_doc btn btn-primary" data-path="{{ $build->act }}">Посмотреть</button>
             </div>
-            <div class="col-2">Проект:</div>
-            <div class="col-10">
-                <button class="show_doc btn btn-info" data-path="{{ $build->project }}">Посмотреть</button>
+            <div class="col-2 py-3"><span class="font-weight-bold">Проект</span>:</div>
+            <div class="col-10 py-3">
+                <button class="show_doc btn btn-primary" data-path="{{ $build->project }}">Посмотреть</button>
             </div>
-            <div class="col-2">Разрешение на строительство:</div>
-            <div class="col-10">
-                <button class="show_doc btn btn-info" data-path="{{ $build->solution }}">Посмотреть</button>
+            <div class="col-2 py-3"><span class="font-weight-bold">Разрешение на строительство:</span></div>
+            <div class="col-10 py-3">
+                <button class="show_doc btn btn-primary" data-path="{{ $build->solution }}">Посмотреть</button>
             </div>
-            <div class="col-2">Сертификат:</div>
-            <div class="col-10">
-                <button class="show_doc btn btn-info" data-path="{{ $build->certificate }}">Посмотреть</button>
+            <div class="col-2 py-3"><span class="font-weight-bold">Сертификат:</span></div>
+            <div class="col-10 py-3">
+                <button class="show_doc btn btn-primary" data-path="{{ $build->certificate }}">Посмотреть</button>
             </div>
-            <div class="col-2">Тип:</div>
-            <div class="col-10">{{ $build->type->name }}</div>
-            <div class="col-2">Примечание:</div>
-            <div class="col-10">{{ $build->note }}</div>
-            <div class="col-2">Разрешение:</div>
+            <div class="col-2 py-3"><span class="font-weight-bold">Тип:</span></div>
+            <div class="col-10 py-3">{{ $build->type->name }}</div>
+            <div class="col-2 py-3"><span class="font-weight-bold">Примечание:</span></div>
+            <div class="col-10 py-3">{{ $build->note }}</div>
+            <div class="col-2 py-3"><span class="font-weight-bold">Разрешение:</span></div>
             @if($build->legality)
                 <div class="col-10">присутствует</div>
             @else
                 <div class="col-10">отсутствует</div>
             @endif
         </div>
+
         <div class="row mt-4 ">
             <div class="col-12 text-center ">
                 <div class="accordion md-accordion accordion-blocks border-0" id="accordionStages" role="tablist"
                      aria-multiselectable="true">
                     @foreach($build->stages as $stage)
+                        <div class="card border" style="margin-bottom: 0.4rem;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    border-bottom: 1px solid #dee2e6!important;
+    border-bottom: 0;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;">
                         <div class="card border-bottom py-4">
                             <div class="card-header d-flex justify-content-between border-0" style="background: white"
                                  role="tab" id="Stage-{{ $stage->id }}">
@@ -153,6 +154,14 @@
                 </div>
             </div>
 
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button type="button" class="btn btn-success mt-3 mb-5 " style="padding: 15px;" data-toggle="modal"
+                        data-target="#exampleModalCenter">
+                    Добавить этап
+                </button>
+            </div>
         </div>
     </div>
 
