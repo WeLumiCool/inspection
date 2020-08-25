@@ -29,7 +29,6 @@
                             </div>
                         </div>
                     </div>
-
                     <table class="table table-bordered w-100 hover" id="builds-table">
                         <thead class="bg-primary text-light">
                         <tr>
@@ -38,6 +37,7 @@
                             <th scope="col">Тип объекта</th>
                             <th scope="col">Площадь</th>
                         </tr>
+
                         </thead>
                     </table>
                 </div>
