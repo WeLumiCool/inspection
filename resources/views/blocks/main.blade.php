@@ -1,6 +1,6 @@
 <main class="pt-5 my-5">
     <div class="container pt-5">
-<<<<<<< HEAD
+
         <div class="p-3 bg-show">
 
             <div class="col-12 ">
@@ -28,7 +28,7 @@
                                     Добавить объект
                                 </a>
                             </div>
-=======
+
         <div class="col-12 ">
             <p class="h3 font-weight-bold text-center text-caral">Список объектов</p>
         </div>
@@ -52,7 +52,6 @@
                                class="btn btn-outline-default  waves-effect text-right " style="padding: 8px 26px;">
                                 Добавить объект
                             </a>
->>>>>>> parent of 22bb49c... Merge branch 'Xusan' into dev
                         </div>
                     </div>
                     <table class="table table-bordered w-100 hover" id="builds-table">
