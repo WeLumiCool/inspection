@@ -18,7 +18,7 @@ class BuildController extends Controller
      */
     public function index()
     {
-        return view('admin.builds.index');
+        return view('admin.builds.index', ['types' => Type::all()]);
     }
 
     public function welcome()
@@ -35,6 +35,7 @@ class BuildController extends Controller
     {
         return view('admin.builds.create', ['types' => Type::all()]);
     }
+
     public function isp_create()
     {
         return view('project_build.create', ['types' => Type::all()]);
@@ -80,7 +81,7 @@ class BuildController extends Controller
 
         $build->save();
 
-        return redirect()->route('main');
+        return redirect()->route('admin.builds.index');
     }
     /**
      * Display the specified resource.
@@ -162,7 +163,15 @@ class BuildController extends Controller
      */
     public function destroy(Build $build)
     {
-        //
+        Storage::disk('public')->delete("/files/" . $build->statement);
+        Storage::disk('public')->delete("/files/" . $build->apu);
+        Storage::disk('public')->delete("/files/" . $build->act);
+        Storage::disk('public')->delete("/files/" . $build->project);
+        Storage::disk('public')->delete("/files/" . $build->solution);
+        Storage::disk('public')->delete("/files/" . $build->certificate);
+        $build->delete();
+
+        return redirect()->route('admin.builds.index');
     }
 
     public function inspector_show($id)
@@ -181,6 +190,11 @@ class BuildController extends Controller
         return DataTables::of(Build::query())
             ->addColumn('actions', function (Build $build) {
                 return view('admin.actions', ['type' => 'builds', 'model' => $build]);
+
+            })
+            ->editColumn('type_id', function (Build $build) {
+                $type = Type::find($build->type_id);
+                return $type['name'];
             })
             ->make(true);
     }
