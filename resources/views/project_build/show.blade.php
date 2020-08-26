@@ -73,7 +73,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row px-1 mt-5 bg-show ">
+            <div class="row mt-3">
+                <div class="col-12 p-3 bg-show">
+                    <div id="map"  class="border-0" style="width: 100%; height: 400px;"></div>
+                </div>
+            </div>
+            <div class="row px-1 mt-3 bg-show ">
                 <div class="col-12  py-4 ">
                     <div class="row mx-5">
                         <div class="col-lg-6 col-12 text-lg-left text-center">
@@ -268,5 +273,27 @@
             $('#frame').attr("src", window.location.origin + "/storage/files/" + part_scr);
             $('#info').modal('show');
         })
+    </script>
+    <script type="text/javascript">
+        // Функция ymaps.ready() будет вызвана, когда
+        // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+        ymaps.ready(init);
+
+        function init() {
+            // Создание карты.
+            var myMap = new ymaps.Map("map", {
+                center: [{{ $build->latitude ?? 42.865388923088396 }}, {{ $build->longitude ?? 74.60104350048829 }}],
+                zoom: 19
+            });
+            myMap.geoObjects.add(new ymaps.Placemark([{{ $build->latitude ?? 42.865388923088396 }}, {{ $build->longitude ?? 74.60104350048829 }}], {
+                balloonContentHeader: '{{ $build->name }}',
+                balloonContentBody: '{{ $build->address }}'
+            }, {
+                preset: 'islands#icon',
+                iconColor: '#0095b6'
+            }))
+        }
+
+
     </script>
 @endpush
