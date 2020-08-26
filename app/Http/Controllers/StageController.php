@@ -58,7 +58,7 @@ class StageController extends Controller
             }
             $stage->document_scan = json_encode($document);
         }
-        SetHistory::save('Добавление', $stage->build->id, $stage->id);
+        SetHistory::save('Добавил', $stage->build->id, $stage->id);
         $stage->save();
         return redirect()->route('admin.builds.show', $stage->build);
     }
@@ -85,7 +85,7 @@ class StageController extends Controller
             }
             $stage->document_scan = json_encode($document);
         }
-        SetHistory::save('Добавление', $stage->build->id, $stage->id);
+        SetHistory::save('Добавил', $stage->build->id, $stage->id);
         $stage->save();
         return redirect()->route('show', $request->build_id);
     }
@@ -151,7 +151,7 @@ class StageController extends Controller
             $stage->document_scan = json_encode($documents);
         }
         $stage->update($request->except(['document_scan', 'images']));
-        SetHistory::save('Обновление', $stage->build->id, $stage->id);
+        SetHistory::save('Обновил', $stage->build->id, $stage->id);
         $stage->save();
         return redirect()->route('admin.builds.show', $stage->build);
     }
@@ -175,16 +175,7 @@ class StageController extends Controller
             }
         }
         $stage->delete();
-        SetHistory::save('Удаление', $stage->build->id, $stage->id);
+        SetHistory::save('Удалил', $stage->build->id, $stage->id);
         return redirect()->route('admin.builds.show', $stage->build);
-    }
-
-    public function datatableData()
-    {
-        return DataTables::of(Stage::query())
-            ->addColumn('actions', function (Stage $stage) {
-                return view('admin.actions', ['type' => 'stages', 'model' => $stage]);
-            })
-            ->make(true);
     }
 }

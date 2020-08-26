@@ -1,7 +1,11 @@
 @extends('admin.layouts.dashboard')
 @section('dashboard_content')
     <div class="container bg-form card-body-admin py-4">
-
+        <div>
+            <a href="{{ route('admin.history.index', $build) }}">
+                Посмотреть историю
+            </a>
+        </div>
         <div class="row p-4" id="show_articles">
             <div class="col-2 py-3"><span class="font-weight-bold">id</span></div>
             <div class="col-10 py-3">{{ $build->id }}</div>

@@ -16,7 +16,7 @@ class History extends Model
 
     public function build()
     {
-        return $this->belongsTo(Build::class);
+        return $this->belongsTo(Build::class, 'object_id');
     }
 
     public function stage()
