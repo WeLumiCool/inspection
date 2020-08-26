@@ -90,21 +90,21 @@
                             <div id="build-{{ $stage->build_id }}Stage-{{ $stage->id }}" class="collapse"
                                  role="tabpanel" aria-labelledby="Stage-{{ $stage->id }}"
                                  data-parent="#accordionStages">
-                                <div class="card-body p-0 border border-bottom-0">
+                                <div class="card-body p-0  ">
                                     <div class="table-ui  mb-3  mb-4">
                                         <div class="row col-lg-12 col-12 pt-0 justify-content-lg-end text-lg-right pt-3 text-center">
                                             <p class="font-weight-bold font-small ">{{ date('d.m.Y',strtotime($stage->date)) }}</p>
                                         </div>
-                                        <div class="row border pl-3">
-                                            <div class="col-lg-3 col-12 text-lg-left py-2 text-center border-right">
+                                        <div class="row  pl-3">
+                                            <div class="col-lg-3 col-12 text-lg-left py-2 text-center">
                                                 <p class="h6 font-weight-bold ">Этап:</p>
                                                 <p class="text-muted">{{ $stage->stage }}</p>
                                             </div>
-                                            <div class="col-lg-6 col-12 text-lg-left py-2 text-center border-right">
+                                            <div class="col-lg-6 col-12 text-lg-left py-2 text-center ">
                                                 <p class="h6 font-weight-bold ">Описание:</p>
                                                 <p class="text-muted">{{ $stage->desc }}</p>
                                             </div>
-                                            <div class="col-lg-3 col-12 text-lg-left py-2 text-center border-right">
+                                            <div class="col-lg-3 col-12 text-lg-left py-2 text-center ">
                                                 <p class="h6 font-weight-bold">Документы: {{ $stage->document }}</p>
                                                 @if(!is_null($stage->document_scan))
                                                     @foreach(json_decode($stage->document_scan) as $doc_path)
@@ -117,8 +117,8 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="row border border-top-0 pl-3 ">
-                                            <div class="col-lg-6 border-right pt-3 col-12 text-lg-left text-center">
+                                        <div class="row  pl-3 ">
+                                            <div class="col-lg-6 pt-3 col-12 text-lg-left text-center">
                                                 <p class="h6 font-weight-bold ">Фото объекта:</p>
                                                 <div class="row">
                                                     @if(!is_null($stage->images))
