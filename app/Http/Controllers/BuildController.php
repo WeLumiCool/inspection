@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Build;
 use App\Services\PdfUploader;
 use App\Services\SetHistory;
+use App\Services\SetHistory;
 use App\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +20,7 @@ class BuildController extends Controller
      */
     public function index()
     {
-        return view('admin.builds.index');
+        return view('admin.builds.index', ['types' => Type::all()]);
     }
 
     public function welcome()
@@ -36,6 +37,7 @@ class BuildController extends Controller
     {
         return view('admin.builds.create', ['types' => Type::all()]);
     }
+
     public function isp_create()
     {
         return view('project_build.create', ['types' => Type::all()]);
@@ -52,11 +54,11 @@ class BuildController extends Controller
         self::general_store($request);
         return redirect()->route('admin.builds.index');
     }
-
     public function isp_store(Request $request)
     {
         self::general_store($request);
         return redirect()->route('main');
+
     }
     public static function general_store($request)
     {
@@ -181,6 +183,11 @@ class BuildController extends Controller
         return DataTables::of(Build::query())
             ->addColumn('actions', function (Build $build) {
                 return view('admin.actions', ['type' => 'builds', 'model' => $build]);
+
+            })
+            ->editColumn('type_id', function (Build $build) {
+                $type = Type::find($build->type_id);
+                return $type['name'];
             })
             ->make(true);
     }
