@@ -3,11 +3,11 @@
     <section class="pt-5">
         <div class="container pt-5 mt-5">
             <div class="row">
-                <div class="col-12 bg-form card-body-admin p-5">
+                <div class="col-12 bg-form card-body-admin p-lg-5">
                     <form action="{{ route('isp.store.build') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row justify-content-center">
-                            <p class="font-weight-bold h2">Добавление объекта</p>
+                            <p class="text-center font-weight-bold h2">Добавление объекта</p>
                         </div>
                         <div class="form-group">
                             <label for="name_field">ФИО:<span class="text-danger">*</span></label>
