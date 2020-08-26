@@ -1,3 +1,6 @@
+body{
+    background: #F8FAFF;
+}
 .accordion.md-accordion.accordion-blocks .card {
     margin-bottom: 0.4rem;
     -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
@@ -71,4 +74,64 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
 }
 .fa-arrow-alt-circle-down.stage:hover {
     color: rgb(4, 190, 8);
+}
+.btn-exit{
+    background: #0F3753;
+    border-radius: 20px;
+    padding: 10px 15px;
+    color: white;
+    margin-right: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-admin{
+    background: #0F3753;
+    border-radius: 20px;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none!important;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.btn-add{
+    background: #4285f4;
+    border-radius: 20px;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none!important;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.btn-map{
+    background: #0F3753;
+    border-radius: 20px;
+    padding: 10px 15px;
+    color: white!important;
+    margin-right: 10px;
+}
+.btn-show{
+    background: #658FA4;
+    padding: 10px 15px;
+    color: white!important;
+    border-radius: 10px;
+    outline: none;
+    border: 0;
+}
+.btn-green-stage{
+    outline: none;
+    border: 0;
+    padding: 10px 15px;
+    color: white!important;
+    background: #3AA93F;
+    border-radius: 10px;
+}
+.btn-show:hover,.btn-green-stage:hover{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.45);
+    color: white !important;
+    transition: 0.5s;
+}
+.bg-show{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 23px rgba(0, 0, 0, 0.14);
+    border-radius: 10px;
 }
