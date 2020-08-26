@@ -143,7 +143,7 @@ class BuildController extends Controller
 
 
         $build->update($request->except('statement', 'apu', 'act', 'project', 'solution', 'certificate'));
-        SetHistory::save('Обновление', $build->id, null);
+        SetHistory::save('Обновил', $build->id, null);
         $build->save();
         return redirect()->route('admin.builds.index');
     }
@@ -162,7 +162,7 @@ class BuildController extends Controller
         Storage::disk('public')->delete("/files/" . $build->project);
         Storage::disk('public')->delete("/files/" . $build->solution);
         Storage::disk('public')->delete("/files/" . $build->certificate);
-        SetHistory::save('Удаление', $build->id, null);
+        SetHistory::save('Удалил', $build->id, null);
         $build->delete();
         return redirect()->route('admin.builds.index');
     }

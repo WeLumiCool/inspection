@@ -98,7 +98,7 @@
                                                aria-expanded="true"
                                                aria-controls="build-{{ $stage->build_id }}Stage-{{ $stage->id }}">
                                                 <h6 class="mt-1 mb-0  ">
-                                                    <span>Этап: <span>Котлован</span></span>
+                                                    <span>Этап: <span>{{ $stage->stage }}</span></span>
                                                     <i class="fas fa-angle-down rotate-icon"
                                                        style="margin-top: 2px;"></i>
                                                 </h6>
