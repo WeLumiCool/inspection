@@ -1,8 +1,8 @@
 @extends('admin.layouts.dashboard')
 @section('dashboard_content')
     <div class="container bg-form card-body-admin py-4">
-        <div>
-            <a href="{{ route('admin.history.index', $build) }}">
+        <div class="text-center">
+            <a class="btn btn-info" href="{{ route('admin.history.index', $build) }}">
                 Посмотреть историю
             </a>
         </div>
