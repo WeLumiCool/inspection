@@ -19,6 +19,6 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.main');
+        return redirect()->route('admin.builds.index');
     }
 }

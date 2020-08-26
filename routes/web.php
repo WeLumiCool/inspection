@@ -67,6 +67,3 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
-//Route::get('/builds/welcome_table', 'BuildController@datatableData2')->name('welcome.datatable.data');
-
-//Route::get('/home', 'HomeController@index')->name('home');

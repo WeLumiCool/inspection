@@ -135,3 +135,10 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
     box-shadow: 0px 4px 23px rgba(0, 0, 0, 0.14);
     border-radius: 10px;
 }
+.btn_stage_docs{
+    border: 0;
+    outline: none;
+    background: white;
+}.btn_stage_docs:hover{
+    cursor: pointer;
+ }

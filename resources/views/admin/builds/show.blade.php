@@ -108,11 +108,10 @@
                                                 <p class="h6 font-weight-bold">Документы: {{ $stage->document }}</p>
                                                 @if(!is_null($stage->document_scan))
                                                     @foreach(json_decode($stage->document_scan) as $doc_path)
-                                                        <a href="{{ asset('storage/files/' . $doc_path) }}"
-                                                           class="mx-auto" download>
+                                                        <button data-path="{{ $doc_path }}" class="mx-auto show_doc btn">
                                                             <i class="fas pt-3 fa-file-pdf fa-4x"
                                                                style="color: red;"></i>
-                                                        </a>
+                                                        </button>
                                                     @endforeach
                                                 @endif
                                             </div>
@@ -204,13 +203,12 @@
                         <div class="form-group">
                             <label for="stage_field">Докуметы:<span class="text-danger">*</span></label>
                             <input id="stage_field" type="file" class="form-control" name="document_scan[]"
-                                   required multiple>
+                                   accept="application/pdf" required multiple>
                         </div>
                         <div class="form-group">
                             <label for="stage_field">Изображения:<span class="text-danger">*</span></label>
                             <input id="stage_field" type="file" class="form-control" name="images[]"
-                                   required
-                                   multiple>
+                                   accept="image/*" required multiple>
                         </div>
                         <div class="form-group">
                             <label for="stage_field">Примечание:<span class="text-danger">*</span></label>

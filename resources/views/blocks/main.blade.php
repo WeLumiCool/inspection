@@ -33,6 +33,7 @@
                             <th scope="col">Адрес</th>
                             <th scope="col">Тип объекта</th>
                             <th scope="col">Площадь</th>
+                            <th scope="col">Разрешение</th>
                         </tr>
 
                         </thead>
@@ -69,6 +70,7 @@
                         {data: 'address', name: 'address'},
                         {data: 'type_id', name: 'type_id'},
                         {data: 'area', name: 'area'},
+                        {data: 'legality', name: 'legality'},
                     ],
                     columnDefs: [
                         {
@@ -96,6 +98,7 @@
                         {data: 'address', name: 'address'},
                         {data: 'type_id', name: 'type_id'},
                         {data: 'area', name: 'area'},
+                        {data: 'legality', name: 'legality'},
                     ],
                 });
                 $('.filter-select').change(function () {

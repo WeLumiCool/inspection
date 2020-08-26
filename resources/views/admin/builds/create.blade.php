@@ -13,27 +13,6 @@
                         <label for="name_field">ФИО:<span class="text-danger">*</span></label>
                         <input id="name_field" type="text" class="form-control" name="name" required>
                     </div>
-
-                    <div class="form-group">
-                        <label for="statement_field">Заявление:<span class="text-danger">*</span></label>
-                        <input id="statement_field" type="file" class="form-control" name="statement" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="apu_field">АПУ/ИТУ:<span class="text-danger">*</span></label>
-                        <input id="apu_field" type="file" class="form-control" name="apu" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="act_field">Акт:<span class="text-danger">*</span></label>
-                        <input id="act_field" type="file" class="form-control" name="act" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="project_field">Проект:<span class="text-danger">*</span></label>
-                        <input id="project_field" type="file" class="form-control" name="project" required>
-                    </div>
-
                     <div class="form-group">
                         <label for="type_of_object">Тип объекта:</label>
                         <select class="form-control" id="type_of_object" name="type_id">
@@ -42,25 +21,42 @@
                             @endforeach
                         </select>
                     </div>
-
                     <div class="form-group">
-                        <label for="address_field">Адрес:<span class="text-danger">*</span></label>
-                        <input id="address_field" type="text" class="form-control" name="address" required>
+                        <label for="statement_field">Заявление:<span class="text-danger">*</span></label>
+                        <input id="statement_field" type="file" class="form-control" name="statement" accept="application/pdf" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="area_field">Площадь:<span class="text-danger">*</span></label>
-                        <input id="area_field" type="text" class="form-control" name="area" required>
+                        <label for="apu_field">АПУ/ИТУ:<span class="text-danger">*</span></label>
+                        <input id="apu_field" type="file" class="form-control" name="apu" accept="application/pdf" required>
                     </div>
+
+                    <div class="form-group">
+                        <label for="act_field">Акт:<span class="text-danger">*</span></label>
+                        <input id="act_field" type="file" class="form-control" name="act" accept="application/pdf" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project_field">Проект:<span class="text-danger">*</span></label>
+                        <input id="project_field" type="file" class="form-control" name="project" accept="application/pdf" required>
+                    </div>
+
+
 
                     <div class="form-group">
                         <label for="project_field">Разрешение на строительство:<span class="text-danger">*</span></label>
-                        <input id="project_field" type="file" class="form-control" name="solution" required>
+                        <input id="project_field" type="file" class="form-control" name="solution" accept="application/pdf" required>
                     </div>
 
                     <div class="form-group">
                         <label for="certificate_field">АКТ оценки соответсвия вводимого в эксплуатацию завершенного строительством объекта:<span class="text-danger">*</span></label>
-                        <input id="certificate_field" type="file" class="form-control" name="certificate" required>
+                        <input id="certificate_field" type="file" class="form-control" name="certificate" accept="application/pdf" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="area_field">Площадь:<span class="text-danger">*</span></label>
+                        <input id="area_field" type="text" class="form-control" name="area" required>
                     </div>
 
                     <div class="form-group" >
@@ -69,11 +65,15 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="address_field">Адрес:<span class="text-danger">*</span></label>
+                        <input id="address_field" type="text" class="form-control" name="address" required>
+                    </div>
+                    <div class="form-group">
                         <input type="text" class="form-control d-none" id="latitude" name="latitude" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="text"  class="form-control d-none" id="longitude" name="longitude" required>
+                        <input type="text"  class="form-control d-none" id="longitude" name="longitude"  required>
                     </div>
 
                     <div class="form-group">

@@ -4,9 +4,9 @@
             <img src="{{ asset('image/admin_logo.svg') }}" class="img-fluid" alt="logo" >
         </a>
 
-        <a href="{{ route('admin.dashboard') }}"
-           class="list-group-item list-group-item-action waves-effect {{ request()->is('admin/dashboard*') ? 'active' : '' }}">
-            <i class="fas fa-tachometer-alt mr-3"></i>{{ __('Dashboard') }}</a>
+        <a href="{{ route('admin.builds.index') }}"
+           class="list-group-item list-group-item-action waves-effect {{ request()->is('admin/builds*') ? 'active' : '' }}">
+            <i class="fas fa-building mr-3"></i>{{ __('Объекты') }}</a>
 
         <a href="{{ route('admin.types.index') }}"
            class="list-group-item list-group-item-action waves-effect {{ request()->is('admin/type*') ? 'active' : '' }}">
@@ -15,9 +15,6 @@
            class="list-group-item list-group-item-action waves-effect {{ request()->is('admin/user*') ? 'active' : '' }}">
             <i class="fas fa-users mr-3"></i>{{ __('Пользовтели') }}</a>
 
-        <a href="{{ route('admin.builds.index') }}"
-           class="list-group-item list-group-item-action waves-effect {{ request()->is('admin/builds*') ? 'active' : '' }}">
-            <i class="fas fa-building mr-3"></i>{{ __('Объекты') }}</a>
 
     </div>
 </div>

@@ -16,6 +16,15 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="type_of_object">Тип объекта:</label>
+                        <select class="form-control" id="type_of_object" name="type_id">
+                            @foreach($types as $type)
+                                <option value="{{ $type->id }}" {{ $build->type_id == $type->id ? 'selected' : '' }} >{{ $type->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label for="statement_field">Заявление:<span class="text-danger">*</span></label>
                         <input id="statement_field" type="file" class="form-control" name="statement" value="{{ $build->statement }}">
                     </div>
@@ -35,33 +44,25 @@
                         <input id="project_field" type="file" class="form-control" name="project" value="{{ $build->project }}">
                     </div>
 
-                    <div class="form-group">
-                        <label for="type_of_object">Тип объекта:</label>
-                        <select class="form-control" id="type_of_object" name="type_id">
-                            @foreach($types as $type)
-                                <option value="{{ $type->id }}" {{ $build->type_id == $type->id ? 'selected' : '' }} >{{ $type->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="name_field">Адрес:<span class="text-danger">*</span></label>
-                        <input id="name_field" type="text" class="form-control" name="address" value="{{ $build->address }}" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="area_field">Площадь:<span class="text-danger">*</span></label>
-                        <input id="area_field" type="text" class="form-control" name="area" value="{{ $build->area }}" required>
-                    </div>
 
                     <div class="form-group">
                         <label for="project_field">Разрешение на строительство:<span class="text-danger">*</span></label>
                         <input id="project_field" type="file" class="form-control" name="solution" value="{{$build->solution}}">
                     </div>
 
+
+                    <div class="form-group">
+                        <label for="area_field">Площадь:<span class="text-danger">*</span></label>
+                        <input id="area_field" type="text" class="form-control" name="area" value="{{ $build->area }}" required>
+                    </div>
                     <div class="form-group">
                         <label for="note_field">Примечание:<span class="text-danger">*</span></label>
                         <input id="note_field" type="text" class="form-control" name="note" value="{{$build->note}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name_field">Адрес:<span class="text-danger">*</span></label>
+                        <input id="name_field" type="text" class="form-control" name="address" value="{{ $build->address }}" required>
                     </div>
                     <button type="submit" title="{{ __('Изменить') }}"
                             class="btn n btn-success">{{ __('Изменить') }}</button>
