@@ -86,7 +86,10 @@
                     table.column($(this).data('column'))
                         .search($(this).val())
                         .draw();
-                })
+                });
+                console.log('compact');
+                $('#builds-table').addClass("compact");
+
             } else {
                 var table = $('#builds-table').DataTable({
                     processing: true,
@@ -107,7 +110,9 @@
                         .search($(this).val())
                         .draw();
                 })
+
             }
+
             $('#builds-table tbody').on('click', 'tr', function () {
 
                 let data = table.row(this).data();
