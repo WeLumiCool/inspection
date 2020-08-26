@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Build;
 use App\Services\PdfUploader;
+use App\Services\SetHistory;
 use App\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -48,26 +49,17 @@ class BuildController extends Controller
     public function store(Request $request)
     {
 
-//        dd($request);
-
-        $build = Build::create($request->all());
-
-
-        $build->statement = PdfUploader::upload(request('statement'), 'statements', 'statement');
-        $build->apu = PdfUploader::upload(request('apu'), 'apu', 'apu');
-        $build->act = PdfUploader::upload(request('act'), 'acts', 'act');
-        $build->project = PdfUploader::upload(request('project'), 'projects', 'project');
-        $build->solution = PdfUploader::upload(request('solution'), 'solutions', 'solution');
-        $build->certificate = PdfUploader::upload(request('certificate'), 'certificates', 'certificate');
-
-        $build->save();
-
+        self::general_store($request);
         return redirect()->route('admin.builds.index');
     }
+
     public function isp_store(Request $request)
     {
-
-
+        self::general_store($request);
+        return redirect()->route('main');
+    }
+    public static function general_store($request)
+    {
         $build = Build::create($request->all());
 
 
@@ -78,9 +70,8 @@ class BuildController extends Controller
         $build->solution = PdfUploader::upload(request('solution'), 'solutions', 'solution');
         $build->certificate = PdfUploader::upload(request('certificate'), 'certificates', 'certificate');
 
+        SetHistory::save('Добавил', $build->id, null);
         $build->save();
-
-        return redirect()->route('main');
     }
     /**
      * Display the specified resource.
@@ -150,6 +141,7 @@ class BuildController extends Controller
 
 
         $build->update($request->except('statement', 'apu', 'act', 'project', 'solution', 'certificate'));
+        SetHistory::save('Обновление', $build->id, null);
         $build->save();
         return redirect()->route('admin.builds.index');
     }
@@ -162,7 +154,15 @@ class BuildController extends Controller
      */
     public function destroy(Build $build)
     {
-        //
+        Storage::disk('public')->delete("/files/" . $build->statement);
+        Storage::disk('public')->delete("/files/" . $build->apu);
+        Storage::disk('public')->delete("/files/" . $build->act);
+        Storage::disk('public')->delete("/files/" . $build->project);
+        Storage::disk('public')->delete("/files/" . $build->solution);
+        Storage::disk('public')->delete("/files/" . $build->certificate);
+        SetHistory::save('Удаление', $build->id, null);
+        $build->delete();
+        return redirect()->route('admin.builds.index');
     }
 
     public function inspector_show($id)
@@ -192,6 +192,14 @@ class BuildController extends Controller
                 $type = Type::find($build->type_id);
                 return $type['name'];
             })
+            ->editColumn('legality', function (Build $build) {
+                if ($build->legality) {
+                    return '<i class="fas fa-check fa-lg"></i>';
+                } else {
+                    return '<i class="fas fa-ban fa-lg"></i>';
+                }
+            })
+            ->rawColumns(['legality'])
             ->make(true);
     }
 
