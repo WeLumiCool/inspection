@@ -173,6 +173,11 @@ class BuildController extends Controller
         return view('project_build.show', compact('build'));
     }
 
+    public function map() {
+
+        return view('project_build.maps', ['builds' => Build::all()]);
+    }
+
     public function datatableData()
     {
         return DataTables::of(Build::query())

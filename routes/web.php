@@ -59,13 +59,11 @@ Route::get('/create', 'BuildController@isp_create')->name('isp.create.build');
 
 Route::get('/show/{id}', 'BuildController@inspector_show')->name('show');
 
-Route::get('/maps', function () {
-    return view('project_build.maps');
-})->name('maps');
+    Route::get('/maps', 'BuildController@map')->name('maps');
 Route::post('isp_store', 'StageController@isp_store')->name('isp_store');
 });
 
 Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
-Route::get('/builds/welcome_table', 'BuildController@datatableData2')->name('welcome.datatable.data');
+//Route::get('/builds/welcome_table', 'BuildController@datatableData2')->name('welcome.datatable.data');
 
 //Route::get('/home', 'HomeController@index')->name('home');
