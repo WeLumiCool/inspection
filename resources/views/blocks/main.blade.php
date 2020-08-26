@@ -87,6 +87,7 @@
                         .search($(this).val())
                         .draw();
                 });
+            $('#builds-table').addClass("compact");
             } else {
                 table = $('#builds-table').DataTable({
                     processing: true,
@@ -106,7 +107,9 @@
                         .search($(this).val())
                         .draw();
                 })
+
             }
+
             $('#builds-table tbody').on('click', 'tr', function () {
                 let data = table.row(this).data();
                 window.location.href = window.location.origin + '/show/' + data.id;
