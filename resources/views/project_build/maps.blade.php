@@ -85,5 +85,6 @@
             clusterer.add(geoObjects)
             myMap.geoObjects.add(clusterer);
         });
+
     </script>
 @endpush

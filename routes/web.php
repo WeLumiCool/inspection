@@ -40,9 +40,13 @@ Route::prefix('admin')->name('admin.')->middleware('admin')
         Route::resource('stages', 'StageController');
         //CRUD for builds
         Route::get('/builds/datatable', 'BuildController@datatableData')->name('build.datatable.data');
+
+
+
         Route::resource('builds', 'BuildController');
 
-//    Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
+        Route::get('history/index/{build}', 'HistoryController@index')->name('history.index');
+        Route::get('/histories/datatable/{build}', 'HistoryController@datatableData')->name('history.datatable.data');
 
 
         //AJAX
@@ -64,6 +68,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('isp_store/stage', 'StageController@isp_store')->name('isp.store.stage');
     Route::post('isp_store/build', 'BuildController@isp_store')->name('isp.store.build');
+    Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
 });
 
-Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');

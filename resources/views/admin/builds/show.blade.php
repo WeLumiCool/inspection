@@ -1,7 +1,11 @@
 @extends('admin.layouts.dashboard')
 @section('dashboard_content')
     <div class="container bg-form card-body-admin py-4">
-
+        <div>
+            <a href="{{ route('admin.history.index', $build) }}">
+                Посмотреть историю
+            </a>
+        </div>
         <div class="row p-4" id="show_articles">
             <div class="col-2 py-3"><span class="font-weight-bold">id</span></div>
             <div class="col-10 py-3">{{ $build->id }}</div>
@@ -15,7 +19,7 @@
             <div class="col-10 py-3">
                 <button class="show_doc btn btn-primary" data-path="{{ $build->statement }}">Посмотреть</button>
             </div>
-            <div class="col-2 py-3" ><span class="font-weight-bold">АПУ/ИТУ:</span></div>
+            <div class="col-2 py-3"><span class="font-weight-bold">АПУ/ИТУ:</span></div>
             <div class="col-10 py-3">
                 <button class="show_doc btn btn-primary" data-path="{{ $build->apu }}">Посмотреть</button>
             </div>
@@ -44,6 +48,11 @@
                 <div class="col-10">присутствует</div>
             @else
                 <div class="col-10">отсутствует</div>
+            @endif
+            @if($build->latitude && $build->longitude)
+                <div class="col-12 mt-4 border-0 p-0">
+                    <div id="map"  class="border-0" style="width: 100%; height: 400px;"></div>
+                </div>
             @endif
         </div>
 
@@ -92,7 +101,8 @@
                                  data-parent="#accordionStages">
                                 <div class="card-body p-0  ">
                                     <div class="table-ui  mb-3  mb-4">
-                                        <div class="row col-lg-12 col-12 pt-0 justify-content-lg-end text-lg-right pt-3 text-center">
+                                        <div
+                                            class="row col-lg-12 col-12 pt-0 justify-content-lg-end text-lg-right pt-3 text-center">
                                             <p class="font-weight-bold font-small ">{{ date('d.m.Y',strtotime($stage->date)) }}</p>
                                         </div>
                                         <div class="row  pl-3">
@@ -191,12 +201,12 @@
                         </div>
                         <div class="form-group">
                             <label for="stage_field">Дата проверки:<span
-                                        class="text-danger">*</span></label>
+                                    class="text-danger">*</span></label>
                             <input id="stage_field" type="date" class="form-control" name="date" required>
                         </div>
                         <div class="form-group">
                             <label for="stage_field">Наименование докуметов:<span
-                                        class="text-danger">*</span></label>
+                                    class="text-danger">*</span></label>
                             <input id="stage_field" type="text" class="form-control" name="document"
                                    required>
                         </div>
@@ -240,23 +250,7 @@
             </div>
         </div>
     </div>
-    @push('scripts')
-        <script>
-            $('.show_doc').click(function (e) {
-                part_scr = e.currentTarget.dataset.path;
-                $('#frame').attr("src", window.location.origin + "/storage/files/" + part_scr);
-                $('#info').modal('show');
-            })
-        </script>
-        <script>
-            function deleteConfirm(me) {
-                if (confirm('Вы дествительно хотите удалить ?')) {
-                    let model_id = me.dataset.id;
-                    $('form#form-' + model_id).submit();
-                }
-            }
-        </script>
-    @endpush
+
 @endsection
 @push('styles')
     <style>
@@ -266,4 +260,43 @@
             border: 1px solid #dcdcdd;
         }
     </style>
+@endpush
+@push('scripts')
+    <script>
+        $('.show_doc').click(function (e) {
+            part_scr = e.currentTarget.dataset.path;
+            $('#frame').attr("src", window.location.origin + "/storage/files/" + part_scr);
+            $('#info').modal('show');
+        })
+    </script>
+    <script>
+        function deleteConfirm(me) {
+            if (confirm('Вы дествительно хотите удалить ?')) {
+                let model_id = me.dataset.id;
+                $('form#form-' + model_id).submit();
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        // Функция ymaps.ready() будет вызвана, когда
+        // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+        ymaps.ready(init);
+
+        function init() {
+            // Создание карты.
+            var myMap = new ymaps.Map("map", {
+                center: [{{ $build->latitude ?? 42.865388923088396 }}, {{ $build->longitude ?? 74.60104350048829 }}],
+                zoom: 19
+            });
+            myMap.geoObjects.add(new ymaps.Placemark([{{ $build->latitude ?? 42.865388923088396 }}, {{ $build->longitude ?? 74.60104350048829 }}], {
+                balloonContentHeader: '{{ $build->name }}',
+                balloonContentBody: '{{ $build->address }}'
+            }, {
+                preset: 'islands#icon',
+                iconColor: '#0095b6'
+            }))
+        }
+
+
+    </script>
 @endpush
