@@ -20,7 +20,7 @@
                         </div>
                         <div
                                 class="d-flex col-lg-3 justify-content-lg-end my-2 pr-lg-2 col-12 d-flex justify-content-center  ">
-                            <a href="{{ route('isp.create.build') }}" type="button"
+                            <a href="{{ route('create') }}" type="button"
                                class="btn btn-outline-default  waves-effect text-right " style="padding: 8px 26px;">
                                 Добавить объект
                             </a>
