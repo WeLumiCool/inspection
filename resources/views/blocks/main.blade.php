@@ -59,9 +59,9 @@
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function () {
-
+            let table;
             if (window.innerWidth < 768) {
-                let table = $('#builds-table').DataTable({
+                table = $('#builds-table').DataTable({
                     processing: true,
                     serverSide: true,
                     ajax: '{!! route('build2.datatable.data') !!}',
@@ -87,16 +87,13 @@
                         .search($(this).val())
                         .draw();
                 });
-                console.log('compact');
-                $('#builds-table').addClass("compact");
-
+            $('#builds-table').addClass("compact");
             } else {
-                var table = $('#builds-table').DataTable({
+                table = $('#builds-table').DataTable({
                     processing: true,
                     serverSide: true,
                     ajax: '{!! route('build2.datatable.data') !!}',
                     columns: [
-                        // {data: 'id', name: 'id'},
                         {data: 'name', name: 'name'},
                         {data: 'address', name: 'address'},
                         {data: 'type_id', name: 'type_id'},
@@ -114,11 +111,12 @@
             }
 
             $('#builds-table tbody').on('click', 'tr', function () {
-
                 let data = table.row(this).data();
                 window.location.href = window.location.origin + '/show/' + data.id;
             });
-
         });
+    </script>
+    <script>
+
     </script>
 @endpush
