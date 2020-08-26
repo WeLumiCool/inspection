@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Build;
 use App\Services\PdfUploader;
 use App\Services\SetHistory;
-use App\Services\SetHistory;
 use App\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
