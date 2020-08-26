@@ -3,7 +3,7 @@
     <section class="pt-5">
         <div class="container pt-5 mt-5">
             <div class="row">
-                <div class="col-12 bg-form card-body-admin ">
+                <div class="col-12 bg-form card-body-admin p-5">
                     <form action="{{ route('isp.store.build') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row justify-content-center">
