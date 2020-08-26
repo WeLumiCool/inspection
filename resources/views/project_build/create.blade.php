@@ -32,67 +32,125 @@
                        <div class="form-group">
                            <label for="project_field">Проект:<span class="text-danger">*</span></label>
                            <input id="project_field" type="file" class="form-control" name="project" required>
-                       </div>
+                           {{--<form action="" method="post">--}}
+                               {{--<div class="col-12 text-center pt-2">--}}
+                                   {{--<h2 class="font-weight-bold">Добавление объекта</h2>--}}
+                               {{--</div>--}}
+                               {{--<div class="col-12 col-lg-12 ">--}}
+                                   {{--<div class="form-group">--}}
+                                       {{--<label for="name_field">ФИО:<span class="text-danger">*</span></label>--}}
+                                       {{--<input id="name_field" type="text" class="form-control" name="name" required>--}}
+                                   {{--</div>--}}
 
-                       <div class="form-group">
-                           <label for="type_of_object">Тип объекта:</label>
-                           <select class="form-control" id="type_of_object" name="type_id">
-                               @foreach($types as $type)
-                                   <option value="{{ $type->id }}">{{ $type->name }}</option>
-                               @endforeach
-                           </select>
-                       </div>
+                                   <div class="form-group">
+                                       <label for="type_of_object">Тип объекта:</label>
+                                       <select class="form-control" id="type_of_object" name="type_id">
+                                           @foreach($types as $type)
+                                               <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                           @endforeach
+                                       </select>
+                                   </div>
+                                   {{--<div class="form-group">--}}
+                                       {{--<label for="statement_field">Заявление:<span class="text-danger">*</span></label>--}}
+                                       {{--<input id="statement_field" type="file" class="form-control" name="statement"--}}
+                                              {{--required>--}}
+                                   {{--</div>--}}
 
-                       <div class="form-group">
-                           <label for="address_field">Адрес:<span class="text-danger">*</span></label>
-                           <input id="address_field" type="text" class="form-control" name="address" required>
-                       </div>
+                                   <div class="form-group">
+                                       <label for="address_field">Адрес:<span class="text-danger">*</span></label>
+                                       <input id="address_field" type="text" class="form-control" name="address" required>
+                                   </div>
+                                   {{--<div class="form-group">--}}
+                                       {{--<label for="apu_field">АПУ/ИТУ:<span class="text-danger">*</span></label>--}}
+                                       {{--<input id="apu_field" type="file" class="form-control" name="apu" required>--}}
+                                   {{--</div>--}}
 
-                       <div class="form-group">
-                           <label for="area_field">Площадь:<span class="text-danger">*</span></label>
-                           <input id="area_field" type="text" class="form-control" name="area" required>
-                       </div>
+                                   <div class="form-group">
+                                       <label for="area_field">Площадь:<span class="text-danger">*</span></label>
+                                       <input id="area_field" type="text" class="form-control" name="area" required>
+                                   </div>
+                                   {{--<div class="form-group">--}}
+                                       {{--<label for="act_field">Акт:<span class="text-danger">*</span></label>--}}
+                                       {{--<input id="act_field" type="file" class="form-control" name="act" required>--}}
+                                   {{--</div>--}}
 
-                       <div class="form-group">
-                           <label for="project_field">Разрешение на строительство:<span class="text-danger">*</span></label>
-                           <input id="project_field" type="file" class="form-control" name="solution" required>
-                       </div>
+                                   <div class="form-group">
+                                       <label for="project_field">Разрешение на строительство:<span class="text-danger">*</span></label>
+                                       <input id="project_field" type="file" class="form-control" name="solution" required>
+                                   </div>
+                                   {{--<div class="form-group">--}}
+                                       {{--<label for="project_field">Проект:<span class="text-danger">*</span></label>--}}
+                                       {{--<input id="project_field" type="file" class="form-control" name="project" required>--}}
+                                   {{--</div>--}}
 
-                       <div class="form-group">
-                           <label for="certificate_field">АКТ оценки соответсвия вводимого в эксплуатацию завершенного строительством объекта:<span class="text-danger">*</span></label>
-                           <input id="certificate_field" type="file" class="form-control" name="certificate" required>
-                       </div>
+                                   <div class="form-group">
+                                       <label for="certificate_field">АКТ оценки соответсвия вводимого в эксплуатацию завершенного строительством объекта:<span class="text-danger">*</span></label>
+                                       <input id="certificate_field" type="file" class="form-control" name="certificate" required>
+                                   </div>
+                                   {{--<div class="form-group">--}}
+                                       {{--<label for="type_of_object">Тип объекта:</label>--}}
+                                       {{--<select class="form-control" id="type_of_object" name="type_id">--}}
+                                           {{--<option value=""></option>--}}
+                                       {{--</select>--}}
+                                   {{--</div>--}}
 
-                       <div class="form-group" >
-                           <label for="note_field">Примечание:<span class="text-danger">*</span></label>
-                           <input id="note_field" type="text" class="form-control" name="note" required>
-                       </div>
+                                   <div class="form-group" >
+                                       <label for="note_field">Примечание:<span class="text-danger">*</span></label>
+                                       <input id="note_field" type="text" class="form-control" name="note" required>
+                                   </div>
+                                   {{--<div class="form-group">--}}
+                                       {{--<label for="name_field">Адрес:<span class="text-danger">*</span></label>--}}
+                                       {{--<input id="name_field" type="text" class="form-control" name="address" required>--}}
+                                   {{--</div>--}}
 
-                       <div class="form-group">
-                           <input type="text" class="form-control d-none" id="latitude" name="latitude" required>
-                       </div>
+                                   <div class="form-group">
+                                       <input type="text" class="form-control d-none" id="latitude" name="latitude" required>
+                                   </div>
+                                   {{--<div class="form-group">--}}
+                                       {{--<label for="area_field">Площадь:<span class="text-danger">*</span></label>--}}
+                                       {{--<input id="area_field" type="text" class="form-control" name="area" required>--}}
+                                   {{--</div>--}}
 
-                       <div class="form-group">
-                           <input type="text"  class="form-control d-none" id="longitude" name="longitude" required>
-                       </div>
+                                   <div class="form-group">
+                                       <input type="text"  class="form-control d-none" id="longitude" name="longitude" required>
+                                   </div>
+                                   {{--<div class="form-group">--}}
+                                       {{--<label for="project_field">Разрешение на строительство:<span--}}
+                                                   {{--class="text-danger">*</span></label>--}}
+                                       {{--<input id="project_field" type="file" class="form-control" name="solution" required>--}}
+                                   {{--</div>--}}
+                                   {{--<div class="form-group">--}}
+                                       {{--<label for="certificate_field">АКТ оценки соответсвия вводимого в эксплуатацию завершенного строительством объекта:<span class="text-danger">*</span></label>--}}
+                                       {{--<input id="certificate_field" type="file" class="form-control" name="certificate" required>--}}
+                                   {{--</div>--}}
 
-                       <div class="form-group">
-                           <div class="form-group col">
-                               <div id="map" style="width: 100%; height: 400px;"></div>
-                           </div>
-                       </div>
+                                   <div class="form-group">
+                                       <div class="form-group col">
+                                           <div id="map" style="width: 100%; height: 400px;"></div>
+                                           {{--<div class="form-group">--}}
+                                               {{--<label for="note_field">Примечание:<span class="text-danger">*</span></label>--}}
+                                               {{--<input id="note_field" type="text" class="form-control" name="note" required>--}}
+                                           {{--</div>--}}
+                                           {{--                    <div class="form-check pb-2">--}}
+                                           {{--                        <input type="checkbox" name="legality" class="form-check-input"--}}
+                                           {{--                               id="is_active-checkbox">--}}
+                                           {{--                        <label class="form-check-label" for="is_active-checkbox">Легальность</label>--}}
+                                           {{--                    </div>--}}
+
+                                           {{--<button type="submit" title="{{ ('Добавить') }}"--}}
+                                                   {{--class="btn n btn-success">{{ ('Добавить') }}</button>--}}
+                                       {{--</div>--}}
 
 
-                       <button type="submit" title="{{ __('Добавить') }}"
-                               class="btn n btn-success">{{ __('Добавить') }}</button>
-                   </form>
+                                       <button type="submit" title="{{ __('Добавить') }}"
+                                               class="btn n btn-success">{{ __('Добавить') }}</button>
+                           </form>
                </div>
            </div>
        </div>
    </section>
 @endsection
-
-@push('scripts')
+-@push('scripts')
 
     <script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">

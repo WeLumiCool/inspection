@@ -35,12 +35,10 @@ class BuildController extends Controller
     {
         return view('admin.builds.create', ['types' => Type::all()]);
     }
-
     public function isp_create()
     {
         return view('project_build.create', ['types' => Type::all()]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -171,6 +169,11 @@ class BuildController extends Controller
     {
         $build = Build::find($id);
         return view('project_build.show', compact('build'));
+    }
+
+    public function map() {
+
+        return view('project_build.maps', ['builds' => Build::all()]);
     }
 
     public function datatableData()
