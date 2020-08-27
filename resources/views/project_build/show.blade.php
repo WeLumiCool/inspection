@@ -147,7 +147,7 @@
                                                                     @foreach(json_decode($stage->images) as $media)
                                                                         <div class="col-12 col-lg-3 position-relative">
                                                                             <a href="{{ asset('storage/files/'.$media) }}"
-                                                                               data-fancybox="media{{$stage->build_id}}"
+                                                                               data-fancybox="media-{{$stage->id}}"
                                                                                class="img-fluid">
                                                                                 <img
                                                                                     src="{{ asset('storage/files/'.$media) }}"
@@ -172,16 +172,12 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 @endforeach
                             </div>
-
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -251,7 +247,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <iframe id="frame" src="" height="500" width="750"></iframe>
+                        <iframe id="frame" class="modal-doc" ></iframe>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" data-dismiss="modal">Закрыть</button>
