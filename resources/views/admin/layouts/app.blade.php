@@ -15,7 +15,7 @@
     @stack('styles')
     <script src="https://api-maps.yandex.ru/2.1/?apikey={{ env('YANDEX_MAPS_API_KEY') }}&lang=ru_RU" type="text/javascript"></script>
 </head>
-<body>
+<body style="background: #eeeeee">
 <div id="app">
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
