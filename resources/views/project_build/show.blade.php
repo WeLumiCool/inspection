@@ -147,7 +147,7 @@
                                                                     @foreach(json_decode($stage->images) as $media)
                                                                         <div class="col-12 col-lg-3 position-relative">
                                                                             <a href="{{ asset('storage/files/'.$media) }}"
-                                                                               data-fancybox="media{{$stage->build_id}}"
+                                                                               data-fancybox="media-{{$stage->id}}"
                                                                                class="img-fluid">
                                                                                 <img
                                                                                     src="{{ asset('storage/files/'.$media) }}"
@@ -172,16 +172,12 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 @endforeach
                             </div>
-
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -242,6 +238,7 @@
                 </div>
             </div>
         </div>
+
         {{--<div class="modal fade" id="info" tabindex="-1" aria-labelledby="docModalLabel" aria-hidden="true">--}}
             {{--<div class="modal-dialog modal-lg">--}}
                 {{--<div class="modal-content">--}}
@@ -259,6 +256,7 @@
                 {{--</div>--}}
             {{--</div>--}}
         {{--</div>--}}
+  
     </section>
 @endsection
 @push('scripts')
