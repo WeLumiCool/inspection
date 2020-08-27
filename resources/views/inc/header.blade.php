@@ -15,7 +15,7 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item pt-2 text-center">
-                    <a href="{{ route('maps') }}" class="btn-map font-small">Карта объекта
+                    <a href="{{ route('maps') }}" class="btn-map font-small">Карта объектов
                     </a>
                 </li>
                 @if(Auth::user())

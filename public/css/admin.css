@@ -208,4 +208,21 @@ a.waves-effect, a.waves-light {
 .fa-arrow-alt-circle-down.stage:hover {
     color: rgb(4, 190, 8);
 }
+.dataTables_filter input {
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    /*outline: none;*/
+}
+.dataTables_filter input:focus {
+     color: #495057;
+     background-color: #fff;
+     border-color: #80bdff;
+     outline: 0;
+     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+ }
 
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: #ffffff !important;
+    border:  1px solid #0069d9 !important;
+    background-color: #0069d9 !important;
+}

@@ -67,6 +67,7 @@ class StageController extends Controller
 
     public function isp_store(Request $request)
     {
+
         $stage = Stage::create($request->except(['document_scan', 'images']));
         if ($request->exists('images')) {
             $images = [];
