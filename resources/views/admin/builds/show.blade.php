@@ -242,7 +242,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <iframe id="frame" src="" height="500" width="750"></iframe>
+                    <iframe id="frame"  src="" height="500" width="750"></iframe>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal">Закрыть</button>
