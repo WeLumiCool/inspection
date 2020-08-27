@@ -7,7 +7,7 @@
         {{--                <a href="{{ route('admin.builds.create') }}" class="btn btn-success">{{ __('Создать') }}</a>--}}
         {{--            </div>--}}
         {{--        </div>--}}
-        <div class="row ">
+        <div class="row">
             <div class="col-sm-12 table-responsive">
                 <div class="row justify-content-between">
                     <div class="col-lg-9 col-sm-12 d-flex align-items-center">
@@ -23,10 +23,9 @@
                         <a href="{{ route('admin.builds.create') }}" class="btn btn-success">{{ __('Создать') }}</a>
                     </div>
                 </div>
-                <table class="table table-striped  table-hover" id="builds-table">
+                <table class="table table-striped table-hover" id="builds-table">
                     <thead class="bg-primary text-light">
                     <tr>
-                        <th scope="col">id</th>
                         <th scope="col">ФИО</th>
                         <th scope="col">Адрес</th>
                         <th scope="col">Тип объекта</th>
@@ -53,12 +52,11 @@
                 serverSide: true,
                 ajax: '{!! route('admin.build.datatable.data') !!}',
                 columns: [
-                    {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
                     {data: 'address', name: 'address'},
                     {data: 'type_id', name: 'type_id'},
                     {data: 'actions', name: 'actions', searchable: false, orderable: false},
-                ]
+                ],
             });
             $('.filter-select').change(function () {
                 console.log($(this).data('column'));

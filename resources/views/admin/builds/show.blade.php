@@ -17,27 +17,27 @@
             <div class="col-10 py-3">{{ $build->area }}</div>
             <div class="col-2 py-3"><span class="font-weight-bold">Заявлениие:</span></div>
             <div class="col-10 py-3">
-                <button class="show_doc btn btn-primary" data-path="{{ $build->statement }}">Посмотреть</button>
+                <a href="{{ asset('storage/files/' . $build->statement ) }}" target="_blank" class="show_doc btn btn-primary" {{--data-path="{{ $build->statement }}" --}}>Посмотреть</a>
             </div>
             <div class="col-2 py-3"><span class="font-weight-bold">АПУ/ИТУ:</span></div>
             <div class="col-10 py-3">
-                <button class="show_doc btn btn-primary" data-path="{{ $build->apu }}">Посмотреть</button>
+                <a href="{{ asset('storage/files/' . $build->apu ) }}" target="_blank" class="show_doc btn btn-primary" {{--data-path="{{ $build->apu }}" --}}>Посмотреть</a>
             </div>
             <div class="col-2 py-3"><span class="font-weight-bold">Акт:</span></div>
             <div class="col-10 py-3">
-                <button class="show_doc btn btn-primary" data-path="{{ $build->act }}">Посмотреть</button>
+                <a href="{{ asset('storage/files/' . $build->act ) }}" target="_blank" class="show_doc btn btn-primary" {{--data-path="{{ $build->act }}" --}}>Посмотреть</a>
             </div>
             <div class="col-2 py-3"><span class="font-weight-bold">Проект</span>:</div>
             <div class="col-10 py-3">
-                <button class="show_doc btn btn-primary" data-path="{{ $build->project }}">Посмотреть</button>
+                <a href="{{ asset('storage/files/' . $build->project ) }}" target="_blank" class="show_doc btn btn-primary" {{--data-path="{{ $build->project }}" --}}>Посмотреть</a>
             </div>
             <div class="col-2 py-3"><span class="font-weight-bold">Разрешение на строительство:</span></div>
             <div class="col-10 py-3">
-                <button class="show_doc btn btn-primary" data-path="{{ $build->solution }}">Посмотреть</button>
+                <a href="{{ asset('storage/files/' . $build->solution ) }}" target="_blank" class="show_doc btn btn-primary" {{--data-path="{{ $build->solution }}" --}}>Посмотреть</a>
             </div>
             <div class="col-2 py-3"><span class="font-weight-bold">Сертификат:</span></div>
             <div class="col-10 py-3">
-                <button class="show_doc btn btn-primary" data-path="{{ $build->certificate }}">Посмотреть</button>
+                <a href="{{ asset('storage/files/' . $build->certificate ) }}" target="_blank" class="show_doc btn btn-primary" {{--data-path="{{ $build->certificate }}" --}}>Посмотреть</a>
             </div>
             <div class="col-2 py-3"><span class="font-weight-bold">Тип:</span></div>
             <div class="col-10 py-3">{{ $build->type->name }}</div>
@@ -118,10 +118,10 @@
                                                 <p class="h6 font-weight-bold">Документы: {{ $stage->document }}</p>
                                                 @if(!is_null($stage->document_scan))
                                                     @foreach(json_decode($stage->document_scan) as $doc_path)
-                                                        <button data-path="{{ $doc_path }}" class="mx-auto show_doc btn">
+                                                        <a href="{{ asset('storage/files/' . $doc_path) }}" {{--data-path="{{ $doc_path }}"--}} target="_blank" class="mx-auto show_doc btn">
                                                             <i class="fas pt-3 fa-file-pdf fa-4x"
                                                                style="color: red;"></i>
-                                                        </button>
+                                                        </a>
                                                     @endforeach
                                                 @endif
                                             </div>
@@ -233,23 +233,23 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="info" tabindex="-1" aria-labelledby="docModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <iframe id="frame"  src="" height="500" width="750"></iframe>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Закрыть</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--<div class="modal fade" id="info" tabindex="-1" aria-labelledby="docModalLabel" aria-hidden="true">--}}
+        {{--<div class="modal-dialog modal-lg">--}}
+            {{--<div class="modal-content">--}}
+                {{--<div class="modal-header">--}}
+                    {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+                        {{--<span aria-hidden="true">&times;</span>--}}
+                    {{--</button>--}}
+                {{--</div>--}}
+                {{--<div class="modal-body">--}}
+                    {{--<iframe id="frame" src="" height="500" width="750"></iframe>--}}
+                {{--</div>--}}
+                {{--<div class="modal-footer">--}}
+                    {{--<button type="button" class="btn btn-success" data-dismiss="modal">Закрыть</button>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
 @endsection
 @push('styles')
@@ -262,13 +262,13 @@
     </style>
 @endpush
 @push('scripts')
-    <script>
-        $('.show_doc').click(function (e) {
-            part_scr = e.currentTarget.dataset.path;
-            $('#frame').attr("src", window.location.origin + "/storage/files/" + part_scr);
-            $('#info').modal('show');
-        })
-    </script>
+    {{--<script>--}}
+        {{--$('.show_doc').click(function (e) {--}}
+            {{--part_scr = e.currentTarget.dataset.path;--}}
+            {{--$('#frame').attr("src", window.location.origin + "/storage/files/" + part_scr);--}}
+            {{--$('#info').modal('show');--}}
+        {{--})--}}
+    {{--</script>--}}
     <script>
         function deleteConfirm(me) {
             if (confirm('Вы дествительно хотите удалить ?')) {
