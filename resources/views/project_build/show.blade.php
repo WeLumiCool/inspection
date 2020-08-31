@@ -251,6 +251,25 @@
                 </div>
             </div>
         </div>
+
+        {{--<div class="modal fade" id="info" tabindex="-1" aria-labelledby="docModalLabel" aria-hidden="true">--}}
+            {{--<div class="modal-dialog modal-lg">--}}
+                {{--<div class="modal-content">--}}
+                    {{--<div class="modal-header">--}}
+                        {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+                            {{--<span aria-hidden="true">&times;</span>--}}
+                        {{--</button>--}}
+                    {{--</div>--}}
+                    {{--<div class="modal-body">--}}
+                        {{--<iframe id="frame" src="" height="500" width="750"></iframe>--}}
+                    {{--</div>--}}
+                    {{--<div class="modal-footer">--}}
+                        {{--<button type="button" class="btn btn-success" data-dismiss="modal">Закрыть</button>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+
     </section>
 @endsection
 @push('scripts')
@@ -268,17 +287,38 @@
 
         function init() {
             // Создание карты.
+            var getPointOptions = function(category) {
+                if (category === "Незаконный") {
+
+                    return {
+                        preset: 'islands#redDotIcon',
+                    }
+                }
+                else if (category === "Строящийся") {
+                    return {
+                        preset: 'islands#darkGreenDotIcon',
+                    }
+                }
+                else if (category === "Завершенный") {
+                    return {
+                        preset: 'islands#nightDotIcon',
+                    }
+                }
+            };
             var myMap = new ymaps.Map("map", {
                 center: [{{ $build->latitude ?? 42.865388923088396 }}, {{ $build->longitude ?? 74.60104350048829 }}],
                 zoom: 19
             });
+
+
             myMap.geoObjects.add(new ymaps.Placemark([{{ $build->latitude ?? 42.865388923088396 }}, {{ $build->longitude ?? 74.60104350048829 }}], {
-                balloonContentHeader: '{{ $build->name }}',
-                balloonContentBody: '{{ $build->address }}'
-            }, {
-                preset: 'islands#icon',
-                iconColor: '#0095b6'
-            }))
+                    balloonContentHeader: '{{ $build->name }}',
+                    balloonContentBody: '{{ $build->address }}'
+                },
+
+
+                getPointOptions("{{ $build->category }}"),
+            ))
         }
 
 

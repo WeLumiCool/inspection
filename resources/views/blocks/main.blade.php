@@ -78,7 +78,10 @@
                             visible: false,
                             searchable: false,
                         }
-                    ]
+                    ],
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.18/i18n/Russian.json"
+                    },
 
                 });
                 $('.filter-select').change(function () {
@@ -100,6 +103,9 @@
                         {data: 'area', name: 'area'},
                         {data: 'legality', name: 'legality'},
                     ],
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.18/i18n/Russian.json"
+                    },
                 });
                 $('.filter-select').change(function () {
                     console.log($(this).data('column'));

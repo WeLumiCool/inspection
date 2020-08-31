@@ -57,6 +57,9 @@
                     {data: 'type_id', name: 'type_id'},
                     {data: 'actions', name: 'actions', searchable: false, orderable: false},
                 ],
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.18/i18n/Russian.json"
+                },
             });
             $('.filter-select').change(function () {
                 console.log($(this).data('column'));

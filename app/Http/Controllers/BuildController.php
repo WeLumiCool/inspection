@@ -308,9 +308,9 @@ class BuildController extends Controller
             })
             ->editColumn('legality', function (Build $build) {
                 if ($build->legality) {
-                    return '<i class="fas fa-check fa-lg"></i>';
+                    return '<i class="fas fa-check fa-lg text-success"></i>';
                 } else {
-                    return '<i class="fas fa-ban fa-lg"></i>';
+                    return '<i class="fas fa-ban fa-lg text-danger"></i>';
                 }
             })
             ->rawColumns(['legality'])
