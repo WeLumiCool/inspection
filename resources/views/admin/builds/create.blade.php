@@ -22,6 +22,14 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="type_of_object">Вид объекта:</label>
+                        <select class="form-control" id="type_of_object" name="category">
+                            @foreach(['Строящийся', 'Завершенный', 'Незаконный'] as $category)
+                                <option value="{{ $category }}">{{ $category }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="statement_field">Заявление:<span class="text-danger">*</span></label>
                         <input id="statement_field" type="file" class="form-control" name="statement" accept="application/pdf" required>
                     </div>
