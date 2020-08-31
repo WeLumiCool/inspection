@@ -26,29 +26,29 @@
 
                     <div class="form-group">
                         <label for="statement_field">Заявление:<span class="text-danger">*</span></label>
-                        <input id="statement_field" type="file" class="form-control" name="statement" value="{{ $build->statement }}">
+                        <input id="statement_field" type="file" class="form-control" name="statement" multiple>
                     </div>
 
                     <div class="form-group">
                         <label for="apu_field">АПУ/ИТУ:<span class="text-danger">*</span></label>
-                        <input id="apu_field" type="file" class="form-control" name="apu" value="{{ $build->apu }}">
+                        <input id="apu_field" type="file" class="form-control" name="apu" multiple>
                     </div>
 
                     <div class="form-group">
                         <label for="act_field">Акт:<span class="text-danger">*</span></label>
-                        <input id="act_field" type="file" class="form-control" name="act" value="{{ $build->act }}">
+                        <input id="act_field" type="file" class="form-control" name="act" multiple>
                     </div>
 
                     <div class="form-group">
                         <label for="project_field">Проект:<span class="text-danger">*</span></label>
-                        <input id="project_field" type="file" class="form-control" name="project" value="{{ $build->project }}">
+                        <input id="project_field" type="file" class="form-control" name="project" multiple>
                     </div>
 
 
 
                     <div class="form-group">
                         <label for="project_field">Разрешение на строительство:<span class="text-danger">*</span></label>
-                        <input id="project_field" type="file" class="form-control" name="solution" value="{{$build->solution}}">
+                        <input id="project_field" type="file" class="form-control" name="solution" multiple>
                     </div>
 
 
