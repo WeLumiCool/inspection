@@ -36,40 +36,34 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-3 col-12 text-lg-left text-center pt-4">
-                            <a href="{{ asset('storage/files/'.$build->statement) }}" target="_blank"
-                               {{-- data-path="{{ $build->statement }}"--}} class="show_doc   btn-show  font-weight-bold ">
+                            <a href="{{ asset('storage/files/'.$build->statement) }}" target="_blank" {{-- data-path="{{ $build->statement }}"--}} class="show_doc   btn-show  font-weight-bold ">
                                 Заявление
                             </a>
                         </div>
                         <div class="col-lg-3 col-12 text-lg-left text-center pt-4">
-                            <a href="{{ asset('storage/files/'.$build->apu) }}" target="_blank"
-                               {{-- data-path="{{ $build->apu }}"--}} class="show_doc   btn-show  font-weight-bold ">
+                            <a href="{{ asset('storage/files/'.$build->apu) }}" target="_blank" {{-- data-path="{{ $build->apu }}"--}} class="show_doc   btn-show  font-weight-bold ">
                                 АПУ/ИТУ
                             </a>
                         </div>
                         <div class="col-lg-3 col-12 text-lg-left text-center pt-4">
-                            <a href="{{ asset('storage/files/'.$build->act) }}" target="_blank"
-                               {{-- data-path="{{ $build->act }}"--}} class="show_doc   btn-show  font-weight-bold ">
+                            <a href="{{ asset('storage/files/'.$build->act) }}" target="_blank" {{-- data-path="{{ $build->act }}"--}} class="show_doc   btn-show  font-weight-bold ">
                                 Гос.акт
                             </a>
                         </div>
                         <div class="col-lg-3 col-12 text-lg-left text-center pt-4">
-                            <a href="{{ asset('storage/files/'.$build->project) }}" target="_blank"
-                               {{-- data-path="{{ $build->project }}"--}} class="show_doc    btn-show font-weight-bold ">
+                            <a href="{{ asset('storage/files/'.$build->project) }}" target="_blank" {{-- data-path="{{ $build->project }}"--}} class="show_doc    btn-show font-weight-bold ">
                                 Проект
                             </a>
                         </div>
                         <div class="col-lg-6 col-12 text-lg-left text-center pt-4">
-                            <a href="{{ asset('storage/files/'.$build->solution) }}" target="_blank"
-                               {{-- data-path="{{ $build->solution }}"--}} class="show_doc   btn-show  font-weight-bold ">
+                            <a href="{{ asset('storage/files/'.$build->solution) }}" target="_blank" {{-- data-path="{{ $build->solution }}"--}} class="show_doc   btn-show  font-weight-bold ">
                                 Разрешение на
                                 строительство (положительное разрешение
                                 гос.экспертизы)
                             </a>
                         </div>
                         <div class="col-lg-6 col-12 text-lg-left text-center pt-4">
-                            <a href="{{ asset('storage/files/'.$build->certificate) }}" target="_blank"
-                               {{-- data-path="{{ $build->certificate }}"--}} class="show_doc  btn-show font-weight-bold ">
+                            <a href="{{ asset('storage/files/'.$build->certificate) }}" target="_blank" {{-- data-path="{{ $build->certificate }}"--}} class="show_doc  btn-show font-weight-bold ">
                                 АКТ оценки
                                 соотвествия вводимого в эксплуатацию
                                 завершенного строительства объекта
@@ -81,7 +75,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-12 p-3 bg-show">
-                    <div id="map" class="border-0" style="width: 100%; height: 400px;"></div>
+                    <div id="map"  class="border-0" style="width: 100%; height: 400px;"></div>
                 </div>
             </div>
             <div class="row px-1 mt-3 bg-show ">
@@ -141,9 +135,7 @@
                                                                 Документы: {{ $stage->document }}</p>
                                                             @if(!is_null($stage->document_scan))
                                                                 @foreach(json_decode($stage->document_scan) as $doc_path)
-                                                                    <a href="{{ asset('storage/files/' . $doc_path) }}"
-                                                                       target="_blank"
-                                                                       {{--data-path="{{ $doc_path }}"--}} class="mx-auto show_doc btn_stage_docs">
+                                                                   <a href="{{ asset('storage/files/' . $doc_path) }}" target="_blank" {{--data-path="{{ $doc_path }}"--}} class="mx-auto show_doc btn_stage_docs">
                                                                         <i class="fas pt-3 fa-file-pdf fa-4x"
                                                                            style="color: red;"></i>
                                                                     </a>
@@ -230,7 +222,8 @@
                             <div class="form-group">
                                 <label for="stage_field">Докуметы:<span class="text-danger">*</span></label>
                                 <input id="stage_field" type="file" class="form-control" name="document_scan[]"
-                                       accept="application/pdf" required multiple>
+                                       accept="application/pdf" required
+                                       multiple>
                             </div>
                             <div class="form-group">
                                 <label for="stage_field">Изображения:<span class="text-danger">*</span></label>
@@ -239,8 +232,15 @@
                                        multiple>
                             </div>
                             <div class="form-group">
-                                <label for="stage_field">Примечание:<span class="text-danger">*</span></label>
-                                <input id="stage_field" type="text" class="form-control" name="note" required>
+                                <label for="note_field">Примечание:<span class="text-danger">*</span></label>
+                                <textarea id="note_field" class="form-control" name="note" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="mutable-req" for="project_field">
+                                    АКТ оценки соотвествия вводимого в эксплуатацию
+                                    завершенного строительства объекта:</label>
+                                <input id="project_field" type="file" class="form-control files-input" name="certificate[]"
+                                       accept="application/pdf" required multiple>
                             </div>
                             <input id="build_id" type="hidden" name="build_id" value="{{ $build->id }}">
                         </div>
@@ -253,21 +253,21 @@
         </div>
 
         {{--<div class="modal fade" id="info" tabindex="-1" aria-labelledby="docModalLabel" aria-hidden="true">--}}
-        {{--<div class="modal-dialog modal-lg">--}}
-        {{--<div class="modal-content">--}}
-        {{--<div class="modal-header">--}}
-        {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-        {{--<span aria-hidden="true">&times;</span>--}}
-        {{--</button>--}}
-        {{--</div>--}}
-        {{--<div class="modal-body">--}}
-        {{--<iframe id="frame" src="" height="500" width="750"></iframe>--}}
-        {{--</div>--}}
-        {{--<div class="modal-footer">--}}
-        {{--<button type="button" class="btn btn-success" data-dismiss="modal">Закрыть</button>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
+            {{--<div class="modal-dialog modal-lg">--}}
+                {{--<div class="modal-content">--}}
+                    {{--<div class="modal-header">--}}
+                        {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+                            {{--<span aria-hidden="true">&times;</span>--}}
+                        {{--</button>--}}
+                    {{--</div>--}}
+                    {{--<div class="modal-body">--}}
+                        {{--<iframe id="frame" src="" height="500" width="750"></iframe>--}}
+                    {{--</div>--}}
+                    {{--<div class="modal-footer">--}}
+                        {{--<button type="button" class="btn btn-success" data-dismiss="modal">Закрыть</button>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
         {{--</div>--}}
 
     </section>

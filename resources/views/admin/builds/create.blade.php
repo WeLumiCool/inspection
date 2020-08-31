@@ -22,66 +22,73 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="type_of_object">Вид объекта:</label>
-                        <select class="form-control" id="type_of_object" name="category">
-                            @foreach(['Строящийся', 'Завершенный', 'Незаконный'] as $category)
-                                <option value="{{ $category }}">{{ $category }}</option>
+                        <label for="category_of_object">Категория объекта:</label>
+                        <select class="form-control" id="category_of_object" name="category">
+                            @foreach(['Строящиеся','Завершенные', 'Незаконные'] as $type)
+                                <option value="{{ $type }}">{{ $type }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="statement_field">Заявление:<span class="text-danger">*</span></label>
-                        <input id="statement_field" type="file" class="form-control" name="statement" accept="application/pdf" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="apu_field">АПУ/ИТУ:<span class="text-danger">*</span></label>
-                        <input id="apu_field" type="file" class="form-control" name="apu" accept="application/pdf" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="act_field">Акт:<span class="text-danger">*</span></label>
-                        <input id="act_field" type="file" class="form-control" name="act" accept="application/pdf" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="project_field">Проект:<span class="text-danger">*</span></label>
-                        <input id="project_field" type="file" class="form-control" name="project" accept="application/pdf" required>
-                    </div>
-
 
 
                     <div class="form-group">
-                        <label for="project_field">Разрешение на строительство:<span class="text-danger">*</span></label>
-                        <input id="project_field" type="file" class="form-control" name="solution" accept="application/pdf" required>
+                        <label class="mutable-req" for="statement_field">Заявление:<span class="text-danger">*</span></label>
+                        <input id="statement_field" type="file" class="form-control files-input" name="statement[]"
+                               accept="application/pdf" required multiple>
                     </div>
 
                     <div class="form-group">
-                        <label for="certificate_field">АКТ оценки соответсвия вводимого в эксплуатацию завершенного строительством объекта:<span class="text-danger">*</span></label>
-                        <input id="certificate_field" type="file" class="form-control" name="certificate" accept="application/pdf" required>
+                        <label class="mutable-req" for="apu_field">АПУ/ИТУ:<span class="text-danger">*</span></label>
+                        <input id="apu_field" type="file" class="form-control files-input" name="apu[]"
+                               accept="application/pdf"
+                               required multiple>
                     </div>
 
+                    <div class="form-group">
+                        <label class="mutable-req" for="act_field">Акт:<span class="text-danger">*</span></label>
+                        <input id="act_field" type="file" class="form-control files-input" name="act[]"
+                               accept="application/pdf"
+                               required multiple>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="mutable-req" for="project_field">Проект:<span class="text-danger">*</span></label>
+                        <input id="project_field" type="file" class="form-control files-input" name="project[]"
+                               accept="application/pdf" required multiple>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="mutable-req" for="project_field">Разрешение на строительство:<span
+                                    class="text-danger">*</span></label>
+                        <input id="project_field" type="file" class="form-control files-input" name="solution[]"
+                               accept="application/pdf" required multiple>
+                    </div>
 
                     <div class="form-group">
                         <label for="area_field">Площадь:<span class="text-danger">*</span></label>
                         <input id="area_field" type="text" class="form-control" name="area" required>
                     </div>
 
-                    <div class="form-group" >
+                    <div class="form-group">
                         <label for="note_field">Примечание:<span class="text-danger">*</span></label>
-                        <input id="note_field" type="text" class="form-control" name="note" required>
+                        <textarea id="note_field" class="form-control" name="note" required></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="address_field">Адрес:<span class="text-danger">*</span></label>
-                        <input id="address_field" type="text" class="form-control" name="address" placeholder="Поставьте маркер на карте" required>
+                        <input id="address_field" type="text" class="form-control" name="address"
+                               placeholder="Поставьте маркер на карте" required>
+                    </div>
+                    <div class="form-group">
+                        <input id="legality-check" type="checkbox" name="legality">
+                        <label for="legality-check">Легален:<span class="text-danger">*</span></label>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control d-none" id="latitude" name="latitude" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="text"  class="form-control d-none" id="longitude" name="longitude"  required>
+                        <input type="text" class="form-control d-none" id="longitude" name="longitude" required>
                     </div>
 
                     <div class="form-group">
@@ -100,10 +107,30 @@
 @endsection
 
 @push('scripts')
+    <script>
+        let is_legality = true;
+        $('#category_of_object').change(function (e) {
+            let value = e.currentTarget.value;
+            if (value === 'Незаконные') {
+                if(is_legality) {
+                    $('.files-input').removeAttr('required');
+                    $('.mutable-req span').remove();
+                }
+                is_legality = false;
+            } else {
+                if(!is_legality) {
+                    $('.files-input').prop('required', true);
+                    $('.mutable-req').append('<span class="text-danger">*</span>');
+                }
+                is_legality = true;
+            }
+        })
+    </script>
     <script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         ymaps.ready(init);
+
         function init() {
             var myPlacemark,
                 myMap = new ymaps.Map('map', {
@@ -132,6 +159,7 @@
                 }
                 getAddress(coords);
             });
+
             // Создание метки.
             function createPlacemark(coords) {
                 return new ymaps.Placemark(coords, {
@@ -141,6 +169,7 @@
                     draggable: true
                 });
             }
+
             // Определяем адрес по координатам (обратное геокодирование).
             function getAddress(coords) {
                 myPlacemark.properties.set('iconCaption', 'поиск...');
