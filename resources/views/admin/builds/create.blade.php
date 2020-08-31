@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label for="category_of_object">Категория объекта:</label>
                         <select class="form-control" id="category_of_object" name="category">
-                            @foreach(['Строящиеся','Завершенные', 'Незаконные'] as $type)
+                            @foreach(['Строящийся','Завершенный', 'Незаконный'] as $type)
                                 <option value="{{ $type }}">{{ $type }}</option>
                             @endforeach
                         </select>
@@ -111,7 +111,7 @@
         let is_legality = true;
         $('#category_of_object').change(function (e) {
             let value = e.currentTarget.value;
-            if (value === 'Незаконные') {
+            if (value === 'Незаконный') {
                 if(is_legality) {
                     $('.files-input').removeAttr('required');
                     $('.mutable-req span').remove();
