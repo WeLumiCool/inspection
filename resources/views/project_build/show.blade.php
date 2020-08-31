@@ -222,7 +222,8 @@
                             <div class="form-group">
                                 <label for="stage_field">Докуметы:<span class="text-danger">*</span></label>
                                 <input id="stage_field" type="file" class="form-control" name="document_scan[]"
-                                       accept="application/pdf" required multiple>
+                                       accept="application/pdf" required
+                                       multiple>
                             </div>
                             <div class="form-group">
                                 <label for="stage_field">Изображения:<span class="text-danger">*</span></label>
@@ -231,8 +232,15 @@
                                        multiple>
                             </div>
                             <div class="form-group">
-                                <label for="stage_field">Примечание:<span class="text-danger">*</span></label>
-                                <input id="stage_field" type="text" class="form-control" name="note" required>
+                                <label for="note_field">Примечание:<span class="text-danger">*</span></label>
+                                <textarea id="note_field" class="form-control" name="note" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="mutable-req" for="project_field">
+                                    АКТ оценки соотвествия вводимого в эксплуатацию
+                                    завершенного строительства объекта:</label>
+                                <input id="project_field" type="file" class="form-control files-input" name="certificate[]"
+                                       accept="application/pdf" required multiple>
                             </div>
                             <input id="build_id" type="hidden" name="build_id" value="{{ $build->id }}">
                         </div>
@@ -243,25 +251,6 @@
                 </div>
             </div>
         </div>
-
-        {{--<div class="modal fade" id="info" tabindex="-1" aria-labelledby="docModalLabel" aria-hidden="true">--}}
-            {{--<div class="modal-dialog modal-lg">--}}
-                {{--<div class="modal-content">--}}
-                    {{--<div class="modal-header">--}}
-                        {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-                            {{--<span aria-hidden="true">&times;</span>--}}
-                        {{--</button>--}}
-                    {{--</div>--}}
-                    {{--<div class="modal-body">--}}
-                        {{--<iframe id="frame" src="" height="500" width="750"></iframe>--}}
-                    {{--</div>--}}
-                    {{--<div class="modal-footer">--}}
-                        {{--<button type="button" class="btn btn-success" data-dismiss="modal">Закрыть</button>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-  
     </section>
 @endsection
 @push('scripts')

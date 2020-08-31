@@ -14,31 +14,75 @@
             <div class="col-2  py-3"><span class="font-weight-bold">Адрес:</span></div>
             <div class="col-10 py-3">{{ $build->address }}</div>
             <div class="col-2 py-3 "><span class="font-weight-bold">Площадь:</span></div>
-            <div class="col-10 py-3">{{ $build->area }}</div>
+            <div class="col-10 py-3">{{ $build->address }}</div>
+            <div class="col-2 py-3 "><span class="font-weight-bold">Категория:</span></div>
+            <div class="col-10 py-3">{{ $build->category }}</div>
+                @if(!is_null($build->statement))
             <div class="col-2 py-3"><span class="font-weight-bold">Заявлениие:</span></div>
             <div class="col-10 py-3">
-                <a href="{{ asset('storage/files/' . $build->statement ) }}" target="_blank" class="show_doc btn btn-primary" {{--data-path="{{ $build->statement }}" --}}>Посмотреть</a>
+                    @foreach(json_decode($build->statement) as $key=>$doc_path)
+                        <a href="{{ asset('storage/files/' . $doc_path) }}" title="{{ $key }}" target="_blank" class="mx-auto show_doc btn">
+                            <i class="fas pt-3 fa-file-pdf fa-4x"
+                               style="color: red;"></i>
+                        </a>
+                    @endforeach
             </div>
+                @endif
+            @if(!is_null($build->apu))
             <div class="col-2 py-3"><span class="font-weight-bold">АПУ/ИТУ:</span></div>
             <div class="col-10 py-3">
-                <a href="{{ asset('storage/files/' . $build->apu ) }}" target="_blank" class="show_doc btn btn-primary" {{--data-path="{{ $build->apu }}" --}}>Посмотреть</a>
+                @foreach(json_decode($build->apu) as $key=>$doc_path)
+                    <a href="{{ asset('storage/files/' . $doc_path) }}" title="{{ $key }}" target="_blank" class="mx-auto show_doc btn">
+                        <i class="fas pt-3 fa-file-pdf fa-4x"
+                           style="color: red;"></i>
+                    </a>
+                @endforeach
             </div>
+            @endif
+            @if(!is_null($build->act))
             <div class="col-2 py-3"><span class="font-weight-bold">Акт:</span></div>
             <div class="col-10 py-3">
-                <a href="{{ asset('storage/files/' . $build->act ) }}" target="_blank" class="show_doc btn btn-primary" {{--data-path="{{ $build->act }}" --}}>Посмотреть</a>
+                  @foreach(json_decode($build->act) as $key=>$doc_path)
+                    <a href="{{ asset('storage/files/' . $doc_path) }}" title="{{ $key }}" target="_blank" class="mx-auto show_doc btn">
+                        <i class="fas pt-3 fa-file-pdf fa-4x"
+                           style="color: red;"></i>
+                    </a>
+                @endforeach
             </div>
+            @endif
+            @if(!is_null($build->project))
             <div class="col-2 py-3"><span class="font-weight-bold">Проект</span>:</div>
             <div class="col-10 py-3">
-                <a href="{{ asset('storage/files/' . $build->project ) }}" target="_blank" class="show_doc btn btn-primary" {{--data-path="{{ $build->project }}" --}}>Посмотреть</a>
+                  @foreach(json_decode($build->project) as $key=>$doc_path)
+                    <a href="{{ asset('storage/files/' . $doc_path) }}" title="{{ $key }}" target="_blank" class="mx-auto show_doc btn">
+                        <i class="fas pt-3 fa-file-pdf fa-4x"
+                           style="color: red;"></i>
+                    </a>
+                @endforeach
             </div>
+            @endif
+            @if(!is_null($build->solution))
             <div class="col-2 py-3"><span class="font-weight-bold">Разрешение на строительство:</span></div>
             <div class="col-10 py-3">
-                <a href="{{ asset('storage/files/' . $build->solution ) }}" target="_blank" class="show_doc btn btn-primary" {{--data-path="{{ $build->solution }}" --}}>Посмотреть</a>
+                  @foreach(json_decode($build->solution) as $key=>$doc_path)
+                    <a href="{{ asset('storage/files/' . $doc_path) }}" title="{{ $key }}" target="_blank" class="mx-auto show_doc btn">
+                        <i class="fas pt-3 fa-file-pdf fa-4x"
+                           style="color: red;"></i>
+                    </a>
+                @endforeach
             </div>
+            @endif
+            @if(!is_null($build->certificate))
             <div class="col-2 py-3"><span class="font-weight-bold">Сертификат:</span></div>
             <div class="col-10 py-3">
-                <a href="{{ asset('storage/files/' . $build->certificate ) }}" target="_blank" class="show_doc btn btn-primary" {{--data-path="{{ $build->certificate }}" --}}>Посмотреть</a>
+                  @foreach(json_decode($build->certificate) as $key=>$doc_path)
+                    <a href="{{ asset('storage/files/' . $doc_path) }}" title="{{ $key }}" target="_blank" class="mx-auto show_doc btn">
+                        <i class="fas pt-3 fa-file-pdf fa-4x"
+                           style="color: red;"></i>
+                    </a>
+                @endforeach
             </div>
+            @endif
             <div class="col-2 py-3"><span class="font-weight-bold">Тип:</span></div>
             <div class="col-10 py-3">{{ $build->type->name }}</div>
             <div class="col-2 py-3"><span class="font-weight-bold">Примечание:</span></div>
@@ -221,8 +265,15 @@
                                    accept="image/*" required multiple>
                         </div>
                         <div class="form-group">
-                            <label for="stage_field">Примечание:<span class="text-danger">*</span></label>
-                            <input id="stage_field" type="text" class="form-control" name="note" required>
+                            <label for="note_field">Примечание:<span class="text-danger">*</span></label>
+                            <textarea id="note_field" class="form-control" name="note" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="mutable-req" for="project_field">
+                                АКТ оценки соотвествия вводимого в эксплуатацию
+                                завершенного строительства объекта:</label>
+                            <input id="project_field" type="file" class="form-control files-input" name="certificate[]"
+                                   accept="application/pdf" required multiple>
                         </div>
                         <input id="build_id" type="hidden" name="build_id" value="{{ $build->id }}">
                     </div>

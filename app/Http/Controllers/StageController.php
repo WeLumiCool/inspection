@@ -40,7 +40,7 @@ class StageController extends Controller
      */
     public function store(Request $request)
     {
-        $stage = Stage::create($request->except(['document_scan', 'images']));
+        $stage = Stage::create($request->except('document_scan', 'images', 'certificate'));
         if ($request->exists('images')) {
             $images = [];
             foreach ($request->file('images') as $file) {
