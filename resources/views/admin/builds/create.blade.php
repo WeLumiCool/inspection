@@ -66,7 +66,7 @@
 
                     <div class="form-group">
                         <label for="address_field">Адрес:<span class="text-danger">*</span></label>
-                        <input id="address_field" type="text" class="form-control" name="address" required>
+                        <input id="address_field" type="text" class="form-control" name="address" placeholder="Поставьте маркер на карте" required>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control d-none" id="latitude" name="latitude" required>
@@ -82,9 +82,9 @@
                         </div>
                     </div>
 
-
                     <button type="submit" title="{{ __('Добавить') }}"
                             class="btn n btn-success">{{ __('Добавить') }}</button>
+
                 </form>
             </div>
         </div>
