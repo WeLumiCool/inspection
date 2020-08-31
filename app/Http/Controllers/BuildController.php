@@ -67,14 +67,14 @@ class BuildController extends Controller
             //Заявлении
             $statements = [];
             foreach ($request->file('statement') as $file) {
-                $filePath = PdfUploader::upload($file, 'statement', 'document');
+                $filePath = PdfUploader::upload($file, 'statements', 'document');
                 $statements[$file->getClientOriginalName()] = $filePath;
             }
             $build->statement = json_encode($statements);
 
             $apus = [];
             foreach ($request->file('apu') as $file) {
-                $filePath = PdfUploader::upload($file, 'apu', 'apu');
+                $filePath = PdfUploader::upload($file, 'apus', 'apu');
                 $apus[$file->getClientOriginalName()] = $filePath;
             }
             $build->apu = json_encode($apus);
@@ -143,7 +143,7 @@ class BuildController extends Controller
             }
             $statements = [];
             foreach ($request->file('statement') as $file) {
-                $filePath = PdfUploader::upload($file, 'statement', 'document');
+                $filePath = PdfUploader::upload($file, 'statements', 'document');
                 $statements[$file->getClientOriginalName()] = $filePath;
             }
             $build->statement = json_encode($statements);
@@ -158,7 +158,7 @@ class BuildController extends Controller
             }
             $apus = [];
             foreach ($request->file('apu') as $file) {
-                $filePath = PdfUploader::upload($file, 'apu', 'document');
+                $filePath = PdfUploader::upload($file, 'apus', 'document');
                 $apus[$file->getClientOriginalName()] = $filePath;
             }
             $build->apu = json_encode($apus);
@@ -173,7 +173,7 @@ class BuildController extends Controller
             }
             $acts = [];
             foreach ($request->file('act') as $file) {
-                $filePath = PdfUploader::upload($file, 'act', 'document');
+                $filePath = PdfUploader::upload($file, 'acts', 'document');
                 $acts[$file->getClientOriginalName()] = $filePath;
             }
             $build->act = json_encode($acts);
@@ -188,7 +188,7 @@ class BuildController extends Controller
             }
             $projects = [];
             foreach ($request->file('project') as $file) {
-                $filePath = PdfUploader::upload($file, 'project', 'document');
+                $filePath = PdfUploader::upload($file, 'projects', 'document');
                 $projects[$file->getClientOriginalName()] = $filePath;
             }
             $build->project = json_encode($projects);
@@ -203,7 +203,7 @@ class BuildController extends Controller
             }
             $solutions = [];
             foreach ($request->file('solution') as $file) {
-                $filePath = PdfUploader::upload($file, 'solution', 'document');
+                $filePath = PdfUploader::upload($file, 'solutions', 'document');
                 $solutions[$file->getClientOriginalName()] = $filePath;
             }
             $build->solution = json_encode($solutions);
@@ -217,7 +217,7 @@ class BuildController extends Controller
             }
             $certificates = [];
             foreach ($request->file('certificate') as $file) {
-                $filePath = PdfUploader::upload($file, 'certificate', 'document');
+                $filePath = PdfUploader::upload($file, 'certificates', 'document');
                 $certificates[$file->getClientOriginalName()] = $filePath;
             }
             $build->certificate = json_encode($certificates);

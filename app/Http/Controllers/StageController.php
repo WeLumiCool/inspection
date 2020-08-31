@@ -40,8 +40,16 @@ class StageController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request);
         $stage = Stage::create($request->except('document_scan', 'images', 'certificate'));
-        if ($request->exists('images')) {
+//        if($request->hasFile('certificate')){
+//            $certificate = [];
+//            foreach ($request->file('$certificate') as $file) {
+//                $filename = PdfUploader::upload($file, 'stage', 'image');
+//                $images[] = $filename;
+//            }
+//        }
+        if ($request->hasFile('images')) {
             $images = [];
             foreach ($request->file('images') as $file) {
                 $filename = PdfUploader::upload($file, 'stage', 'image');
@@ -50,7 +58,7 @@ class StageController extends Controller
             $stage->images = json_encode($images);
         }
 
-        if ($request->exists('document_scan')) {
+        if ($request->hasFile('document_scan')) {
             $document = [];
             foreach ($request->file('document_scan') as $file) {
                 $filename = PdfUploader::upload($file, 'stage', 'document');
