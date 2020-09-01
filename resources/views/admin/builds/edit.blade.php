@@ -71,8 +71,8 @@
                         <input id="address_field" type="text" class="form-control" name="address" value="{{ $build->address }}" required>
                     </div>
                     <div class="form-group">
-                        <input id="legality-check" type="checkbox" name="legality">
-                        <label for="legality-check">Легален:<span class="text-danger">*</span></label>
+                        <input id="legality-check"  type="checkbox" name="legality" value="{{ $build->legality }}" {{$build->legality ? "checked" : ""}}>
+                        <label class="checkbox" id="legality-check_label" for="legality-check">Легален:</label>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control d-none" id="latitude" name="latitude" required>
@@ -96,6 +96,31 @@
     </div>
 @endsection
 @push('scripts')
+    <script>
+        $(document).ready(function () {
+            let legality = document.getElementById('legality-check').value;
+            if (legality === '0') {
+                document.getElementById('legality-check_label').innerHTML = 'Не легален';
+                document.getElementById('legality-check_label').style.color = 'red';
+            }
+            else {
+                document.getElementById('legality-check_label').innerHTML = 'Легален';
+                document.getElementById('legality-check_label').style.color = 'green';
+            }
+            $('#legality-check').change(function () {
+                var checkbox = $(this),
+                    label = $('#legality-check_label');
+                if (!checkbox.is(':checked')) {
+                    label.get(0).lastChild.nodeValue = 'Не легален';
+                    label.css({'color':'red'});
+                } else {
+                    label.get(0).lastChild.nodeValue = 'Легален';
+                    label.css({'color':'green'});
+                }
+            });
+        })
+
+    </script>
     <script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
 
