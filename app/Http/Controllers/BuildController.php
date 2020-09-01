@@ -64,7 +64,7 @@ class BuildController extends Controller
     {
         $build = Build::create($request->except('statement','apu','project','solution','act', 'legality'));
         $build->legality = $request->exists('legality');
-        if($request->category!='Незаконные') {
+        if($request->category!='Незаконный') {
             //Заявлении
             $statements = [];
             foreach ($request->file('statement') as $file) {

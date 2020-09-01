@@ -1,5 +1,5 @@
 body{
-    background: #F8FAFF;
+    background: #E7EFFC;
 }
 .accordion.md-accordion.accordion-blocks .card {
     margin-bottom: 0.4rem;
@@ -156,6 +156,9 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
     .modal-doc {
         height: 500px;
         width: 750px;
+    }
+    .icon-top{
+        margin-top: -14px;
     }
 }
 @media screen and (max-width: 992px) {
