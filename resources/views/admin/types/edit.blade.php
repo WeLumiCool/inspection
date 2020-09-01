@@ -11,9 +11,9 @@
                         <p class="font-weight-bold h2">Редактирование типа</p>
                     </div>
                     <div class="form-group">
-                        <label for="name_field">Наименование тега<span class="text-danger">*</span></label>
+                        <label for="name_field">Наименование</label>
                         <input id="name_field" type="text" class="form-control" value="{{ $type->name }}" name="name"
-                               required>
+                               accept="image/*" required>
                     </div>
                     <button type="submit" title="{{ __('Изменить') }}"
                             class="btn n btn-success">{{ __('Изменить') }}</button>

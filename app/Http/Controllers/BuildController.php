@@ -7,6 +7,7 @@ use App\Services\PdfUploader;
 use App\Services\SetHistory;
 use App\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -269,7 +270,19 @@ class BuildController extends Controller
                 Storage::disk('public')->delete("/files/" . $img_path);
             }
         }
-        SetHistory::save('Удалил', $build->id, null);
+        foreach($build->stages as $stage){
+            if (!is_null($stage->images)) {
+                foreach (json_decode($stage->images) as $img_path) {
+                    Storage::disk('public')->delete("/files/" . $img_path);
+                }
+            }
+            if (!is_null($stage->document_scan)) {
+                foreach (json_decode($stage->document_scan) as $doc_path) {
+                    Storage::disk('public')->delete("/files/" . $doc_path);
+                }
+            }
+            $stage->delete();
+        }
         $build->delete();
         return redirect()->route('admin.builds.index');
     }
