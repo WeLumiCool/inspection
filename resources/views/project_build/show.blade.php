@@ -143,8 +143,8 @@
                         </div>
                         <div class="col-lg-6 col-12 text-lg-left text-center pt-4">
                             <p class="h6 font-weight-bold"> Акт ввода:</p>
-                                @if(!is_null($build->solution))
-                                    @foreach(json_decode($build->solution) as $key=>$doc_path)
+                                @if(!is_null($build->certificate))
+                                    @foreach(json_decode($build->certificate) as $key=>$doc_path)
                                         <div class="row my-2">
                                             <div class="col-lg-8 col-12 text-muted font-small">
                                                 {{ $key }}
