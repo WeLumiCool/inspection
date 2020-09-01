@@ -273,7 +273,7 @@
                                 АКТ оценки соотвествия вводимого в эксплуатацию
                                 завершенного строительства объекта:</label>
                             <input id="project_field" type="file" class="form-control files-input" name="certificate[]"
-                                   accept="application/pdf" required multiple>
+                                   accept="application/pdf"  multiple>
                         </div>
                         <input id="build_id" type="hidden" name="build_id" value="{{ $build->id }}">
                     </div>
@@ -284,24 +284,6 @@
             </div>
         </div>
     </div>
-    {{--<div class="modal fade" id="info" tabindex="-1" aria-labelledby="docModalLabel" aria-hidden="true">--}}
-        {{--<div class="modal-dialog modal-lg">--}}
-            {{--<div class="modal-content">--}}
-                {{--<div class="modal-header">--}}
-                    {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-                        {{--<span aria-hidden="true">&times;</span>--}}
-                    {{--</button>--}}
-                {{--</div>--}}
-                {{--<div class="modal-body">--}}
-                    {{--<iframe id="frame" src="" height="500" width="750"></iframe>--}}
-                {{--</div>--}}
-                {{--<div class="modal-footer">--}}
-                    {{--<button type="button" class="btn btn-success" data-dismiss="modal">Закрыть</button>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
 @endsection
 @push('styles')
     <style>
@@ -313,13 +295,6 @@
     </style>
 @endpush
 @push('scripts')
-    {{--<script>--}}
-        {{--$('.show_doc').click(function (e) {--}}
-            {{--part_scr = e.currentTarget.dataset.path;--}}
-            {{--$('#frame').attr("src", window.location.origin + "/storage/files/" + part_scr);--}}
-            {{--$('#info').modal('show');--}}
-        {{--})--}}
-    {{--</script>--}}
     <script>
         function deleteConfirm(me) {
             if (confirm('Вы дествительно хотите удалить ?')) {
@@ -334,6 +309,24 @@
         ymaps.ready(init);
 
         function init() {
+            var getPointOptions = function (category) {
+                if (category === "Незаконный") {
+
+                    return {
+                        preset: 'islands#redDotIcon',
+                    }
+                }
+                else if (category === "Строящийся") {
+                    return {
+                        preset: 'islands#darkGreenDotIcon',
+                    }
+                }
+                else if (category === "Завершенный") {
+                    return {
+                        preset: 'islands#nightDotIcon',
+                    }
+                }
+            };
             // Создание карты.
             var myMap = new ymaps.Map("map", {
                 center: [{{ $build->latitude ?? 42.865388923088396 }}, {{ $build->longitude ?? 74.60104350048829 }}],
@@ -342,10 +335,9 @@
             myMap.geoObjects.add(new ymaps.Placemark([{{ $build->latitude ?? 42.865388923088396 }}, {{ $build->longitude ?? 74.60104350048829 }}], {
                 balloonContentHeader: '{{ $build->name }}',
                 balloonContentBody: '{{ $build->address }}'
-            }, {
-                preset: 'islands#icon',
-                iconColor: '#0095b6'
-            }))
+            },
+                getPointOptions("{{ $build->category }}"),
+            ))
         }
 
 
