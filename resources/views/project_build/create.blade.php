@@ -80,8 +80,8 @@
                                    placeholder="Поставьте маркер на карте" required>
                         </div>
                         <div class="form-group">
-                            <input id="legality-check" type="checkbox" name="legality">
-                            <label for="legality-check">Легален:<span class="text-danger">*</span></label>
+                            <input id="legality-check" type="checkbox" name="legality" value="не легален:">
+                            <label class="checkbox" id="legality-check_label" for="legality-check" style="font-size: 18px">не легален:</label>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control d-none" id="latitude" name="latitude" required>
@@ -107,6 +107,19 @@
     </section>
 @endsection
 @push('scripts')
+    <script>
+        $('#legality-check').change(function () {
+            var checkbox = $(this),
+                label = $('#legality-check_label');
+            if (!checkbox.is(':checked')) {
+                label.get(0).lastChild.nodeValue = 'не легален';
+                label.css({'color':'red'});
+            } else {
+                label.get(0).lastChild.nodeValue = 'легален';
+                label.css({'color':'green'});
+            }
+        });
+    </script>
     <script>
         let is_legality = true;
         $('#category_of_object').change(function (e) {

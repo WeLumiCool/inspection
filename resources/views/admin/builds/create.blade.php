@@ -32,7 +32,8 @@
 
 
                     <div class="form-group">
-                        <label class="mutable-req" for="statement_field">Заявление:<span class="text-danger">*</span></label>
+                        <label class="mutable-req" for="statement_field">Заявление:<span
+                                class="text-danger">*</span></label>
                         <input id="statement_field" type="file" class="form-control files-input" name="statement[]"
                                accept="application/pdf" required multiple>
                     </div>
@@ -59,7 +60,7 @@
 
                     <div class="form-group">
                         <label class="mutable-req" for="project_field">Разрешение на строительство:<span
-                                    class="text-danger">*</span></label>
+                                class="text-danger">*</span></label>
                         <input id="project_field" type="file" class="form-control files-input" name="solution[]"
                                accept="application/pdf" required multiple>
                     </div>
@@ -79,9 +80,15 @@
                         <input id="address_field" type="text" class="form-control" name="address"
                                placeholder="Поставьте маркер на карте" required>
                     </div>
-                    <div class="form-group">
-                        <input id="legality-check" type="checkbox" name="legality">
-                        <label for="legality-check">Легален:<span class="text-danger">*</span></label>
+                    <div class="form">
+                        <div id="inputGroup" class="inputGroup">
+                            <input id="legality-check" type="checkbox" name="legality" value="не легален:">
+                            <label class="checkbox" id="legality-check_label"
+                                                                       for="legality-check" style="font-size: 18px">
+
+                                не легален:</label>
+
+                        </div>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control d-none" id="latitude" name="latitude" required>
@@ -108,17 +115,30 @@
 
 @push('scripts')
     <script>
+        $('#legality-check').change(function () {
+            var checkbox = $(this),
+                label = $('#legality-check_label');
+            if (!checkbox.is(':checked')) {
+                label.get(0).lastChild.nodeValue = 'не легален';
+                label.css({'color':'red'});
+            } else {
+                label.get(0).lastChild.nodeValue = 'легален';
+                label.css({'color':'green'});
+            }
+        });
+    </script>
+    <script>
         let is_legality = true;
         $('#category_of_object').change(function (e) {
             let value = e.currentTarget.value;
             if (value === 'Незаконный') {
-                if(is_legality) {
+                if (is_legality) {
                     $('.files-input').removeAttr('required');
                     $('.mutable-req span').remove();
                 }
                 is_legality = false;
             } else {
-                if(!is_legality) {
+                if (!is_legality) {
                     $('.files-input').prop('required', true);
                     $('.mutable-req').append('<span class="text-danger">*</span>');
                 }
@@ -193,4 +213,5 @@
             }
         }
     </script>
+
 @endpush

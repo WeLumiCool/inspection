@@ -161,7 +161,7 @@
 
                     </div>
                 </div>
-            </div>
+
             <div class="row mt-3">
                 <div class="col-12 p-3 bg-show">
                     <div id="map" class="border-0" style="width: 100%; height: 400px;"></div>
