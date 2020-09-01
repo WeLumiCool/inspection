@@ -142,8 +142,7 @@
                             @endif
                         </div>
                         <div class="col-lg-6 col-12 text-lg-left text-center pt-4">
-                            <p class="h6 font-weight-bold"> АКТ оценки
-                                соотвествия:</p>
+                            <p class="h6 font-weight-bold"> Акт ввода:</p>
                                 @if(!is_null($build->solution))
                                     @foreach(json_decode($build->solution) as $key=>$doc_path)
                                         <div class="row my-2">
@@ -340,8 +339,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="mutable-req" for="project_field">
-                                    АКТ оценки соотвествия вводимого в эксплуатацию
-                                    завершенного строительства объекта:</label>
+                                    Акт ввода:</label>
                                 <input id="project_field" type="file" class="form-control files-input"
                                        name="certificate[]"
                                        accept="application/pdf" multiple>

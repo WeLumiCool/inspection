@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="mutable-req" for="act_field">Акт:<span class="text-danger">*</span></label>
+                        <label class="mutable-req" for="act_field">Гос. акт:<span class="text-danger">*</span></label>
                         <input id="act_field" type="file" class="form-control files-input" name="act[]"
                                accept="application/pdf"
                                required multiple>
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="area_field">Площадь:<span class="text-danger">*</span></label>
+                        <label for="area_field">Площадь(кв.м):<span class="text-danger">*</span></label>
                         <input id="area_field" type="text" class="form-control" name="area" required>
                     </div>
 

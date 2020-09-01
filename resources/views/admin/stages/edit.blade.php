@@ -47,8 +47,7 @@
                     </div>
                     <div class="form-group">
                         <label class="mutable-req" for="project_field">
-                            АКТ оценки соотвествия вводимого в эксплуатацию
-                            завершенного строительства объекта:</label>
+                            Акт ввода:</label>
                         <input id="project_field" type="file" class="form-control files-input" name="certificate[]"
                                accept="application/pdf" multiple>
                     </div>

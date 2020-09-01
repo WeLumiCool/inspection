@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="mutable-req" for="act_field">Акт:<span class="text-danger">*</span></label>
+                            <label class="mutable-req" for="act_field">Гос. акт:<span class="text-danger">*</span></label>
                             <input id="act_field" type="file" class="form-control files-input" name="act[]"
                                    accept="application/pdf"
                                    required multiple>

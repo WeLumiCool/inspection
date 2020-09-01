@@ -13,8 +13,8 @@
             <div class="col-10 py-3">{{ $build->name }}</div>
             <div class="col-2  py-3"><span class="font-weight-bold">Адрес:</span></div>
             <div class="col-10 py-3">{{ $build->address }}</div>
-            <div class="col-2 py-3 "><span class="font-weight-bold">Площадь:</span></div>
-            <div class="col-10 py-3">{{ $build->address }}</div>
+            <div class="col-2 py-3 "><span class="font-weight-bold">Площадь (кв.м):</span></div>
+            <div class="col-10 py-3">{{ $build->area }}</div>
             <div class="col-2 py-3 "><span class="font-weight-bold">Категория:</span></div>
             <div class="col-10 py-3">{{ $build->category }}</div>
                 @if(!is_null($build->statement))
@@ -40,7 +40,7 @@
             </div>
             @endif
             @if(!is_null($build->act))
-            <div class="col-2 py-3"><span class="font-weight-bold">Акт:</span></div>
+            <div class="col-2 py-3"><span class="font-weight-bold">Гос. акт:</span></div>
             <div class="col-10 py-3">
                   @foreach(json_decode($build->act) as $key=>$doc_path)
                     <a href="{{ asset('storage/files/' . $doc_path) }}" title="{{ $key }}" target="_blank" class="mx-auto show_doc btn">
@@ -73,7 +73,7 @@
             </div>
             @endif
             @if(!is_null($build->certificate))
-            <div class="col-2 py-3"><span class="font-weight-bold">Сертификат:</span></div>
+            <div class="col-2 py-3"><span class="font-weight-bold">Акт ввода:</span></div>
             <div class="col-10 py-3">
                   @foreach(json_decode($build->certificate) as $key=>$doc_path)
                     <a href="{{ asset('storage/files/' . $doc_path) }}" title="{{ $key }}" target="_blank" class="mx-auto show_doc btn">
@@ -87,11 +87,11 @@
             <div class="col-10 py-3">{{ $build->type->name }}</div>
             <div class="col-2 py-3"><span class="font-weight-bold">Примечание:</span></div>
             <div class="col-10 py-3">{{ $build->note }}</div>
-            <div class="col-2 py-3"><span class="font-weight-bold">Разрешение:</span></div>
+            <div class="col-2 py-3"><span class="font-weight-bold">Легальность:</span></div>
             @if($build->legality)
-                <div class="col-10">присутствует</div>
+                <div class="col-10">Легален</div>
             @else
-                <div class="col-10">отсутствует</div>
+                <div class="col-10">Не легален</div>
             @endif
             @if($build->latitude && $build->longitude)
                 <div class="col-12 mt-4 border-0 p-0">
@@ -270,8 +270,7 @@
                         </div>
                         <div class="form-group">
                             <label class="mutable-req" for="project_field">
-                                АКТ оценки соотвествия вводимого в эксплуатацию
-                                завершенного строительства объекта:</label>
+                                Акт ввода:</label>
                             <input id="project_field" type="file" class="form-control files-input" name="certificate[]"
                                    accept="application/pdf"  multiple>
                         </div>
