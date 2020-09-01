@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <section class="pt-5 mt-5">
+
         <div class="container pt-3">
             <div class="row px-1 bg-show">
                 <div class="col-12 text-lg-left text-center ">
@@ -27,9 +28,13 @@
 
                     </div>
                     <div class="row ">
-                        <div class="col-lg col-12 text-lg-left text-center">
+                        <div class="col-lg col-10 text-lg-left text-center">
                             <p class="h6 font-weight-bold">Примечание:</p>
                             <p class="text-muted">{{ $build->note }}</p>
+                        </div>
+                        <div class="col-lg col-2 text-lg-left text-center">
+                            <p class="h6 font-weight-bold">Инспектор:</p>
+                            <p class="text-muted">{{ $user }}</p>
                         </div>
                     </div>
                     <div class="row border-top mx-3">
@@ -145,7 +150,7 @@
                                                     </div>
                                                     <div class="row  mx-2">
                                                         <div
-                                                            class="col-lg-6 pt-3 col-12 text-lg-left text-center">
+                                                            class="col-lg-5 pt-3 col-12 text-lg-left text-center">
                                                             <p class="h6 font-weight-bold ">Фото объекта:</p>
                                                             <div class="row">
                                                                 @if(!is_null($stage->images))
@@ -167,10 +172,17 @@
                                                                 @endif
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6 col-12 pt-3 text-lg-left text-center">
+                                                        <div class="col-lg-5 col-12 pt-3 text-lg-left text-center">
                                                             <p class="h6 font-weight-bold ">Примечание:</p>
                                                             <p class=" text-muted">
                                                                 {{ $stage->note }}
+                                                            </p>
+                                                        </div>
+
+                                                        <div class="col-lg-2 col-12 pt-3 text-lg-left text-center">
+                                                            <p class="h6 font-weight-bold ">Инспектор:</p>
+                                                            <p class=" text-muted">
+                                                                {{ $histories->where('stage_id', $stage->id)->where('action', 'Добавил')->first()->user->name}}
                                                             </p>
                                                         </div>
                                                     </div>
