@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Build;
+use App\History;
 use App\Services\PdfUploader;
 use App\Services\SetHistory;
 use App\Type;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
@@ -290,7 +292,9 @@ class BuildController extends Controller
     public function inspector_show($id)
     {
         $build = Build::find($id);
-        return view('project_build.show', compact('build'));
+        $history = History::where('object_id', $id)->where('action', 'Добавил')->first();
+
+        return view('project_build.show', ['build' => $build, 'user' => $history->user->name, 'histories' => History::all()]);
     }
 
     public function map() {
