@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Build;
 use App\Services\PdfUploader;
 use App\Services\SetHistory;
 use App\Stage;
@@ -40,15 +41,22 @@ class StageController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request);
+        $build = Build::find($request->build_id);
         $stage = Stage::create($request->except('document_scan', 'images', 'certificate'));
-//        if($request->hasFile('certificate')){
-//            $certificate = [];
-//            foreach ($request->file('$certificate') as $file) {
-//                $filename = PdfUploader::upload($file, 'stage', 'image');
-//                $images[] = $filename;
-//            }
-//        }
+        if($request->hasFile('certificate')){
+            if (!is_null($build->certificate)) {
+                foreach (json_decode($build->certificate) as $img_path) {
+                    Storage::disk('public')->delete("/files/" . $img_path);
+                }
+            }
+            $certificates = [];
+            foreach ($request->file('certificate') as $file) {
+                $filename = PdfUploader::upload($file, 'certificates', 'document');
+                $certificates[$file->getClientOriginalName()] = $filename;
+            }
+            $build->certificate = json_encode($certificates);
+            $build->save();
+        }
         if ($request->hasFile('images')) {
             $images = [];
             foreach ($request->file('images') as $file) {
@@ -68,7 +76,7 @@ class StageController extends Controller
         }
         SetHistory::save('Добавил', $stage->build->id, $stage->id);
         $stage->save();
-        return redirect()->route('admin.builds.show', $stage->build);
+        return redirect()->route('admin.builds.show', $build);
     }
 
 
@@ -76,7 +84,22 @@ class StageController extends Controller
     public function isp_store(Request $request)
     {
 
-        $stage = Stage::create($request->except(['document_scan', 'images']));
+        $build = Build::find($request->build_id);
+        $stage = Stage::create($request->except('document_scan', 'images', 'certificate'));
+        if($request->hasFile('certificate')){
+            if (!is_null($build->certificate)) {
+                foreach (json_decode($build->certificate) as $img_path) {
+                    Storage::disk('public')->delete("/files/" . $img_path);
+                }
+            }
+            $certificates = [];
+            foreach ($request->file('certificate') as $file) {
+                $filename = PdfUploader::upload($file, 'certificates', 'document');
+                $certificates[$file->getClientOriginalName()] = $filename;
+            }
+            $build->certificate = json_encode($certificates);
+            $build->save();
+        }
         if ($request->exists('images')) {
             $images = [];
             foreach ($request->file('images') as $file) {
@@ -96,19 +119,8 @@ class StageController extends Controller
         }
         SetHistory::save('Добавил', $stage->build->id, $stage->id);
         $stage->save();
-        return redirect()->route('show', $request->build_id);
+        return redirect()->route('show', $build->id);
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Stage $stage
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Stage $stage)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -130,6 +142,21 @@ class StageController extends Controller
      */
     public function update(Request $request, Stage $stage)
     {
+        $build = Build::find($stage->build_id);
+        if($request->hasFile('certificate')){
+            if (!is_null($build->certificate)) {
+                foreach (json_decode($build->certificate) as $img_path) {
+                    Storage::disk('public')->delete("/files/" . $img_path);
+                }
+            }
+            $certificates = [];
+            foreach ($request->file('certificate') as $file) {
+                $filename = PdfUploader::upload($file, '$certificates', 'document');
+                $certificates[$file->getClientOriginalName()] = $filename;
+            }
+            $build->certificate = json_encode($certificates);
+            $build->save();
+        }
         if ($request->exists('images')) {
             $old_images = json_decode($stage->images);
             if (!is_null($old_images)) {
@@ -173,6 +200,14 @@ class StageController extends Controller
      */
     public function destroy(Stage $stage)
     {
+        $build = Build::find($stage->build_id);
+        if (!is_null($build->certificate)) {
+            foreach (json_decode($build->certificate) as $doc_path) {
+                Storage::disk('public')->delete("/files/" . $doc_path);
+            }
+        }
+        $build->certificate = null;
+        $build->save();
         if (!is_null($stage->images)) {
             foreach (json_decode($stage->images) as $img_path) {
                 Storage::disk('public')->delete("/files/" . $img_path);
