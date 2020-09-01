@@ -37,109 +37,126 @@
                     <div class="row">
                         <div class="col-lg-3 col-12 text-lg-left text-center pt-4">
                             <p class="h6 font-weight-bold">Заявление:</p>
-                            @for($i=1;$i<4;$i++)
-                                <div class="row my-2">
-                                    <div class="col-lg-8 col-12 text-muted font-small">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, porro.
-                                    </div>
-                                    <div class="col-lg-2 col-12 icon-top">
-                                        <a href="{{ asset('storage/files/'.$build->statement) }}" target="_blank"
-                                           {{-- data-path="{{ $build->statement }}"--}} class="  font-weight-bold ">
+                            @if(!is_null($build->statement))
+                                @foreach(json_decode($build->statement) as $key=>$doc_path)
+                                    <div class="row my-2">
+                                        <div class="col-lg-8 col-12 text-muted font-small">
+                                            {{ $key }}
+                                        </div>
+                                        <div class="col-lg-2 col-12 icon-top">
+                                            <a href="{{ asset('storage/files/'.$doc_path) }}" target="_blank"
+                                               {{-- data-path="{{ $build->statement }}"--}} class="  font-weight-bold ">
 
-                                            <i class="fas pt-3 fa-file-pdf fa-3x"
-                                               style="color: #658FA4;"></i>
-                                        </a>
+                                                <i class="fas pt-3 fa-file-pdf fa-3x"
+                                                   style="color: #658FA4;"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            @endfor
+                                @endforeach
+                            @endif
                         </div>
                         <div class="col-lg-3 col-12 text-lg-left text-center pt-4">
                             <p class="h6 font-weight-bold">АПУ/ИТУ:</p>
-                            @for($i=1;$i<4;$i++)
-                                <div class="row my-2">
-                                    <div class="col-lg-8 col-12 text-muted font-small">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, porro.
-                                    </div>
-                                    <div class="col-lg-2 col-12 icon-top">
-                                        <a href="{{ asset('storage/files/'.$build->apu) }}" target="_blank"
-                                           {{-- data-path="{{ $build->apu }}"--}} class=" font-weight-bold ">
+                            @if(!is_null($build->apu))
+                                @foreach(json_decode($build->apu) as $key=>$doc_path)
+                                    <div class="row my-2">
+                                        <div class="col-lg-8 col-12 text-muted font-small">
+                                            {{ $key }}
+                                        </div>
+                                        <div class="col-lg-2 col-12 icon-top">
+                                            <a href="{{ asset('storage/files/'.$doc_path) }}" target="_blank"
+                                               {{-- data-path="{{ $build->statement }}"--}} class="  font-weight-bold ">
 
-                                            <i class="fas pt-3 fa-file-pdf fa-3x"
-                                               style="color: #658FA4;"></i>
-                                        </a>
+                                                <i class="fas pt-3 fa-file-pdf fa-3x"
+                                                   style="color: #658FA4;"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            @endfor
+                                @endforeach
+                            @endif
                         </div>
                         <div class="col-lg-3 col-12 text-lg-left text-center pt-4">
                             <p class="h6 font-weight-bold">Гос.акт:</p>
-                            @for($i=1;$i<4;$i++)
-                                <div class="row my-2">
-                                    <div class="col-lg-8 col-12 text-muted font-small">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, porro.
+                            @if(!is_null($build->act))
+                                @foreach(json_decode($build->act) as $key=>$doc_path)
+                                    <div class="row my-2">
+                                        <div class="col-lg-8 col-12 text-muted font-small">
+                                            {{ $key }}
+                                        </div>
+                                        <div class="col-lg-2 col-12 icon-top">
+                                            <a href="{{ asset('storage/files/'.$doc_path) }}" target="_blank"
+                                               {{-- data-path="{{ $build->statement }}"--}} class="  font-weight-bold ">
+
+                                                <i class="fas pt-3 fa-file-pdf fa-3x"
+                                                   style="color: #658FA4;"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-2 col-12 icon-top">
-                                        <a href="{{ asset('storage/files/'.$build->act) }}" target="_blank"
-                                           {{-- data-path="{{ $build->act }}"--}} class="  font-weight-bold ">
-                                            <i class="fas pt-3 fa-file-pdf fa-3x"
-                                               style="color: #658FA4;"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endfor
+                                @endforeach
+                            @endif
                         </div>
                         <div class="col-lg-3 col-12 text-lg-left text-center pt-4">
                             <p class="h6 font-weight-bold">Проект</p>
-                            @for($i=1;$i<4;$i++)
-                                <div class="row my-2">
-                                    <div class="col-lg-8 col-12 text-muted font-small">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, porro.
+                            @if(!is_null($build->project))
+                                @foreach(json_decode($build->project) as $key=>$doc_path)
+                                    <div class="row my-2">
+                                        <div class="col-lg-8 col-12 text-muted font-small">
+                                            {{ $key }}
+                                        </div>
+                                        <div class="col-lg-2 col-12 icon-top">
+                                            <a href="{{ asset('storage/files/'.$doc_path) }}" target="_blank"
+                                               {{-- data-path="{{ $build->statement }}"--}} class="  font-weight-bold ">
+
+                                                <i class="fas pt-3 fa-file-pdf fa-3x"
+                                                   style="color: #658FA4;"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-2 col-12 icon-top">
-                                        <a href="{{ asset('storage/files/'.$build->project) }}" target="_blank"
-                                           {{-- data-path="{{ $build->project }}"--}} class=" font-weight-bold ">
-                                            <i class="fas pt-3 fa-file-pdf fa-3x"
-                                               style="color: #658FA4;"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endfor
+                                @endforeach
+                            @endif
                         </div>
                         <div class="col-lg-6 col-12 text-lg-left text-center pt-4">
                             <p class="h6 font-weight-bold"> Разрешение на
                                 строительство:</p>
-                            @for($i=1;$i<4;$i++)
-                                <div class="row my-2">
-                                    <div class="col-lg-8 col-12 text-muted font-small">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, porro.
+                            @if(!is_null($build->solution))
+                                @foreach(json_decode($build->solution) as $key=>$doc_path)
+                                    <div class="row my-2">
+                                        <div class="col-lg-8 col-12 text-muted font-small">
+                                            {{ $key }}
+                                        </div>
+                                        <div class="col-lg-2 col-12 icon-top">
+                                            <a href="{{ asset('storage/files/'.$doc_path) }}" target="_blank"
+                                               {{-- data-path="{{ $build->statement }}"--}} class="  font-weight-bold ">
+
+                                                <i class="fas pt-3 fa-file-pdf fa-3x"
+                                                   style="color: #658FA4;"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-2 col-12 icon-top">
-                                        <a href="{{ asset('storage/files/'.$build->solution) }}" target="_blank"
-                                           {{-- data-path="{{ $build->solution }}"--}} class="  font-weight-bold ">
-                                            <i class="fas pt-3 fa-file-pdf fa-3x"
-                                               style="color: #658FA4;"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endfor
+                                @endforeach
+                            @endif
                         </div>
                         <div class="col-lg-6 col-12 text-lg-left text-center pt-4">
                             <p class="h6 font-weight-bold"> АКТ оценки
                                 соотвествия:</p>
-                            @for($i=1;$i<4;$i++)
-                                <div class="row my-2">
-                                    <div class="col-lg-8 col-12 text-muted font-small">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, porro.
-                                    </div>
-                                    <div class="col-lg-2 col-12 icon-top">
-                                        <a href="{{ asset('storage/files/'.$build->certificate) }}" target="_blank"
-                                           {{-- data-path="{{ $build->certificate }}"--}} class=" font-weight-bold ">
-                                            <i class="fas pt-3 fa-file-pdf fa-3x"
-                                               style="color: #658FA4;"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endfor
+                                @if(!is_null($build->solution))
+                                    @foreach(json_decode($build->solution) as $key=>$doc_path)
+                                        <div class="row my-2">
+                                            <div class="col-lg-8 col-12 text-muted font-small">
+                                                {{ $key }}
+                                            </div>
+                                            <div class="col-lg-2 col-12 icon-top">
+                                                <a href="{{ asset('storage/files/'.$doc_path) }}" target="_blank"
+                                                   {{-- data-path="{{ $build->statement }}"--}} class="  font-weight-bold ">
+
+                                                    <i class="fas pt-3 fa-file-pdf fa-3x"
+                                                       style="color: #658FA4;"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
                         </div>
 
                     </div>
@@ -187,22 +204,22 @@
                                             <div class="card-body p-0">
                                                 <div class="table-ui  mb-3  mb-4">
                                                     <div
-                                                        class="d-flex col-lg-12 col-12 pt-3 justify-content-lg-end text-center">
+                                                            class="d-flex col-lg-12 col-12 pt-3 justify-content-lg-end text-center">
                                                         <p class="font-weight-bold font-small ">{{ date('d.m.Y',strtotime($stage->date)) }}</p>
                                                     </div>
                                                     <div class="row  mx-2">
                                                         <div
-                                                            class="col-lg-3 col-12 text-lg-left py-2 text-center ">
+                                                                class="col-lg-3 col-12 text-lg-left py-2 text-center ">
                                                             <p class="h6 font-weight-bold ">Этап:</p>
                                                             <p class="text-muted">{{ $stage->stage }}</p>
                                                         </div>
                                                         <div
-                                                            class="col-lg-6 col-12 text-lg-left py-2 text-center ">
+                                                                class="col-lg-6 col-12 text-lg-left py-2 text-center ">
                                                             <p class="h6 font-weight-bold ">Описание:</p>
                                                             <p class="text-muted">{{ $stage->desc }}</p>
                                                         </div>
                                                         <div
-                                                            class="col-lg-3 col-12 text-lg-left py-2 text-center ">
+                                                                class="col-lg-3 col-12 text-lg-left py-2 text-center ">
                                                             <p class="h6 font-weight-bold">
                                                                 Документы: {{ $stage->document }}</p>
                                                             @if(!is_null($stage->document_scan))
@@ -219,7 +236,7 @@
                                                     </div>
                                                     <div class="row  mx-2">
                                                         <div
-                                                            class="col-lg-6 pt-3 col-12 text-lg-left text-center">
+                                                                class="col-lg-6 pt-3 col-12 text-lg-left text-center">
                                                             <p class="h6 font-weight-bold ">Фото объекта:</p>
                                                             <div class="row">
                                                                 @if(!is_null($stage->images))
@@ -229,9 +246,9 @@
                                                                                data-fancybox="media-{{$stage->id}}"
                                                                                class="img-fluid">
                                                                                 <img
-                                                                                    src="{{ asset('storage/files/'.$media) }}"
-                                                                                    class="mediafile img-fluid m-2"
-                                                                                    alt=""></a>
+                                                                                        src="{{ asset('storage/files/'.$media) }}"
+                                                                                        class="mediafile img-fluid m-2"
+                                                                                        alt=""></a>
                                                                             <a href="{{ asset('storage/files/'.$media) }}"
                                                                                download>
                                                                                 <i class="fas fa-arrow-alt-circle-down stage position-absolute"></i>
@@ -284,12 +301,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="stage_field">Дата проверки:<span
-                                        class="text-danger">*</span></label>
+                                            class="text-danger">*</span></label>
                                 <input id="stage_field" type="date" class="form-control" name="date" required>
                             </div>
                             <div class="form-group">
                                 <label for="stage_field">Наименование докуметов:<span
-                                        class="text-danger">*</span></label>
+                                            class="text-danger">*</span></label>
                                 <input id="stage_field" type="text" class="form-control" name="document"
                                        required>
                             </div>
@@ -313,7 +330,8 @@
                                 <label class="mutable-req" for="project_field">
                                     АКТ оценки соотвествия вводимого в эксплуатацию
                                     завершенного строительства объекта:</label>
-                                <input id="project_field" type="file" class="form-control files-input" name="certificate[]"
+                                <input id="project_field" type="file" class="form-control files-input"
+                                       name="certificate[]"
                                        accept="application/pdf" required multiple>
                             </div>
                             <input id="build_id" type="hidden" name="build_id" value="{{ $build->id }}">
@@ -361,7 +379,7 @@
 
         function init() {
             // Создание карты.
-            var getPointOptions = function(category) {
+            var getPointOptions = function (category) {
                 if (category === "Незаконный") {
 
                     return {
