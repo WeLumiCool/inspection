@@ -32,7 +32,7 @@
                             <th scope="col">ФИО</th>
                             <th scope="col">Адрес</th>
                             <th scope="col">Тип объекта</th>
-                            <th scope="col">Площадь</th>
+                            <th scope="col">Площадь (кв.м)</th>
                             <th scope="col">Разрешение</th>
                         </tr>
 

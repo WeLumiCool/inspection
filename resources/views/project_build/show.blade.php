@@ -22,7 +22,7 @@
                             <p class="text-muted">{{ $build->address }}</p>
                         </div>
                         <div class="col-lg col-12 text-lg-left text-center">
-                            <p class="h6 font-weight-bold">Площадь объекта:</p>
+                            <p class="h6 font-weight-bold">Площадь (кв.м):</p>
                             <p class="text-muted">{{ $build->area }}</p>
                         </div>
 
