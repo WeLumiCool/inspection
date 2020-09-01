@@ -79,9 +79,20 @@
                         <input id="address_field" type="text" class="form-control" name="address"
                                placeholder="Поставьте маркер на карте" required>
                     </div>
+<<<<<<< Updated upstream
                     <div class="form-group">
                         <input id="legality-check" type="checkbox" name="legality">
                         <label for="legality-check">Легален:<span class="text-danger">*</span></label>
+=======
+                    <div class="form">
+                        <div id="inputGroup" class="inputGroup">
+                            <input id="legality-check" type="checkbox" name="legality" value="">
+                            <label class="checkbox" id="legality-check_label"
+                                                                       for="legality-check" style="font-size: 18px">
+
+                                не легален:</label>
+                        </div>
+>>>>>>> Stashed changes
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control d-none" id="latitude" name="latitude" required>
