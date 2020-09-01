@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="area_field">Площадь:<span class="text-danger">*</span></label>
+                        <label for="area_field">Площадь (кв.м):<span class="text-danger">*</span></label>
                         <input id="area_field" type="text" class="form-control" name="area" value="{{ $build->area }}" required>
                     </div>
                     <div class="form-group">
