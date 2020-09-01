@@ -344,7 +344,7 @@
                                     завершенного строительства объекта:</label>
                                 <input id="project_field" type="file" class="form-control files-input"
                                        name="certificate[]"
-                                       accept="application/pdf" required multiple>
+                                       accept="application/pdf" multiple>
                             </div>
                             <input id="build_id" type="hidden" name="build_id" value="{{ $build->id }}">
                         </div>

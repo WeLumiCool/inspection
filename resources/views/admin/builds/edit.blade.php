@@ -75,11 +75,11 @@
                         <label class="checkbox" id="legality-check_label" for="legality-check">Легален:</label>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control d-none" id="latitude" name="latitude" required>
+                        <input type="text" class="form-control d-none" id="latitude" value="{{ $build->latitude }}" name="latitude" >
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control d-none" id="longitude" name="longitude" required>
+                        <input type="text" class="form-control d-none" id="longitude" value="{{ $build->longitude }}" name="longitude" >
                     </div>
 
                     <div class="form-group">
