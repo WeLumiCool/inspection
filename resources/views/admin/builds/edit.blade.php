@@ -14,6 +14,10 @@
                         <label for="name_field">ФИО:<span class="text-danger">*</span></label>
                         <input id="name_field" type="text" class="form-control" name="name" value="{{ $build->name }}" required>
                     </div>
+                    <div class="form-group">
+                        <label for="inn_field">ИНН:<span class="text-danger">*</span></label>
+                        <input id="inn_field" type="text" class="form-control" name="inn" value="{{ $build->inn }}" required>
+                    </div>
 
                     <div class="form-group">
                         <label for="type_of_object">Тип объекта:</label>
