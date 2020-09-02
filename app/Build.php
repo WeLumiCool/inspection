@@ -21,7 +21,8 @@ class Build extends Model
         'latitude',
         'legality',
         'certificate',
-        'category'
+        'category',
+        'inn'
     ];
 
     public function type()

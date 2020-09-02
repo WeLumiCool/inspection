@@ -14,6 +14,10 @@
                             <input id="name_field" type="text" class="form-control" name="name" required>
                         </div>
                         <div class="form-group">
+                            <label for="inn_field">ИНН:<span class="text-danger">*</span></label>
+                            <input id="inn_field" type="text" class="form-control" name="inn" required>
+                        </div>
+                        <div class="form-group">
                             <label for="type_of_object">Тип объекта:</label>
                             <select class="form-control" id="type_of_object" name="type_id">
                                 @foreach($types as $type)
@@ -34,34 +38,34 @@
                         <div class="form-group">
                             <label class="mutable-req" for="statement_field">Заявление:<span class="text-danger">*</span></label>
                             <input id="statement_field" type="file" class="form-control files-input" name="statement[]"
-                                   accept="application/pdf" required multiple>
+                                   accept="application/pdf" multiple>
                         </div>
 
                         <div class="form-group">
                             <label class="mutable-req" for="apu_field">АПУ/ИТУ:<span class="text-danger">*</span></label>
                             <input id="apu_field" type="file" class="form-control files-input" name="apu[]"
                                    accept="application/pdf"
-                                   required multiple>
+                                   multiple>
                         </div>
 
                         <div class="form-group">
                             <label class="mutable-req" for="act_field">Гос. акт:<span class="text-danger">*</span></label>
                             <input id="act_field" type="file" class="form-control files-input" name="act[]"
                                    accept="application/pdf"
-                                   required multiple>
+                                   multiple>
                         </div>
 
                         <div class="form-group">
                             <label class="mutable-req" for="project_field">Проект:<span class="text-danger">*</span></label>
                             <input id="project_field" type="file" class="form-control files-input" name="project[]"
-                                   accept="application/pdf" required multiple>
+                                   accept="application/pdf" multiple>
                         </div>
 
                         <div class="form-group">
                             <label class="mutable-req" for="project_field">Разрешение на строительство:<span
                                         class="text-danger">*</span></label>
                             <input id="project_field" type="file" class="form-control files-input" name="solution[]"
-                                   accept="application/pdf" required multiple>
+                                   accept="application/pdf" multiple>
                         </div>
 
                         <div class="form-group">
