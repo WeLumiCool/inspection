@@ -89,7 +89,7 @@
                     if (category === "Незаконный") {
 
                         return {
-                            preset: 'islands#violetDotIcon',
+                            preset: 'islands#redDotIcon',
                         }
                     }
                     else if (category === "Строящийся") {
@@ -99,7 +99,7 @@
                     }
                     else if (category === "Завершенный") {
                         return {
-                            preset: 'islands#nightDotIcon',
+                            preset: 'islands#violetDotIcon',
                         }
                     }
                 },
