@@ -8,9 +8,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item pt-2 ">
-                    <p class="h6 text-white font-weight-bold text-center" style="line-height: 1.6rem"> Межрегональное
+                    <p class="h6 text-white font-weight-bold text-center" style="line-height: 1.6rem"> Межрегиональное
                         управление Государственной инспекции по экологической
-                        и технической безопаности по г. Бишкек </p>
+                        и технической безопасности по г. Бишкек </p>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
