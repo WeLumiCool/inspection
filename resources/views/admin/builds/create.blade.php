@@ -90,7 +90,7 @@
                             <label class="checkbox" id="legality-check_label"
                                                                        for="legality-check" style="font-size: 18px">
 
-                                не легален:</label>
+                                Разрешение не имеется:</label>
 
                         </div>
                     </div>
@@ -123,10 +123,10 @@
             var checkbox = $(this),
                 label = $('#legality-check_label');
             if (!checkbox.is(':checked')) {
-                label.get(0).lastChild.nodeValue = 'не легален';
+                label.get(0).lastChild.nodeValue = 'Разрешение не имеется';
                 label.css({'color':'red'});
             } else {
-                label.get(0).lastChild.nodeValue = 'легален';
+                label.get(0).lastChild.nodeValue = 'Разрешение имеется';
                 label.css({'color':'green'});
             }
         });

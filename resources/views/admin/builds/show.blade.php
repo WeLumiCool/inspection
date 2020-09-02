@@ -87,11 +87,11 @@
             <div class="col-10 py-3">{{ $build->type->name }}</div>
             <div class="col-2 py-3"><span class="font-weight-bold">Примечание:</span></div>
             <div class="col-10 py-3">{{ $build->note }}</div>
-            <div class="col-2 py-3"><span class="font-weight-bold">Легальность:</span></div>
+            <div class="col-2 py-3"><span class="font-weight-bold">Разрешение:</span></div>
             @if($build->legality)
-                <div class="col-10">Легален</div>
+                <div class="col-10">Разрешение имеется</div>
             @else
-                <div class="col-10">Не легален</div>
+                <div class="col-10">Разрешение не имеется</div>
             @endif
             @if($build->latitude && $build->longitude)
                 <div class="col-12 mt-4 border-0 p-0">

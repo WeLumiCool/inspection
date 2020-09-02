@@ -85,7 +85,7 @@
                         </div>
                         <div class="form-group">
                             <input id="legality-check" type="checkbox" name="legality" value="не легален:">
-                            <label class="checkbox" id="legality-check_label" for="legality-check" style="font-size: 18px">не легален:</label>
+                            <label class="checkbox" id="legality-check_label" for="legality-check" style="font-size: 18px">Разрешение не имеется:</label>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control d-none" id="latitude" name="latitude" required>
@@ -116,10 +116,10 @@
             var checkbox = $(this),
                 label = $('#legality-check_label');
             if (!checkbox.is(':checked')) {
-                label.get(0).lastChild.nodeValue = 'не легален';
+                label.get(0).lastChild.nodeValue = 'Разрешение не имеется';
                 label.css({'color':'red'});
             } else {
-                label.get(0).lastChild.nodeValue = 'легален';
+                label.get(0).lastChild.nodeValue = 'Разрешение имеется';
                 label.css({'color':'green'});
             }
         });
