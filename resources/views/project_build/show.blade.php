@@ -14,6 +14,10 @@
                             <p class="text-muted">{{ $build->name }}</p>
                         </div>
                         <div class="col-lg col-12 text-lg-left text-center">
+                            <p class="h6 font-weight-bold ">ИНН:</p>
+                            <p class="text-muted">{{ $build->inn }}</p>
+                        </div>
+                        <div class="col-lg col-12 text-lg-left text-center">
                             <p class="h6 font-weight-bold ">Вид объекта:</p>
                             <p class="text-muted">{{ $build->type->name }}</p>
                         </div>
@@ -28,11 +32,11 @@
 
                     </div>
                     <div class="row ">
-                        <div class="col-lg col-10 text-lg-left text-center">
+                        <div class="col-lg col-12 text-lg-left text-center">
                             <p class="h6 font-weight-bold">Примечание:</p>
                             <p class="text-muted">{{ $build->note }}</p>
                         </div>
-                        <div class="col-lg col-2 text-lg-left text-center">
+                        <div class="col-lg col-12 text-lg-left text-center">
                             <p class="h6 font-weight-bold">Инспектор:</p>
                             <p class="text-muted">{{ $user }}</p>
                         </div>
@@ -393,7 +397,7 @@
                 if (category === "Незаконный") {
 
                     return {
-                        preset: 'islands#redDotIcon',
+                        preset: 'islands#violetDotIcon',
                     }
                 }
                 else if (category === "Строящийся") {

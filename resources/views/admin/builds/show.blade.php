@@ -13,7 +13,7 @@
             <div class="col-10 py-3">{{ $build->name }}</div>
             <div class="col-2  py-3"><span class="font-weight-bold">Адрес:</span></div>
             <div class="col-10 py-3">{{ $build->address }}</div>
-            <div class="col-2 py-3 "><span class="font-weight-bold">Площадь (кв.м):</span></div>
+            <div class="col-2 py-3 "><span class="font-weight-bold">Площадь:</span></div>
             <div class="col-10 py-3">{{ $build->area }}</div>
             <div class="col-2 py-3 "><span class="font-weight-bold">Категория:</span></div>
             <div class="col-10 py-3">{{ $build->category }}</div>
@@ -312,7 +312,7 @@
                 if (category === "Незаконный") {
 
                     return {
-                        preset: 'islands#redDotIcon',
+                        preset: 'islands#violetDotIcon',
                     }
                 }
                 else if (category === "Строящийся") {
