@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-group">
                         <input id="legality-check"  type="checkbox" name="legality" value="{{ $build->legality }}" {{$build->legality ? "checked" : ""}}>
-                        <label class="checkbox" id="legality-check_label" for="legality-check">Легален:</label>
+                        <label class="checkbox" id="legality-check_label" for="legality-check">Разрешение имеется:</label>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control d-none" id="latitude" value="{{ $build->latitude }}" name="latitude" >
@@ -115,10 +115,10 @@
                 var checkbox = $(this),
                     label = $('#legality-check_label');
                 if (!checkbox.is(':checked')) {
-                    label.get(0).lastChild.nodeValue = 'Не легален';
+                    label.get(0).lastChild.nodeValue = 'Разрешение не имеется';
                     label.css({'color':'red'});
                 } else {
-                    label.get(0).lastChild.nodeValue = 'Легален';
+                    label.get(0).lastChild.nodeValue = 'Разрешение имеется';
                     label.css({'color':'green'});
                 }
             });
