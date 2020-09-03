@@ -44,6 +44,7 @@ class BuildController extends Controller
     {
         return view('project_build.create', ['types' => Type::all()]);
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -56,56 +57,69 @@ class BuildController extends Controller
         self::general_store($request);
         return redirect()->route('admin.builds.index');
     }
+
     public function isp_store(Request $request)
     {
         self::general_store($request);
         return redirect()->route('main');
 
     }
+
     public static function general_store($request)
     {
-        $build = Build::create($request->except('statement','apu','project','solution','act', 'legality'));
+        $build = Build::create($request->except('statement', 'apu', 'project', 'solution', 'act', 'legality'));
         $build->legality = $request->exists('legality');
-        if($request->category!='Незаконный') {
+        if ($request->category != 'Незаконный') {
             //Заявлении
-            $statements = [];
-            foreach ($request->file('statement') as $file) {
-                $filePath = PdfUploader::upload($file, 'statements', 'document');
-                $statements[$file->getClientOriginalName()] = $filePath;
+            if ($request->hasFile('statement')) {
+                $statements = [];
+                foreach ($request->file('statement') as $file) {
+                    $filePath = PdfUploader::upload($file, 'statements', 'document');
+                    $statements[$file->getClientOriginalName()] = $filePath;
+                }
+                $build->statement = json_encode($statements);
             }
-            $build->statement = json_encode($statements);
+            if ($request->hasFile('apu')) {
+                $apus = [];
+                foreach ($request->file('apu') as $file) {
+                    $filePath = PdfUploader::upload($file, 'apus', 'apu');
+                    $apus[$file->getClientOriginalName()] = $filePath;
+                }
+                $build->apu = json_encode($apus);
+            }
 
-            $apus = [];
-            foreach ($request->file('apu') as $file) {
-                $filePath = PdfUploader::upload($file, 'apus', 'apu');
-                $apus[$file->getClientOriginalName()] = $filePath;
+            if ($request->hasFile('project')) {
+                $projects = [];
+                foreach ($request->file('project') as $file) {
+                    $filePath = PdfUploader::upload($file, 'projects', 'project');
+                    $projects[$file->getClientOriginalName()] = $filePath;
+                }
+                $build->project = json_encode($projects);
             }
-            $build->apu = json_encode($apus);
 
-            $projects = [];
-            foreach ($request->file('project') as $file) {
-                $filePath = PdfUploader::upload($file, 'projects', 'project');
-                $projects[$file->getClientOriginalName()] = $filePath;
+            if ($request->hasFile('solution')) {
+                $solutions = [];
+                foreach ($request->file('solution') as $file) {
+                    $filePath = PdfUploader::upload($file, 'solutions', 'solution');
+                    $solutions[$file->getClientOriginalName()] = $filePath;
+                }
+                $build->solution = json_encode($solutions);
             }
-            $build->project = json_encode($projects);
 
-            $solutions = [];
-            foreach ($request->file('solution') as $file) {
-                $filePath = PdfUploader::upload($file, 'solutions', 'solution');
-                $solutions[$file->getClientOriginalName()] = $filePath;
+            if ($request->hasFile('act')) {
+                $acts = [];
+                foreach ($request->file('act') as $file) {
+                    $filePath = PdfUploader::upload($file, 'acts', 'act');
+                    $acts[$file->getClientOriginalName()] = $filePath;
+                }
+                $build->act = json_encode($acts);
             }
-            $build->solution = json_encode($solutions);
 
-            $acts = [];
-            foreach ($request->file('act') as $file) {
-                $filePath = PdfUploader::upload($file, 'acts', 'act');
-                $acts[$file->getClientOriginalName()] = $filePath;
-            }
-            $build->act = json_encode($acts);
         }
         SetHistory::save('Добавил', $build->id, null);
         $build->save();
     }
+
     /**
      * Display the specified resource.
      *
@@ -137,8 +151,7 @@ class BuildController extends Controller
      */
     public function update(Request $request, Build $build)
     {
-        if ($request->hasFile('statement'))
-        {
+        if ($request->hasFile('statement')) {
             if (!is_null($build->statement)) {
                 foreach (json_decode($build->statement) as $img_path) {
                     Storage::disk('public')->delete("/files/" . $img_path);
@@ -152,8 +165,7 @@ class BuildController extends Controller
             $build->statement = json_encode($statements);
         }
 
-        if ($request->hasFile('apu'))
-        {
+        if ($request->hasFile('apu')) {
             if (!is_null($build->apu)) {
                 foreach (json_decode($build->apu) as $img_path) {
                     Storage::disk('public')->delete("/files/" . $img_path);
@@ -167,9 +179,8 @@ class BuildController extends Controller
             $build->apu = json_encode($apus);
         }
 
-        if ($request->hasFile('act'))
-        {
-             if (!is_null($build->act)) {
+        if ($request->hasFile('act')) {
+            if (!is_null($build->act)) {
                 foreach (json_decode($build->act) as $img_path) {
                     Storage::disk('public')->delete("/files/" . $img_path);
                 }
@@ -182,9 +193,8 @@ class BuildController extends Controller
             $build->act = json_encode($acts);
         }
 
-        if ($request->hasFile('project'))
-        {
-             if (!is_null($build->project)) {
+        if ($request->hasFile('project')) {
+            if (!is_null($build->project)) {
                 foreach (json_decode($build->project) as $img_path) {
                     Storage::disk('public')->delete("/files/" . $img_path);
                 }
@@ -197,9 +207,8 @@ class BuildController extends Controller
             $build->project = json_encode($projects);
         }
 
-        if ($request->hasFile('solution'))
-        {
-             if (!is_null($build->solution)) {
+        if ($request->hasFile('solution')) {
+            if (!is_null($build->solution)) {
                 foreach (json_decode($build->solution) as $img_path) {
                     Storage::disk('public')->delete("/files/" . $img_path);
                 }
@@ -213,7 +222,7 @@ class BuildController extends Controller
         }
 
         if ($request->hasFile('certificate')) {
-             if (!is_null($build->certificate)) {
+            if (!is_null($build->certificate)) {
                 foreach (json_decode($build->certificate) as $img_path) {
                     Storage::disk('public')->delete("/files/" . $img_path);
                 }
@@ -272,7 +281,7 @@ class BuildController extends Controller
                 Storage::disk('public')->delete("/files/" . $img_path);
             }
         }
-        foreach($build->stages as $stage){
+        foreach ($build->stages as $stage) {
             if (!is_null($stage->images)) {
                 foreach (json_decode($stage->images) as $img_path) {
                     Storage::disk('public')->delete("/files/" . $img_path);
@@ -297,7 +306,8 @@ class BuildController extends Controller
         return view('project_build.show', ['build' => $build, 'user' => $history->user->name, 'histories' => History::all()]);
     }
 
-    public function map() {
+    public function map()
+    {
 
         return view('project_build.maps', ['builds' => Build::all()]);
     }
