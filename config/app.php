@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -175,6 +176,14 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+    ],
+
+    'builders' => [
+        Illuminate\Database\Eloquent\Relations\HasMany::class => 'eloquent',
+        Illuminate\Database\Eloquent\Builder::class           => 'eloquent',
+        Illuminate\Database\Query\Builder::class              => 'query',
+        Illuminate\Support\Collection::class                  => 'collection',
+        // add your data source to custom engine handler
     ],
 
     /*
@@ -227,6 +236,14 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+
     ],
+    'engines' => [
+        'eloquent'   => Yajra\DataTables\Engines\EloquentEngine::class,
+        'query'      => Yajra\DataTables\Engines\QueryBuilderEngine::class,
+        'collection' => Yajra\DataTables\Engines\CollectionEngine::class,
+        // add your custom engine
+    ],
+
 
 ];

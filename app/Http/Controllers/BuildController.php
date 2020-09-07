@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
-
 class BuildController extends Controller
 {
     /**
@@ -329,6 +328,7 @@ class BuildController extends Controller
     public function datatableData2()
     {
         return DataTables::of(Build::query())
+
             ->editColumn('type_id', function (Build $build) {
                 $type = Type::find($build->type_id);
                 return $type['name'];
@@ -341,6 +341,8 @@ class BuildController extends Controller
                 }
             })
             ->rawColumns(['legality'])
+            ->addIndexColumn()
+
             ->make(true);
     }
 
