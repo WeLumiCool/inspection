@@ -43,8 +43,8 @@
                             <th scope="col">№</th>
                             <th scope="col">ФИО</th>
                             <th scope="col">Адрес</th>
-                            <th scope="col">Категория</th>
                             <th scope="col">Тип объекта</th>
+                            <th scope="col">Вид объекта</th>
                             <th scope="col">Площадь</th>
                             <th scope="col">Разрешение</th>
                         </tr>
