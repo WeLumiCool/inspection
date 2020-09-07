@@ -1,14 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="section pt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 pb-4">
-                    <div id="map"></div>
-
-                </div>
-            </div>
-        </div>
+        <div id="map"></div>
     </div>
 
 @endsection
@@ -16,7 +9,6 @@
 @push('styles')
     <style>
         #map {
-            width: 1000px;
             height: 500px;
             padding: 10px;
             margin-top: 50px;
@@ -73,14 +65,14 @@
                         balloonContentHeader: name,
                         balloonContentBody: [
                             '<address>',
-                        address,
+                            address,
                             '<br>',
-                        '<a href="show/' +
-                        id +
-                        '">' +
-                        'Побробнее' +
-                        '</a>',
-                        '</address>'
+                            '<a href="show/' +
+                            id +
+                            '">' +
+                            'Побробнее' +
+                            '</a>',
+                            '</address>'
                         ].join('')
                     };
                 },
@@ -91,19 +83,17 @@
                         return {
                             preset: 'islands#redDotIcon',
                         }
-                    }
-                    else if (category === "Строящийся") {
+                    } else if (category === "Строящийся") {
                         return {
                             preset: 'islands#darkGreenDotIcon',
                         }
-                    }
-                    else if (category === "Завершенный") {
+                    } else if (category === "Завершенный") {
                         return {
                             preset: 'islands#violetDotIcon',
                         }
                     }
                 },
-            points = [];
+                points = [];
             owner = [];
             address = [];
             category = [];
