@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-lg-3 col-sm-12 d-flex align-items-center">
                             <div class="form-group">
-                                <label for="type">Выберите тип объекта:</label>
+                                <label for="type">Выберите район:</label>
                                 <select id="district" data-column="5" class="form-control district-select mb-2    ">
                                     <option value="">Все</option>
                                     @foreach(['Свердловский','Ленинский', 'Октябрьский', 'Первомайский'] as $district)
