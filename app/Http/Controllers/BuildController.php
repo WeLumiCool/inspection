@@ -10,6 +10,7 @@ use App\Type;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 class BuildController extends Controller
@@ -66,7 +67,7 @@ class BuildController extends Controller
 
     public static function general_store($request)
     {
-        $build = Build::create($request->except('statement', 'apu', 'project', 'solution', 'act', 'legality'));
+        $build = Build::create($request->except('statement', 'apu', 'project', 'solution', 'act', 'legality', 'district'));
         $build->legality = $request->exists('legality');
         if ($request->category != 'Незаконный') {
             //Заявлении
@@ -115,6 +116,8 @@ class BuildController extends Controller
             }
 
         }
+        $build->district = Auth::user()->district;
+
         SetHistory::save('Добавил', $build->id, null);
         $build->save();
     }
@@ -234,8 +237,8 @@ class BuildController extends Controller
             $build->certificate = json_encode($certificates);
         }
 
-
         $build->update($request->except('statement', 'apu', 'act', 'project', 'solution', 'certificate', 'legality'));
+        $build->district = $request->district;
         $build->legality = $request->exists('legality');
         SetHistory::save('Обновил', $build->id, null);
         $build->save();
@@ -309,6 +312,22 @@ class BuildController extends Controller
     {
 
         return view('project_build.maps', ['builds' => Build::all()]);
+    }
+
+    public function map_ajax(Request $request) {
+        if ($request->district === 'Все')
+        {
+            $builds = Build::all();
+        }
+        else{
+            $builds = Build::where('district', $request->district)->get();
+        }
+
+        $view = view('blocks.maps', ['builds' => $builds])->render();
+        return response()->json([
+            'view' => $view,
+        ]);
+
     }
 
     public function datatableData()

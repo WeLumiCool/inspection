@@ -40,6 +40,10 @@
                             <p class="h6 font-weight-bold">Инспектор:</p>
                             <p class="text-muted">{{ $user }}</p>
                         </div>
+                        <div class="col-lg col-12 text-lg-left text-center">
+                            <p class="h6 font-weight-bold">Район:</p>
+                            <p class="text-muted">{{ $build->district }}</p>
+                        </div>
                     </div>
                     <div class="row border-top mx-3">
                     </div>

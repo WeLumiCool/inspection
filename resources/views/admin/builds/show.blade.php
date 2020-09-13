@@ -15,6 +15,8 @@
             <div class="col-10 py-3">{{ $build->address }}</div>
             <div class="col-2 py-3 "><span class="font-weight-bold">Площадь:</span></div>
             <div class="col-10 py-3">{{ $build->area }}</div>
+            <div class="col-2 py-3 "><span class="font-weight-bold">Район:</span></div>
+            <div class="col-10 py-3">{{ $build->district }}</div>
             <div class="col-2 py-3 "><span class="font-weight-bold">Категория:</span></div>
             <div class="col-10 py-3">{{ $build->category }}</div>
                 @if(!is_null($build->statement))

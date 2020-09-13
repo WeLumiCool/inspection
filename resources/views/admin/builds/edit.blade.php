@@ -38,6 +38,15 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="role-select">Район:</label>
+                        <select name="district" id="role-select" class="form-control">
+                            @foreach(['Первомайский', 'Свердловский', 'Ленинский', 'Октябрьский'] as $district)
+                                <option value="{{ $district }}" {{ $build->district == $district ? 'selected' : '' }}>{{ $district }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label for="statement_field">Заявление:<span class="text-danger">*</span></label>
                         <input id="statement_field" type="file" class="form-control" name="statement[]" accept="application/pdf" multiple>
                     </div>

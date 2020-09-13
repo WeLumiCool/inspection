@@ -64,6 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/show/{id}', 'BuildController@inspector_show')->name('show');
 
     Route::get('/maps', 'BuildController@map')->name('maps');
+    Route::get('/maps/maps_ajax', 'BuildController@map_ajax')->name('district.check');
 //    Route::post('isp_store', 'StageController@isp_store')->name('isp_store');
 
     Route::post('isp_store/stage', 'StageController@isp_store')->name('isp.store.stage');

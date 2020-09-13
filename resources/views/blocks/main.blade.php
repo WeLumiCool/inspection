@@ -18,13 +18,24 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-sm-12 d-flex align-items-center">
+                        <div class="col-lg-3 col-sm-12 d-flex align-items-center">
                             <div class="form-group">
                                 <label for="type">Выберите тип объекта:</label>
                                 <select id="category" data-column="3" class="form-control category-select mb-2    ">
                                     <option value="">Все</option>
                                     @foreach(['Строящийся','Завершенный', 'Незаконный'] as $type)
                                         <option value="{{ $type }}">{{ $type }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-12 d-flex align-items-center">
+                            <div class="form-group">
+                                <label for="type">Выберите тип объекта:</label>
+                                <select id="district" data-column="5" class="form-control district-select mb-2    ">
+                                    <option value="">Все</option>
+                                    @foreach(['Свердловский','Ленинский', 'Октябрьский', 'Первомайский'] as $district)
+                                        <option value="{{ $district }}">{{ $district }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -45,7 +56,7 @@
                             <th scope="col">Адрес</th>
                             <th scope="col">Тип объекта</th>
                             <th scope="col">Вид объекта</th>
-                            <th scope="col">Площадь</th>
+                            <th scope="col">Район</th>
                             <th scope="col">Разрешение</th>
                         </tr>
 
@@ -88,14 +99,14 @@
                         {data: 'address', name: 'address'},
                         {data: 'category', name: 'category'},
                         {data: 'type_id', name: 'type_id'},
-                        {data: 'area', name: 'area'},
+                        {data: 'district', name: 'district'},
                         {data: 'legality', name: 'legality'},
 
                     ],
 
                     columnDefs: [
                         {
-                            targets: [2, 5, 6],
+                            targets: [2, 6],
                             visible: false,
                             searchable: false,
                             orderable: false,
@@ -122,6 +133,12 @@
                         .search($(this).val())
                         .draw();
                 })
+                $('.district-select').change(function () {
+                    console.log($(this).data('column'));
+                    table.column($(this).data('column'))
+                        .search($(this).val())
+                        .draw();
+                })
             $('#builds-table').addClass("compact");
             } else {
                 table = $('#builds-table').DataTable({
@@ -134,7 +151,7 @@
                         {data: 'address', name: 'address'},
                         {data: 'category', name: 'category'},
                         {data: 'type_id', name: 'type_id'},
-                        {data: 'area', name: 'area'},
+                        {data: 'district', name: 'district'},
                         {data: 'legality', name: 'legality'},
 
                     ],
@@ -150,6 +167,12 @@
                         .draw();
                 })
                 $('.category-select').change(function () {
+                    console.log($(this).data('column'));
+                    table.column($(this).data('column'))
+                        .search($(this).val())
+                        .draw();
+                })
+                $('.district-select').change(function () {
                     console.log($(this).data('column'));
                     table.column($(this).data('column'))
                         .search($(this).val())

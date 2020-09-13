@@ -45,6 +45,7 @@ class UserController extends Controller
             'name'=>$request->name,
             'email'=>$request->email,
             'role_id'=>$request->role_id,
+          'district' => $request->district,
           'password'=>Hash::make($request->password),
             'created_at' =>  \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
