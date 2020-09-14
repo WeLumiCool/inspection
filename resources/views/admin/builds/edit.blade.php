@@ -32,7 +32,7 @@
                         <label for="category_of_object">Категория объекта:</label>
                         <select class="form-control" id="category_of_object" name="category">
                             @foreach(['Строящийся','Завершенный', 'Незаконный'] as $type)
-                                <option value="{{ $type }}" {{ $type == $build->district ? 'selected' : ''}}>{{$type}}</option>
+                                <option value="{{ $type }}" {{ $type == $build->category ? 'selected' : ''}}>{{$type}}</option>
                             @endforeach
                         </select>
                     </div>
