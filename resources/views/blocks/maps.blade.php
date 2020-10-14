@@ -17,6 +17,8 @@
             }),
             clusterer = new ymaps.Clusterer({
                 preset: 'islands#redIcon',
+                clusterIconLayout: "default#pieChart"
+
             }),
 
             getPointData = function (index, name, address, id) {
