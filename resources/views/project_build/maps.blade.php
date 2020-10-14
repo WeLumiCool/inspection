@@ -126,6 +126,7 @@
 
     </script>
 
+
     <script>
 
         ymaps.ready(function () {
@@ -137,6 +138,8 @@
                 }),
                 clusterer = new ymaps.Clusterer({
                     preset: 'islands#redIcon',
+                    clusterIconLayout: "default#pieChart"
+
                 }),
 
                 getPointData = function (index, name, address, id) {
@@ -180,12 +183,11 @@
             id = [];
 
             @foreach($builds as $build)
-
-            points.push([{{ $build->latitude }}, {{ $build->longitude }}]);
-            owner.push("{{ $build->name }}");
-            address.push("{{ $build->address }}");
-            category.push("{{ $build->category }}")
-            id.push("{{ $build->id }}")
+                points.push([{{ $build->latitude }}, {{ $build->longitude }}]);
+                owner.push("{{ $build->name }}");
+                address.push("{{ $build->address }}");
+                category.push("{{ $build->category }}")
+                id.push("{{ $build->id }}")
             @endforeach
 
                 geoObjects = [];
@@ -202,6 +204,5 @@
 
 
     </script>
-
 
 @endpush
