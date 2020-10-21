@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
+
 class BuildController extends Controller
 {
     /**
@@ -22,6 +23,12 @@ class BuildController extends Controller
      */
     public function index()
     {
+        $histories = History::all();
+        foreach ($histories as $history) {
+            if (!$history->build) {
+                $history->delete();
+            }
+        }
         return view('admin.builds.index', ['types' => Type::all()]);
     }
 
@@ -130,6 +137,7 @@ class BuildController extends Controller
      */
     public function show(Build $build)
     {
+
         return view('admin.builds.show', ['build' => $build]);
     }
 
@@ -296,7 +304,16 @@ class BuildController extends Controller
             }
             $stage->delete();
         }
+//        $histories = History::all();
+//        foreach ($histories as $history)
+//        {
+//            if ($build->id == $history->object_id)
+//            {
+//                $history->delete();
+//            }
+//        }
         $build->delete();
+
         return redirect()->route('admin.builds.index');
     }
 
@@ -314,12 +331,11 @@ class BuildController extends Controller
         return view('project_build.maps', ['builds' => Build::all()]);
     }
 
-    public function map_ajax(Request $request) {
-        if ($request->district === 'Все')
-        {
+    public function map_ajax(Request $request)
+    {
+        if ($request->district === 'Все') {
             $builds = Build::all();
-        }
-        else{
+        } else {
             $builds = Build::where('district', $request->district)->get();
         }
 
@@ -347,7 +363,6 @@ class BuildController extends Controller
     public function datatableData2()
     {
         return DataTables::of(Build::query())
-
             ->editColumn('type_id', function (Build $build) {
                 $type = Type::find($build->type_id);
                 return $type['name'];
@@ -361,15 +376,27 @@ class BuildController extends Controller
             })
             ->rawColumns(['legality'])
             ->addIndexColumn()
-
             ->make(true);
     }
-    public function central() { //Список объектов добавленные сотрудниками Центрального аппарата
+
+    public function central()
+    { //Список объектов добавленные сотрудниками Центрального аппарата
 
         return view('admin.departments.index', ['types' => Type::all()]);
     }
-    public function centralDatatableData() {
+
+    public function centralDatatableData()
+    {
         $users = User::where('department', 'Центральный аппарат')->get();
+        $history_builds = collect();
+//
+//        foreach($users as $user)
+//        {
+//            foreach ($user->histories as $history) {
+//                $history_builds->push($history->build);
+//            }
+//        }
+//        dd($history_builds->unique('object_id'));
 
         $centrals = self::getUsers($users);
 
@@ -385,11 +412,14 @@ class BuildController extends Controller
             ->make(true);
     }
 
-    public function city() {  //Список объектов добавленные сотрудниками Межрегионального управления
+    public function city()
+    {  //Список объектов добавленные сотрудниками Межрегионального управления
 
         return view('admin.departments.city', ['types' => Type::all()]);
     }
-    public function cityDatatableData() {
+
+    public function cityDatatableData()
+    {
         $users = User::where('department', 'Межрегиональное управление')->get();
 
         $cities = self::getUsers($users);
@@ -406,14 +436,13 @@ class BuildController extends Controller
             ->make(true);
     }
 
-    public function getUsers($request) {
+    public function getUsers($request)
+    {
         $cities = [];
-        foreach($request as $key => $user)
-        {
-            $builds = History::where('user_id', $user->id)->where('action', 'Добавил')->get();
-            foreach($builds as $build)
-            {
-                $cities[] = $build->build;
+        foreach ($request as $key => $user) {
+            $histories = History::where('user_id', $user->id)->where('action', 'Добавил')->get();
+            foreach ($histories as $history) {
+                $cities[] = $history->build;
             }
         }
         $cities = array_unique($cities);
