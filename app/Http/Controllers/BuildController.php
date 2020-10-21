@@ -23,12 +23,6 @@ class BuildController extends Controller
      */
     public function index()
     {
-        $histories = History::all();
-        foreach ($histories as $history) {
-            if (!$history->build) {
-                $history->delete();
-            }
-        }
         return view('admin.builds.index', ['types' => Type::all()]);
     }
 
