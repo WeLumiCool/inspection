@@ -406,9 +406,9 @@ class BuildController extends Controller
             ->make(true);
     }
 
-    public function getUsers($users) {
+    public function getUsers($request) {
         $cities = [];
-        foreach($users as $key => $user)
+        foreach($request as $key => $user)
         {
             $builds = History::where('user_id', $user->id)->where('action', 'Добавил')->get();
             foreach($builds as $build)
