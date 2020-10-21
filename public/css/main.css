@@ -76,22 +76,22 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
     color: rgb(4, 190, 8);
 }
 .btn-exit{
-    background: #0F3753;
-    border-radius: 20px;
-    padding: 10px 15px;
-    color: white;
-    margin-right: 10px;
-    text-decoration: none;
-    cursor: pointer;
+    background: #0F3753!important;
+    border-radius: 20px!important;
+    padding: 19px 15px!important;
+    color: white!important;
+    margin-right: 10px!important;
+    text-decoration: none!important;
+    cursor: pointer!important;
 }
 .btn-admin{
-    background: #0F3753;
-    border-radius: 20px;
-    padding: 10px 15px;
-    color: white;
+    background: #0F3753 !important;
+    border-radius: 20px !important;
+    padding: 10px 15px!important;
+    color: white!important;
     text-decoration: none!important;
-    margin-right: 10px;
-    cursor: pointer;
+    margin-right: 10px!important;
+    cursor: pointer!important;
 }
 .btn-add{
     background: #4285f4;
@@ -103,11 +103,13 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
     cursor: pointer;
 }
 .btn-map{
-    background: #0F3753;
-    border-radius: 20px;
-    padding: 10px 15px;
+    background: #0F3753 !important;
+    border-radius: 20px !important;
+    padding: 10px 15px!important;
     color: white!important;
-    margin-right: 10px;
+    text-decoration: none!important;
+    margin-right: 10px!important;
+    cursor: pointer!important;
 }
 .btn-show{
     background: #658FA4;
@@ -159,6 +161,20 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
     }
     .icon-top{
         margin-top: -14px;
+    }
+    .btn-exit{
+        padding: 10px 15px!important;
+    }
+}
+
+@media screen and (max-width: 2600px) {
+    .btn-exit{
+        padding: 10px 15px!important;
+    }
+}
+@media screen and (max-width: 1480px) {
+    .btn-exit{
+        padding: 19px 15px!important;
     }
 }
 @media screen and (max-width: 992px) {

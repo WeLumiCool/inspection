@@ -15,20 +15,20 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item pt-2 text-center">
-                    <a href="{{ route('maps') }}" class="btn-map font-small">Карта объектов
+                    <a href="{{ route('maps') }}" class="btn btn-map font-small">Карта объектов
                     </a>
                 </li>
                 @if(Auth::user())
                     @if(Auth::user()->role->is_admin)
                         <li class="nav-item pt-2 text-center">
-                            <a href="{{ route('admin.admin') }}" class="btn-admin font-small">Админ панель</a>
+                            <a href="{{ route('admin.admin') }}" class="btn btn-admin font-small">Админ панель</a>
                         </li>
                     @endif
                 @endif
                 @if(Auth::user())
                     <li class="nav-item pt-2 text-center">
                         <a  onclick="document.getElementById('logout-form-auth').submit();"
-                                class="text-white btn-exit  font-small">Выйти
+                                class="text-white btn btn-exit  font-small">Выйти
                         </a>
                         <form id="logout-form-auth" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
