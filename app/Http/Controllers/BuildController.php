@@ -364,5 +364,60 @@ class BuildController extends Controller
 
             ->make(true);
     }
+    public function central() { //Список объектов добавленные сотрудниками Центрального аппарата
+
+        return view('admin.departments.index', ['types' => Type::all()]);
+    }
+    public function centralDatatableData() {
+        $users = User::where('department', 'Центральный аппарат')->get();
+
+        $centrals = self::getUsers($users);
+
+        return DataTables::of($centrals)
+            ->addColumn('actions', function (Build $build) {
+                return view('admin.actions', ['type' => 'builds', 'model' => $build]);
+
+            })
+            ->editColumn('type_id', function (Build $build) {
+                $type = Type::find($build->type_id);
+                return $type['name'];
+            })
+            ->make(true);
+    }
+    public function city() {  //Список объектов добавленные сотрудниками Межрегионального управления
+
+        return view('admin.departments.city', ['types' => Type::all()]);
+    }
+    public function cityDatatableData() {
+        $users = User::where('department', 'Межрегиональное управление')->get();
+
+        $cities = self::getUsers($users);
+
+        return DataTables::of($cities)
+            ->addColumn('actions', function (Build $build) {
+                return view('admin.actions', ['type' => 'builds', 'model' => $build]);
+
+            })
+            ->editColumn('type_id', function (Build $build) {
+                $type = Type::find($build->type_id);
+                return $type['name'];
+            })
+            ->make(true);
+    }
+
+    public function getUsers($users) {
+        $cities = [];
+        foreach($users as $key => $user)
+        {
+            $builds = History::where('user_id', $user->id)->get();
+            foreach($builds as $build)
+            {
+                $cities[] = $build->build;
+            }
+        }
+        $cities = array_unique($cities);
+
+        return $cities;
+    }
 
 }

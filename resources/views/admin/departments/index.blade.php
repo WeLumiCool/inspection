@@ -4,17 +4,8 @@
     <div class="p-3 bg-form card-body-admin">
         <div class="row">
             <div class="col-sm-12 table-responsive">
-                <div class="row justify-content-between">
-                    <div class="col-lg-9 col-sm-12 d-flex align-items-center">
-                        <label for="type">Выберите тип объекта:</label>
-                        <select id="type" data-column="2" class="form-control filter-select mb-2 w-50 mr-3">
-                            <option value="">Все</option>
-                            @foreach($types as $type)
-                                <option value="{{ $type->id }}">{{ $type->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-auto">
+                <div class="row justify-content-end">
+                    <div class="col-auto mb-2">
                         <a href="{{ route('admin.builds.create') }}" class="btn btn-success">{{ __('Создать') }}</a>
                     </div>
                 </div>
@@ -31,21 +22,20 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @push('styles')
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 @endpush
 
 @push('scripts')
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <script>
-        $(function () {
-            let table = $('#builds-table').DataTable({
+        $(document).ready(function() {
+                let table = $('#builds-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('admin.build.datatable.data') !!}',
+                ajax: '{!! route('admin.central.datatable.data') !!}',
                 columns: [
                     {data: 'name', name: 'name'},
                     {data: 'address', name: 'address'},
@@ -61,7 +51,7 @@
                 table.column($(this).data('column'))
                     .search($(this).val())
                     .draw();
-            })
+            });
         });
     </script>
 @endpush

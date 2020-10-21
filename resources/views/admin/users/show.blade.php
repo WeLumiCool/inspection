@@ -8,6 +8,10 @@
             <div class="col-10">{{ $user->name }}</div>
             <div class="col-2">Почта:</div>
             <div class="col-10">{{ $user->email }}</div>
+            <div class="col-2">Район:</div>
+            <div class="col-10">{{ $user->district }}</div>
+            <div class="col-2">Отдел:</div>
+            <div class="col-10">{{ $user->department }}</div>
             <div class="col-2">Дата создания:</div>
             <div class="col-10">{{ $user->created_at }}</div>
             <div class="col-2">Дата обновления:</div>
