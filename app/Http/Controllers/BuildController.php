@@ -384,6 +384,7 @@ class BuildController extends Controller
             })
             ->make(true);
     }
+
     public function city() {  //Список объектов добавленные сотрудниками Межрегионального управления
 
         return view('admin.departments.city', ['types' => Type::all()]);
