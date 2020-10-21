@@ -50,6 +50,14 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="role-select">Отдел:</label>
+                    <select name="department" id="role-select" class="form-control">
+                        @foreach(['Межрегиональное управление', 'Центральный аппарат'] as $department)
+                            <option value="{{ $department }}">{{ $department }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <button type="submit" title="{{ __('Добавить') }}"
                         class="btn n btn-success ">{{ __('Добавить') }}</button>
             </form>

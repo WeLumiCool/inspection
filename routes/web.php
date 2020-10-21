@@ -40,10 +40,13 @@ Route::prefix('admin')->name('admin.')->middleware('admin')
         Route::resource('stages', 'StageController');
         //CRUD for builds
         Route::get('/builds/datatable', 'BuildController@datatableData')->name('build.datatable.data');
-
-
-
         Route::resource('builds', 'BuildController');
+        //index.blade for departments
+        Route::get('central/datatable', 'BuildController@centralDatatableData')->name('central.datatable.data');
+        Route::get('/centrals', 'BuildController@central')->name('centrals.index');
+
+        Route::get('city/datatable', 'BuildController@cityDatatableData')->name('city.datatable.data');
+        Route::get('/cities', 'BuildController@city')->name('cities.index');
 
         Route::get('history/index/{build}', 'HistoryController@index')->name('history.index');
         Route::get('/histories/datatable/{build}', 'HistoryController@datatableData')->name('history.datatable.data');
