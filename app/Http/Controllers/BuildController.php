@@ -409,7 +409,7 @@ class BuildController extends Controller
         $cities = [];
         foreach($users as $key => $user)
         {
-            $builds = History::where('user_id', $user->id)->get();
+            $builds = History::where('user_id', $user->id)->where('action', 'Добавил')->get();
             foreach($builds as $build)
             {
                 $cities[] = $build->build;

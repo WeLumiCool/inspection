@@ -4,11 +4,6 @@
     <div class="p-3 bg-form card-body-admin">
         <div class="row">
             <div class="col-sm-12 table-responsive">
-                <div class="row justify-content-end">
-                    <div class="col-auto mb-2">
-                        <a href="{{ route('admin.builds.create') }}" class="btn btn-success">{{ __('Создать') }}</a>
-                    </div>
-                </div>
                 <table class="table table-striped table-hover" id="builds-table">
                     <thead class="bg-primary text-light">
                     <tr>
