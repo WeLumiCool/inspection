@@ -304,14 +304,14 @@ class BuildController extends Controller
             }
             $stage->delete();
         }
-//        $histories = History::all();
-//        foreach ($histories as $history)
-//        {
-//            if ($build->id == $history->object_id)
-//            {
-//                $history->delete();
-//            }
-//        }
+        $histories = History::all();
+        foreach ($histories as $history)
+        {
+            if ($build->id == $history->object_id)
+            {
+                $history->delete();
+            }
+        }
         $build->delete();
 
         return redirect()->route('admin.builds.index');
