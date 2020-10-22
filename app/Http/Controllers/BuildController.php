@@ -21,7 +21,7 @@ class BuildController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() //return view build index
     {
         return view('admin.builds.index', ['types' => Type::all()]);
     }
