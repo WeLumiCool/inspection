@@ -28,6 +28,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class=" ml-auto navbar-nav nav-flex-icons">
+                        @if(Auth::user()->role->role == 'Начальник' or Auth::user()->role->role == 'Заместитель')
+                            <form action="http://fire/api/login" method="POST">
+                                <input type="hidden" name="auth_hash" value="{{ hash('sha256', Auth::user()->email) }}">
+                                <button type="submit">Переход</button>
+                            </form>
+                        @endif
                         @if(Auth::user()->role->role=='Начальник')
                             <li class="nav-item">
                                 <button onclick="share_permission(this);"

@@ -69,5 +69,7 @@ Route::middleware('auth')->group(function () {
     Route::post('isp_store/stage', 'StageController@isp_store')->name('isp.store.stage');
     Route::post('isp_store/build', 'BuildController@isp_store')->name('isp.store.build');
     Route::get('/builds2/datatable', 'BuildController@datatableData2')->name('build2.datatable.data');
+
+    Route::get('change_system', 'UserController@change_system')->name('change_system');
 });
 

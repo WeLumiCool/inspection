@@ -7,6 +7,7 @@ use App\Http\Requests\UserUpdate;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
@@ -128,4 +129,39 @@ class UserController extends Controller
         $zam->save();
         return response()->json('',204);
     }
+
+    public function crossLogin(Request $request)
+    {
+        $rules = array(
+            'auth_hash' => 'required|max:64',
+        );
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect()->route('login')
+                ->withErrors($validator, 'validate');
+        }
+        $user = self::get_user($request->auth_hash);
+        if (is_null($user)) {
+            return redirect()->route('login')
+                ->withErrors(['error' => 'not found user'], 'not_user');
+
+        }
+
+        Auth::login($user);
+        return redirect()->route('main');
+
+    }
+
+    public static function get_user($hash_email)
+    {
+        $users = User::all();
+        foreach ($users as $user) {
+            if ($hash_email == hash('sha256', $user->email)) {
+                return $user;
+            }
+        }
+        return null;
+    }
+
 }
