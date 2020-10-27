@@ -4,12 +4,27 @@
     <div class="p-3 bg-form card-body-admin">
         <div class="row">
             <div class="col-sm-12 table-responsive">
+                <div class="row justify-content-between">
+                    <div class="col-lg-9 col-sm-12 d-flex align-items-center">
+                        <label for="type">Выберите район:</label>
+                        <select id="type" data-column="3" class="form-control filter-select mb-2 w-50 mr-3">
+                            <option value="">Все</option>
+                            @foreach(['Свердловский','Ленинский', 'Октябрьский', 'Первомайский'] as $district)
+                                <option value="{{ $district }}">{{ $district }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <a href="{{ route('admin.builds.create') }}" class="btn btn-success">{{ __('Создать') }}</a>
+                    </div>
+                </div>
                 <table class="table table-striped table-hover" id="builds-table">
                     <thead class="bg-primary text-light">
                     <tr>
                         <th scope="col">ФИО</th>
                         <th scope="col">Адрес</th>
                         <th scope="col">Тип объекта</th>
+                        <th scope="col">Район</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -35,6 +50,7 @@
                     {data: 'name', name: 'name'},
                     {data: 'address', name: 'address'},
                     {data: 'type_id', name: 'type_id'},
+                    {data: 'district', name: 'district'},
                     {data: 'actions', name: 'actions', searchable: false, orderable: false},
                 ],
                 "language": {
