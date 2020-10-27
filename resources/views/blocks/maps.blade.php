@@ -7,7 +7,6 @@
 <script>
 
     ymaps.ready(function () {
-        console.log("Ya tut bratella")
 
         var myMap = new ymaps.Map('map', {
                 center: [42.865388923088396, 74.60104350048829],
