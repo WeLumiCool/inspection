@@ -66,7 +66,6 @@
             padding: 10px;
             /*margin-top: 50px;*/
         }
-
         /*@media (max-width: 1075px) {*/
         /*    #map {*/
         /*        width: 600px;*/

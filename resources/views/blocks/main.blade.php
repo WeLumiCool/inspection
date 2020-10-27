@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div
-                                class="d-flex col-lg-3 justify-content-lg-end my-2 pr-lg-2 col-12 d-flex justify-content-center align-items-center ">
+                            class="d-flex col-lg-3 justify-content-lg-end my-2 pr-lg-2 col-12 d-flex justify-content-center align-items-center ">
                             <a href="{{ route('isp.create.build') }}" type="button"
                                class="btn btn-blue  waves-effect text-right " style="padding: 8px 26px;">
                                 Добавить объект
@@ -79,9 +79,9 @@
 @endpush
 
 @push('scripts')
-{{--    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>--}}
-{{--    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>--}}
-{{--    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>--}}
+    {{--    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>--}}
+    {{--    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>--}}
+    {{--    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>--}}
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/fixedcolumns/3.3.1/js/dataTables.fixedColumns.min.js"></script>
@@ -111,7 +111,7 @@
                             searchable: false,
                             orderable: false,
                             exportable: false,
-                            class:"index"
+                            class: "index"
                         }
                     ],
 
@@ -139,7 +139,7 @@
                         .search($(this).val())
                         .draw();
                 })
-            $('#builds-table').addClass("compact");
+                $('#builds-table').addClass("compact");
             } else {
                 table = $('#builds-table').DataTable({
                     processing: true,
