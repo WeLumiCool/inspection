@@ -382,15 +382,6 @@ class BuildController extends Controller
     public function centralDatatableData()
     {
         $users = User::where('department', 'Центральный аппарат')->get();
-        $history_builds = collect();
-//
-//        foreach($users as $user)
-//        {
-//            foreach ($user->histories as $history) {
-//                $history_builds->push($history->build);
-//            }
-//        }
-//        dd($history_builds->unique('object_id'));
 
         $centrals = self::getUsers($users);
 

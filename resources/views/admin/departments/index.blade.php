@@ -25,6 +25,7 @@
                         <th scope="col">Адрес</th>
                         <th scope="col">Тип объекта</th>
                         <th scope="col">Район</th>
+                        <th scope="col">Категория</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -51,6 +52,7 @@
                     {data: 'address', name: 'address'},
                     {data: 'type_id', name: 'type_id'},
                     {data: 'district', name: 'district'},
+                    {data: 'category', name: 'category'},
                     {data: 'actions', name: 'actions', searchable: false, orderable: false},
                 ],
                 "language": {
