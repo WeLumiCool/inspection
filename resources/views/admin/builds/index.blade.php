@@ -2,6 +2,7 @@
 
 @section('dashboard_content')
     <div class="p-3 bg-form card-body-admin">
+
         <div class="row">
             <div class="col-sm-12 table-responsive">
                 <div class="row justify-content-between">
