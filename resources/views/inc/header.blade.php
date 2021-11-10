@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar bg-light fixed-top" id="header">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('main') }}"><img src="{{ asset('image/logo.svg') }}" alt=""></a>
+        <a class="navbar-brand" href="{{ route('main') }}"><img src="{{ asset('image/logo.jpg') }}" style="width: 70px;" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,9 +8,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item pt-2 ">
-                    <p class="h6 text-white font-weight-bold text-center" style="line-height: 1.6rem"> Межрегиональное
-                        управление Государственной инспекции по экологической
-                        и технической безопасности по г. Бишкек </p>
+                    <p class="h6 text-white font-weight-bold text-center text-uppercase" style="line-height: 1.6rem">
+                    Управление Архитектурно-Строительного Контроля
+                    </p>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
